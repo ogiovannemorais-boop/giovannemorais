@@ -116,17 +116,30 @@ export function HomePage() {
               </Button>
             </div>
 
-            {/* Hero Image */}
+            {/* Hero Image - Artistic composition */}
             <div className="relative animate-fade-in delay-200 hidden lg:block">
-              <div className="relative w-full aspect-square max-w-md mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-3xl blur-3xl" />
-                <div className="relative rounded-3xl overflow-hidden h-full">
-                  <img 
-                    src={giovannePhoto} 
-                    alt="Giovanne - Gestor de Tráfego e Consultor de IA"
-                    className="w-full h-full object-cover object-top"
-                    loading="lazy"
-                  />
+              <div className="relative w-full max-w-lg mx-auto">
+                {/* Background glow effects */}
+                <div className="absolute -top-10 -right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
+                <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-primary-light/15 rounded-full blur-3xl" />
+                
+                {/* Image container with artistic shape */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-primary-light/20 rounded-[2rem] rounded-bl-[4rem] rounded-tr-[4rem]" />
+                  <div className="relative rounded-[2rem] rounded-bl-[4rem] rounded-tr-[4rem] overflow-hidden aspect-[3/4]">
+                    <img 
+                      src={giovannePhoto} 
+                      alt="Giovanne - Gestor de Tráfego e Consultor de IA"
+                      className="w-full h-full object-cover object-top scale-105"
+                      loading="lazy"
+                    />
+                    {/* Overlay gradient for artistic effect */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                  </div>
+                  
+                  {/* Decorative elements */}
+                  <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-primary/30 rounded-2xl" />
+                  <div className="absolute -top-4 -left-4 w-16 h-16 border-2 border-primary-light/30 rounded-full" />
                 </div>
               </div>
             </div>
