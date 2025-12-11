@@ -10,6 +10,7 @@ const blogPosts = [
     date: '2024-01-15',
     category: 'Tráfego Pago',
     readTime: '8 min',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
   },
   {
     slug: 'landing-pages-que-convertem',
@@ -18,6 +19,7 @@ const blogPosts = [
     date: '2024-01-10',
     category: 'Landing Pages',
     readTime: '6 min',
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop',
   },
   {
     slug: 'ia-para-pequenos-negocios',
@@ -26,6 +28,7 @@ const blogPosts = [
     date: '2024-01-05',
     category: 'Inteligência Artificial',
     readTime: '10 min',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
   },
   {
     slug: 'google-meu-negocio-guia-completo',
@@ -34,6 +37,7 @@ const blogPosts = [
     date: '2024-01-01',
     category: 'SEO Local',
     readTime: '12 min',
+    image: 'https://images.unsplash.com/photo-1553484771-371a605b060b?w=600&h=400&fit=crop',
   },
   {
     slug: 'metricas-que-importam-ecommerce',
@@ -42,6 +46,7 @@ const blogPosts = [
     date: '2023-12-28',
     category: 'E-commerce',
     readTime: '7 min',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
   },
   {
     slug: 'automacoes-whatsapp-negocios',
@@ -50,6 +55,7 @@ const blogPosts = [
     date: '2023-12-20',
     category: 'Automação',
     readTime: '9 min',
+    image: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=600&h=400&fit=crop',
   },
 ];
 
@@ -73,7 +79,13 @@ export function BlogPage() {
                 className={`group bg-card border border-border rounded-2xl overflow-hidden card-hover animate-fade-in`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="aspect-video bg-secondary relative">
+                <div className="aspect-video bg-secondary relative overflow-hidden">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-primary/90 text-primary-foreground rounded-full text-xs font-medium">
                       {post.category}

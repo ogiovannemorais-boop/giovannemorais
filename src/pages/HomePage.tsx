@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Target, ShoppingCart, Layout, MapPin, Bot, Eye, FileText, TrendingUp, Shield, Sparkles, BarChart3 } from 'lucide-react';
+import giovannePhoto from '@/assets/giovanne-photo.png';
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio";
 
@@ -8,19 +9,19 @@ const solutions = [
   {
     icon: Target,
     title: 'Geração de Leads | Tráfego Pago',
-    description: 'Leads qualificados todos os dias — sem desperdício de verba.',
+    description: 'Leads qualificados todos os dias, sem desperdício de verba.',
     href: '/solucoes/geracao-de-leads-trafego-pago',
   },
   {
     icon: ShoppingCart,
     title: 'E-commerce | Tráfego Pago',
-    description: 'Campanhas que vendem todos os dias — ROAS crescente e previsível.',
+    description: 'Campanhas que vendem todos os dias, ROAS crescente e previsível.',
     href: '/solucoes/ecommerce-trafego-pago',
   },
   {
     icon: Layout,
     title: 'Criação de Páginas (Landing Page)',
-    description: 'Landing pages que convertem — design bonito com copy que vende.',
+    description: 'Landing pages que convertem, design bonito com copy que vende.',
     href: '/solucoes/landing-pages',
   },
   {
@@ -73,18 +74,21 @@ const blogPosts = [
     title: 'Como reduzir seu CPL em campanhas de tráfego pago',
     excerpt: 'Estratégias práticas para otimizar suas campanhas e pagar menos por lead qualificado.',
     date: '2024-01-15',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
   },
   {
     slug: 'landing-pages-que-convertem',
     title: '7 elementos essenciais de landing pages que convertem',
     excerpt: 'Descubra os componentes que fazem uma landing page gerar resultados reais.',
     date: '2024-01-10',
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop',
   },
   {
     slug: 'ia-para-pequenos-negocios',
     title: 'IA para pequenos negócios: por onde começar',
     excerpt: 'Um guia prático para implementar inteligência artificial no seu dia a dia.',
     date: '2024-01-05',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
   },
 ];
 
@@ -98,39 +102,31 @@ export function HomePage() {
             <div className="animate-fade-in">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance">
                 Seu crescimento não pode depender de{' '}
-                <span className="gradient-text">sorte</span> — ele precisa de{' '}
+                <span className="gradient-text">sorte</span>, ele precisa de{' '}
                 <span className="gradient-text">método</span>.
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
                 Tráfego pago, landing pages e automações de IA com governança e foco em ROI.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="hero" size="xl" asChild>
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                    Agendar diagnóstico gratuito
-                    <ArrowRight className="w-5 h-5" />
-                  </a>
-                </Button>
-                <Button variant="heroOutline" size="xl" asChild>
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                    Quero meu plano de crescimento
-                  </a>
-                </Button>
-              </div>
+              <Button variant="hero" size="xl" asChild>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                  Agendar diagnóstico gratuito
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+              </Button>
             </div>
 
-            {/* Hero Image Placeholder */}
+            {/* Hero Image */}
             <div className="relative animate-fade-in delay-200 hidden lg:block">
               <div className="relative w-full aspect-square max-w-md mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-3xl blur-3xl" />
-                <div className="relative bg-card border border-border rounded-3xl p-8 h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 rounded-full bg-primary/20 mx-auto mb-4 flex items-center justify-center">
-                      <span className="text-6xl font-bold gradient-text">G</span>
-                    </div>
-                    <p className="text-lg font-medium">Giovanne</p>
-                    <p className="text-sm text-muted-foreground">Gestor de Tráfego & IA</p>
-                  </div>
+                <div className="relative rounded-3xl overflow-hidden h-full">
+                  <img 
+                    src={giovannePhoto} 
+                    alt="Giovanne - Gestor de Tráfego e Consultor de IA"
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
                 </div>
               </div>
             </div>
@@ -282,7 +278,14 @@ export function HomePage() {
                 className={`group bg-card border border-border rounded-2xl overflow-hidden card-hover animate-fade-in`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="aspect-video bg-secondary" />
+                <div className="aspect-video bg-secondary overflow-hidden">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
                 <div className="p-6">
                   <time className="text-xs text-muted-foreground">
                     {new Date(post.date).toLocaleDateString('pt-BR')}
