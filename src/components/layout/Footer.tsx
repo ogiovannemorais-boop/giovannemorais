@@ -18,11 +18,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">G</span>
-              </div>
-              <span className="font-semibold text-lg">Giovanne</span>
+            <Link to="/" className="font-semibold text-lg mb-4 inline-block">
+              Giovanne
             </Link>
             <p className="text-sm text-muted-foreground mb-6">
               Gestor de tráfego e consultor de IA. +30 negócios atendidos, +R$ 1MM em mídia gerenciada.
@@ -119,11 +116,11 @@ export function Footer() {
               </li>
               <li>
                 <a 
-                  href="mailto:contato@giovanne.com.br"
+                  href="mailto:ogiovannemorais@gmail.com"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  contato@giovanne.com.br
+                  ogiovannemorais@gmail.com
                 </a>
               </li>
             </ul>
@@ -146,7 +143,7 @@ export function Footer() {
             © {new Date().getFullYear()} Giovanne. Todos os direitos reservados.
           </p>
           <p className="text-xs text-muted-foreground">
-            CNPJ: 00.000.000/0001-00
+            CNPJ: 42.434.651/0001-30
           </p>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Award, Target, Users, Shield, CheckCircle } from 'lucide-react';
+import giovannePhoto from '@/assets/giovanne-photo.png';
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio";
 
@@ -32,7 +33,7 @@ export function AboutPage() {
               
               <div className="bg-card border border-border rounded-2xl p-6 md:p-8 mb-12">
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  Faço negócios venderem com previsibilidade: estruturo tráfego pago, crio páginas que convertem e implemento automações com IA. Sem promessas fáceis — com governança, relatórios claros e foco no resultado.
+                  Faço negócios venderem com previsibilidade: estruturo tráfego pago, crio páginas que convertem e implemento automações com IA. Sem promessas fáceis, com governança, relatórios claros e foco no resultado.
                 </p>
               </div>
             </div>
@@ -41,14 +42,18 @@ export function AboutPage() {
             <div className="grid lg:grid-cols-3 gap-8 mb-16">
               <div className="lg:col-span-1 animate-fade-in delay-100">
                 <div className="bg-card border border-border rounded-2xl p-6 sticky top-24">
-                  <div className="w-24 h-24 rounded-full bg-primary/20 mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-4xl font-bold gradient-text">G</span>
+                  <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden">
+                    <img 
+                      src={giovannePhoto} 
+                      alt="Giovanne - Gestor de Tráfego e Consultor de IA"
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                   <h2 className="text-xl font-semibold text-center mb-2">Giovanne</h2>
                   <p className="text-sm text-muted-foreground text-center mb-4">
                     Gestor de Tráfego & Consultor de IA
                   </p>
-                  <div className="flex justify-center gap-2">
+                  <div className="flex justify-center gap-2 flex-wrap">
                     <div className="px-3 py-1 bg-primary/10 rounded-full text-xs text-primary">
                       Meta Partner
                     </div>
@@ -63,7 +68,7 @@ export function AboutPage() {
                 <h3 className="text-2xl font-semibold mb-4">Sobre mim</h3>
                 <div className="prose prose-invert max-w-none">
                   <p className="text-muted-foreground leading-relaxed mb-6">
-                    Sou movido por disciplina, ordem e aprendizado contínuo. Construí minha carreira unindo gestão de tráfego, criação de páginas e inteligência artificial aplicada ao dia a dia das empresas. Trago um olhar analítico, explico com clareza e ajo como parceiro — cuidando do negócio do cliente como se fosse meu.
+                    Sou movido por disciplina, ordem e aprendizado contínuo. Construí minha carreira unindo gestão de tráfego, criação de páginas e inteligência artificial aplicada ao dia a dia das empresas. Trago um olhar analítico, explico com clareza e ajo como parceiro, cuidando do negócio do cliente como se fosse meu.
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
                     Meu objetivo é simples: transformar esforço em resultado mensurável, com processos sólidos, documentação e respeito à LGPD.

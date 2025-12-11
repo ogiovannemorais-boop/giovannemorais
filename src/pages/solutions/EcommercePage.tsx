@@ -3,7 +3,7 @@ import { SolutionLayout } from '@/components/solutions/SolutionLayout';
 export function EcommercePage() {
   return (
     <SolutionLayout
-      title="Campanhas que vendem todos os dias — ROAS crescente e previsível."
+      title="Campanhas que vendem todos os dias, ROAS crescente e previsível."
       subtitle="Do jeito antigo ao Método Power com IA & Machine Learning para e-commerces que querem escalar."
       pains={[
         'ROAS estagnado ou em queda',

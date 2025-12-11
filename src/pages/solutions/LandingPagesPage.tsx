@@ -41,7 +41,7 @@ const packages = [
 export function LandingPagesPage() {
   return (
     <SolutionLayout
-      title="Landing pages que convertem — design bonito com copy que vende."
+      title="Landing pages que convertem, design bonito com copy que vende."
       subtitle="Páginas otimizadas para conversão, com design profissional e copy persuasivo."
       pains={[
         'Site que não gera leads ou vendas',

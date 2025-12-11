@@ -3,7 +3,7 @@ import { SolutionLayout } from '@/components/solutions/SolutionLayout';
 export function LeadGenerationPage() {
   return (
     <SolutionLayout
-      title="Leads qualificados todos os dias — sem desperdício de verba."
+      title="Leads qualificados todos os dias, sem desperdício de verba."
       subtitle="Estratégia local + funil simples para captação, nutrição e conversão de leads qualificados."
       pains={[
         'Investir em anúncios sem retorno claro',
