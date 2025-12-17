@@ -4,25 +4,22 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Páginas principais
-import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import BlogPage from "./pages/BlogPage";
-import BlogPostPage from "./pages/BlogPostPage";
-import LinksPage from "./pages/LinksPage";
-import PrivacyPage from "./pages/PrivacyPage";
-import TermsPage from "./pages/TermsPage";
-import NotFound from "./pages/NotFound";
+import HomePage from "@/pages/HomePage";
+import AboutPage from "@/pages/AboutPage";
+import BlogPage from "@/pages/BlogPage";
+import BlogPostPage from "@/pages/BlogPostPage";
+import LinksPage from "@/pages/LinksPage";
+import PrivacyPage from "@/pages/PrivacyPage";
+import TermsPage from "@/pages/TermsPage";
+import NotFound from "@/pages/NotFound";
 
-// Soluções
-import LeadGenerationPage from "./pages/solutions/LeadGenerationPage";
-import EcommercePage from "./pages/solutions/EcommercePage";
-import LandingPagesPage from "./pages/solutions/LandingPagesPage";
-import GoogleBusinessPage from "./pages/solutions/GoogleBusinessPage";
-import AIPage from "./pages/solutions/AIPage";
+import LeadGenerationPage from "@/pages/solutions/LeadGenerationPage";
+import EcommercePage from "@/pages/solutions/EcommercePage";
+import LandingPagesPage from "@/pages/solutions/LandingPagesPage";
+import GoogleBusinessPage from "@/pages/solutions/GoogleBusinessPage";
+import AIPage from "@/pages/solutions/AIPage";
 
-// Layout
-import Layout from "./components/layout/Layout";
+import Layout from "@/components/layout/Layout";
 
 const queryClient = new QueryClient();
 
