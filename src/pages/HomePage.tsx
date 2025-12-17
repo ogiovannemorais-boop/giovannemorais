@@ -96,7 +96,7 @@ const blogPosts = [
   },
 ];
 
-export function HomePage() {
+export default function HomePage() {
   return (
     <div className="beams-background">
       {/* Hero Section */}
