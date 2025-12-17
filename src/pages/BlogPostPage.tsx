@@ -278,3 +278,5 @@ export function BlogPostPage() {
     </div>
   );
 }
+
+export default BlogPostPage;
