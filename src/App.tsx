@@ -30,21 +30,25 @@ const App = () => (
           <Route path="/links" element={<LinksPage />} />
           <Route path="*" element={
             <Layout>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/sobre" element={<AboutPage />} />
-                <Route path="/blog" element={<BlogPage />} />
-                <Route path="/blog/:slug" element={<BlogPostPage />} />
-                <Route path="/solucoes/geracao-de-leads-trafego-pago" element={<LeadGenerationPage />} />
-                <Route path="/solucoes/ecommerce-trafego-pago" element={<EcommercePage />} />
-                <Route path="/solucoes/landing-pages" element={<LandingPagesPage />} />
-                <Route path="/solucoes/google-meu-negocio" element={<GoogleBusinessPage />} />
-                <Route path="/solucoes/inteligencia-artificial" element={<AIPage />} />
-                <Route path="/politica-privacidade" element={<PrivacyPage />} />
-                <Route path="/termos" element={<TermsPage />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Layout>
+  <Routes>
+    <Route path="/" element={<HomePage />} />
+    <Route path="/sobre" element={<AboutPage />} />
+    <Route path="/blog" element={<BlogPage />} />
+    <Route path="/blog/:slug" element={<BlogPostPage />} />
+
+    {solutionsRoutes.map((route) => (
+      <Route
+        key={route.path}
+        path={route.path}
+        element={route.element}
+      />
+    ))}
+
+    <Route path="/politica-privacidade" element={<PrivacyPage />} />
+    <Route path="/termos" element={<TermsPage />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+</Layout>
           } />
         </Routes>
       </BrowserRouter>
