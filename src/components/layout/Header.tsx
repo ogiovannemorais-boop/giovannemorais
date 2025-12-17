@@ -3,16 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-
-const solutions = [
-  { name: 'Geração de Leads | Tráfego Pago', href: '/solucoes/geracao-de-leads-trafego-pago' },
-  { name: 'E-commerce | Tráfego Pago', href: '/solucoes/ecommerce-trafego-pago' },
-  { name: 'Criação de Páginas (Landing Page)', href: '/solucoes/landing-pages' },
-  { name: 'Google Meu Negócio', href: '/solucoes/google-meu-negocio' },
-  { name: 'Inteligência Artificial para Negócios', href: '/solucoes/inteligencia-artificial' },
-];
-
-const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio";
+import { solutions, navLinks, WHATSAPP_LINK } from '@/data/links';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,24 +24,18 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
-            <Link 
-              to="/" 
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                isActive('/') ? "text-primary" : "text-muted-foreground"
-              )}
-            >
-              Início
-            </Link>
-            <Link 
-              to="/sobre" 
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                isActive('/sobre') ? "text-primary" : "text-muted-foreground"
-              )}
-            >
-              Sobre mim
-            </Link>
+            {navLinks.slice(0, 2).map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary",
+                  isActive(link.href) ? "text-primary" : "text-muted-foreground"
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
             
             {/* Solutions Dropdown */}
             <div className="relative">
@@ -124,26 +109,19 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="lg:hidden py-4 border-t border-border/50">
             <div className="flex flex-col gap-2">
-              <Link 
-                to="/" 
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  "px-4 py-3 rounded-lg text-sm font-medium transition-colors",
-                  isActive('/') ? "bg-primary/10 text-primary" : "text-foreground hover:bg-secondary"
-                )}
-              >
-                Início
-              </Link>
-              <Link 
-                to="/sobre" 
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  "px-4 py-3 rounded-lg text-sm font-medium transition-colors",
-                  isActive('/sobre') ? "bg-primary/10 text-primary" : "text-foreground hover:bg-secondary"
-                )}
-              >
-                Sobre mim
-              </Link>
+              {navLinks.slice(0, 2).map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={cn(
+                    "px-4 py-3 rounded-lg text-sm font-medium transition-colors",
+                    isActive(link.href) ? "bg-primary/10 text-primary" : "text-foreground hover:bg-secondary"
+                  )}
+                >
+                  {link.name}
+                </Link>
+              ))}
               
               {/* Mobile Solutions */}
               <div className="px-4 py-2">

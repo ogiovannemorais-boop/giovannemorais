@@ -2,10 +2,14 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Target, ShoppingCart, Layout, MapPin, Bot, Eye, FileText, TrendingUp, Shield, Sparkles, BarChart3 } from 'lucide-react';
 import giovannePhoto from '@/assets/giovanne-photo.png';
+import { CTAButton } from '@/components/CTAButton';
+import { Section } from '@/components/Section';
+import { SolutionCard } from '@/components/SolutionCard';
+import { CaseCard } from '@/components/CaseCard';
+import { BlogCard } from '@/components/BlogCard';
+import { WHATSAPP_LINK, specialistInfo } from '@/data/links';
 
-const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio";
-
-const solutions = [
+const solutionsData = [
   {
     icon: Target,
     title: 'Geração de Leads | Tráfego Pago',
@@ -108,12 +112,7 @@ export function HomePage() {
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
                 Tráfego pago, landing pages e automações de IA com governança e foco em ROI.
               </p>
-              <Button variant="hero" size="xl" asChild>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  Agendar diagnóstico gratuito
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-              </Button>
+              <CTAButton size="xl" />
             </div>
 
             {/* Hero Image - Artistic composition */}
@@ -129,7 +128,7 @@ export function HomePage() {
                   <div className="relative rounded-[2rem] rounded-bl-[4rem] rounded-tr-[4rem] overflow-hidden aspect-[3/4]">
                     <img 
                       src={giovannePhoto} 
-                      alt="Giovanne - Gestor de Tráfego e Consultor de IA"
+                      alt={`${specialistInfo.fullName} - ${specialistInfo.title}`}
                       className="w-full h-full object-cover object-top scale-105"
                       loading="lazy"
                     />
@@ -168,174 +167,113 @@ export function HomePage() {
       </section>
 
       {/* Solutions */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Soluções para o seu negócio</h2>
-            <p className="text-lg text-muted-foreground">
-              Estratégias personalizadas para cada etapa do seu crescimento digital.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {solutions.map((solution, index) => (
-              <Link
-                key={solution.href}
-                to={solution.href}
-                className={`group bg-card border border-border rounded-2xl p-6 card-hover animate-fade-in`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <solution.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
-                  {solution.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">{solution.description}</p>
-                <span className="inline-flex items-center text-sm font-medium text-primary">
-                  Saiba mais <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-            ))}
-          </div>
+      <Section
+        title="Soluções para o seu negócio"
+        subtitle="Estratégias personalizadas para cada etapa do seu crescimento digital."
+      >
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {solutionsData.map((solution, index) => (
+            <SolutionCard
+              key={solution.href}
+              title={solution.title}
+              description={solution.description}
+              href={solution.href}
+              icon={solution.icon}
+              style={{ animationDelay: `${index * 100}ms` }}
+            />
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Differentials */}
-      <section className="section-padding bg-card/50">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Por que me escolher?</h2>
-            <p className="text-lg text-muted-foreground">
-              Diferenciais que garantem resultados reais para o seu negócio.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {differentials.map((diff, index) => (
-              <div
-                key={diff.title}
-                className={`flex items-start gap-4 p-6 bg-card border border-border rounded-xl animate-fade-in`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <diff.icon className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">{diff.title}</h3>
-                  <p className="text-sm text-muted-foreground">{diff.description}</p>
-                </div>
+      <Section
+        title="Por que me escolher?"
+        subtitle="Diferenciais que garantem resultados reais para o seu negócio."
+        variant="card"
+      >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {differentials.map((diff, index) => (
+            <div
+              key={diff.title}
+              className="flex items-start gap-4 p-6 bg-card border border-border rounded-xl animate-fade-in"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <diff.icon className="w-5 h-5 text-primary" />
               </div>
-            ))}
-          </div>
+              <div>
+                <h3 className="font-semibold mb-1">{diff.title}</h3>
+                <p className="text-sm text-muted-foreground">{diff.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Cases */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Cases de sucesso</h2>
-            <p className="text-lg text-muted-foreground">
-              Resultados reais de clientes que confiaram no meu trabalho.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {cases.map((caseItem, index) => (
-              <div
-                key={caseItem.client}
-                className={`bg-card border border-border rounded-2xl p-6 card-hover animate-fade-in`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="text-sm font-medium text-primary mb-2">{caseItem.client}</div>
-                <h3 className="font-semibold mb-3">{caseItem.challenge}</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  <strong>Estratégia:</strong> {caseItem.strategy}
-                </p>
-                <div className="space-y-2">
-                  {caseItem.results.map((result) => (
-                    <div key={result} className="flex items-center gap-2 text-sm">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      {result}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+      <Section
+        title="Cases de sucesso"
+        subtitle="Resultados reais de clientes que confiaram no meu trabalho."
+      >
+        <div className="grid md:grid-cols-3 gap-6">
+          {cases.map((caseItem, index) => (
+            <CaseCard
+              key={caseItem.client}
+              client={caseItem.client}
+              challenge={caseItem.challenge}
+              strategy={caseItem.strategy}
+              results={caseItem.results}
+              style={{ animationDelay: `${index * 100}ms` }}
+            />
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Blog Preview */}
-      <section className="section-padding bg-card/50">
-        <div className="container-custom">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12">
-            <div className="animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">Blog</h2>
-              <p className="text-muted-foreground">Conteúdo educativo para o seu negócio crescer.</p>
-            </div>
-            <Button variant="outline" asChild>
-              <Link to="/blog">
-                Ver todos os artigos
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </Button>
+      <Section variant="card">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12">
+          <div className="animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Blog</h2>
+            <p className="text-muted-foreground">Conteúdo educativo para o seu negócio crescer.</p>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {blogPosts.map((post, index) => (
-              <Link
-                key={post.slug}
-                to={`/blog/${post.slug}`}
-                className={`group bg-card border border-border rounded-2xl overflow-hidden card-hover animate-fade-in`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="aspect-video bg-secondary overflow-hidden">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-6">
-                  <time className="text-xs text-muted-foreground">
-                    {new Date(post.date).toLocaleDateString('pt-BR')}
-                  </time>
-                  <h3 className="font-semibold mt-2 mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <Button variant="outline" asChild>
+            <Link to="/blog">
+              Ver todos os artigos
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </Button>
         </div>
-      </section>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {blogPosts.map((post, index) => (
+            <BlogCard
+              key={post.slug}
+              slug={post.slug}
+              title={post.title}
+              excerpt={post.excerpt}
+              date={post.date}
+              image={post.image}
+              style={{ animationDelay: `${index * 100}ms` }}
+            />
+          ))}
+        </div>
+      </Section>
 
       {/* Final CTA */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="relative bg-card border border-border rounded-3xl p-8 md:p-16 text-center overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary-light/5" />
-            <div className="relative z-10 max-w-2xl mx-auto animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Vamos mudar a realidade do seu negócio?
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Agende uma conversa gratuita e descubra como podemos acelerar seus resultados.
-              </p>
-              <Button variant="hero" size="xl" asChild>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  Agendar diagnóstico gratuito
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-              </Button>
-            </div>
+      <Section>
+        <div className="relative bg-card border border-border rounded-3xl p-8 md:p-16 text-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary-light/5" />
+          <div className="relative z-10 max-w-2xl mx-auto animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Vamos mudar a realidade do seu negócio?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Agende uma conversa gratuita e descubra como podemos acelerar seus resultados.
+            </p>
+            <CTAButton size="xl" />
           </div>
         </div>
-      </section>
+      </Section>
     </div>
   );
 }
