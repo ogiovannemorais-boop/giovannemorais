@@ -15,7 +15,7 @@ import { GoogleBusinessPage } from "./pages/solutions/GoogleBusinessPage";
 import { AIPage } from "./pages/solutions/AIPage";
 import { PrivacyPage } from "./pages/PrivacyPage";
 import { TermsPage } from "./pages/TermsPage";
-import LinksPage from "./pages/LinksPage";
+import Links from "./pages/links";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,7 +27,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/links" element={<LinksPage />} />
+          <Route path="/links" element={<Links />} />
           <Route path="*" element={
             <Layout>
               <Routes>
