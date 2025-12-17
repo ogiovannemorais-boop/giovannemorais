@@ -1,6 +1,6 @@
 import { SolutionLayout } from '@/components/solutions/SolutionLayout';
 
-export function LeadGenerationPage() {
+export default function LeadGenerationPage() {
   return (
     <SolutionLayout
       title="Leads qualificados todos os dias, sem desperdício de verba."

@@ -1,6 +1,6 @@
 import { SolutionLayout } from '@/components/solutions/SolutionLayout';
 
-export function GoogleBusinessPage() {
+export default function GoogleBusinessPage() {
   return (
     <SolutionLayout
       title="Domine as buscas locais e receba mais ligações e visitas."

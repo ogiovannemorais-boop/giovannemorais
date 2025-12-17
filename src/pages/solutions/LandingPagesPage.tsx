@@ -38,7 +38,7 @@ const packages = [
   },
 ];
 
-export function LandingPagesPage() {
+export default function LandingPagesPage() {
   return (
     <SolutionLayout
       title="Landing pages que convertem, design bonito com copy que vende."
