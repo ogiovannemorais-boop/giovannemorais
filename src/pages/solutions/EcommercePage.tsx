@@ -1,6 +1,6 @@
 import { SolutionLayout } from '@/components/solutions/SolutionLayout';
 
-export function EcommercePage() {
+export default function EcommercePage() {
   return (
     <SolutionLayout
       title="Campanhas que vendem todos os dias, ROAS crescente e previsível."

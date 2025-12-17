@@ -85,7 +85,7 @@ function ROICalculator() {
   );
 }
 
-export function AIPage() {
+export default function AIPage() {
   return (
     <SolutionLayout
       title="Automatize processos e reduza custos com IA aplicada."
