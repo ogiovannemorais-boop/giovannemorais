@@ -1,8 +1,8 @@
-import { LeadGenerationPage } from "@/pages/solutions/LeadGenerationPage";
-import { EcommercePage } from "@/pages/solutions/EcommercePage";
-import { LandingPagesPage } from "@/pages/solutions/LandingPagesPage";
-import { GoogleBusinessPage } from "@/pages/solutions/GoogleBusinessPage";
-import { AIPage } from "@/pages/solutions/AIPage";
+import LeadGenerationPage from "@/pages/solutions/LeadGenerationPage";
+import EcommercePage from "@/pages/solutions/EcommercePage";
+import LandingPagesPage from "@/pages/solutions/LandingPagesPage";
+import GoogleBusinessPage from "@/pages/solutions/GoogleBusinessPage";
+import AIPage from "@/pages/solutions/AIPage";
 
 export const solutionsRoutes = [
   {
