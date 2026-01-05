@@ -150,23 +150,23 @@ export default function GestorTrafegoPagoFrancaPage() {
         <section className="relative min-h-[90vh] flex items-center section-padding">
           <div className="container-custom relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="animate-fade-in">
+              <div className="animate-fade-in text-center lg:text-left">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance">
                   Seu negócio em Franca merece mais clientes.{' '}
                   <span className="text-primary">Eu posso ajudar.</span>
                 </h1>
-                <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-                  Meu nome é Giovanne Morais. Como Gestor de Tráfego e parceiro certificado pelo Google e Meta, meu método já gerou mais de R$ 1 milhão em receita para negócios como o seu. Sem promessas fáceis, com foco total em ROI e resultados para sua empresa aqui em Franca.
+                <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0">
+                  Sou Giovanne Morais, Gestor de Tráfego especializado em negócios locais. Foco total em ROI e resultados para sua empresa em Franca.
                 </p>
 
-                <Button variant="hero" size="xl" asChild>
+                <Button variant="hero" size="xl" asChild className="w-full sm:w-auto">
                   <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                     Agendar Diagnóstico Gratuito
                     <ArrowRight className="w-5 h-5" />
                   </a>
                 </Button>
 
-                <div className="mt-8 flex flex-wrap items-center gap-4">
+                <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
                   <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full">
                     <Award className="w-5 h-5 text-primary" />
                     <span className="text-sm font-medium">Google Partner</span>
@@ -178,17 +178,17 @@ export default function GestorTrafegoPagoFrancaPage() {
                 </div>
 
                 <p className="mt-6 text-sm text-muted-foreground">
-                  Junte-se a mais de 30 empresários de Franca e região que transformaram seus negócios com um método focado em crescimento consistente.
+                  Junte-se a mais de 30 empresários de Franca e região que transformaram seus negócios.
                 </p>
               </div>
 
-              <div className="relative animate-fade-in delay-200 hidden lg:block">
+              <div className="relative animate-fade-in delay-200 order-first lg:order-last">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl blur-3xl" />
                   <img 
                     src={giovannePhoto} 
                     alt="Giovanne Morais - Gestor de Tráfego Pago em Franca SP" 
-                    className="relative rounded-2xl shadow-2xl w-full max-w-md mx-auto"
+                    className="relative rounded-2xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto"
                     loading="eager"
                   />
                 </div>
