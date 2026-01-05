@@ -20,6 +20,8 @@ import LandingPagesPage from "@/pages/solutions/LandingPagesPage";
 import GoogleBusinessPage from "@/pages/solutions/GoogleBusinessPage";
 import AIPage from "@/pages/solutions/AIPage";
 
+import GestorTrafegoPagoFrancaPage from "@/pages/local/GestorTrafegoPagoFrancaPage";
+
 import Layout from "@/components/layout/Layout";
 
 const queryClient = new QueryClient();
@@ -52,6 +54,9 @@ const App = () => (
             {/* Legais */}
             <Route path="/politica-de-privacidade" element={<PrivacyPage />} />
             <Route path="/termos-de-uso" element={<TermsPage />} />
+
+            {/* Páginas de tráfego local (SEO) - não visíveis no menu */}
+            <Route path="/gestor-trafego-pago-franca" element={<GestorTrafegoPagoFrancaPage />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
