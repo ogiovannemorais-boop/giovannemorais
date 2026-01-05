@@ -70,6 +70,11 @@ export const solutions = [
     shortName: 'Inteligência Artificial',
     href: '/solucoes/inteligencia-artificial' 
   },
+  {
+    name: 'Consultoria Estratégica',
+    shortName: 'Consultoria Estratégica',
+    href: '/solucoes/consultoria-estrategica',
+  },
 ];
 
 // Navigation Links

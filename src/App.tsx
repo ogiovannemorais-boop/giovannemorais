@@ -19,6 +19,7 @@ import EcommercePage from "@/pages/solutions/EcommercePage";
 import LandingPagesPage from "@/pages/solutions/LandingPagesPage";
 import GoogleBusinessPage from "@/pages/solutions/GoogleBusinessPage";
 import AIPage from "@/pages/solutions/AIPage";
+import ConsultoriaEstrategicaPage from "@/pages/solutions/ConsultoriaEstrategicaPage";
 
 import GestorTrafegoPagoFrancaPage from "@/pages/local/GestorTrafegoPagoFrancaPage";
 
@@ -67,6 +68,7 @@ const App = () => (
             <Route path="/solucoes/landing-pages" element={<LandingPagesPage />} />
             <Route path="/solucoes/google-meu-negocio" element={<GoogleBusinessPage />} />
             <Route path="/solucoes/inteligencia-artificial" element={<AIPage />} />
+            <Route path="/solucoes/consultoria-estrategica" element={<ConsultoriaEstrategicaPage />} />
 
             {/* Legais */}
             <Route path="/politica-de-privacidade" element={<PrivacyPage />} />
