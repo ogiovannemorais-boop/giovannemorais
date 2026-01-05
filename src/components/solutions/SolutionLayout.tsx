@@ -17,6 +17,7 @@ interface SolutionLayoutProps {
   microBait?: { title: string; description: string };
   ctaText?: string;
   children?: ReactNode;
+  heroImage?: string;
 }
 
 export function SolutionLayout({
@@ -31,6 +32,7 @@ export function SolutionLayout({
   microBait,
   ctaText = 'Agendar diagnóstico gratuito',
   children,
+  heroImage,
 }: SolutionLayoutProps) {
   return (
     <div className="beams-background">
@@ -47,19 +49,26 @@ export function SolutionLayout({
             </Link>
           </nav>
 
-          <div className="max-w-4xl animate-fade-in delay-100">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
-              {title}
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8">
-              {subtitle}
-            </p>
-            <Button variant="hero" size="xl" asChild>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                {ctaText}
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </Button>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="max-w-4xl animate-fade-in delay-100">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
+                {title}
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground mb-8">
+                {subtitle}
+              </p>
+              <Button variant="hero" size="xl" asChild>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                  {ctaText}
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+              </Button>
+            </div>
+            {heroImage && (
+              <div className="animate-fade-in delay-200">
+                <img src={heroImage} alt="Especialista em Marketing Digital" className="rounded-2xl shadow-2xl" />
+              </div>
+            )}
           </div>
         </div>
       </section>
