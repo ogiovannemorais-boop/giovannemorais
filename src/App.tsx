@@ -21,7 +21,7 @@ import GoogleBusinessPage from "@/pages/solutions/GoogleBusinessPage";
 import AIPage from "@/pages/solutions/AIPage";
 import ConsultoriaEstrategicaPage from "@/pages/solutions/ConsultoriaEstrategicaPage";
 
-import GestorTrafegoPagoFrancaPage from "@/pages/local/GestorTrafegoPagoFrancaPage";
+import GestorTrafegoPagoFranca from "@/pages/GestorTrafegoPagoFranca";
 
 import Layout from "@/components/layout/Layout";
 
@@ -75,7 +75,7 @@ const App = () => (
             <Route path="/termos-de-uso" element={<TermsPage />} />
 
             {/* Páginas de tráfego local (SEO) - não visíveis no menu */}
-            <Route path="/gestor-trafego-pago-franca" element={<GestorTrafegoPagoFrancaPage />} />
+            <Route path="/gestor-trafego-pago-franca" element={<GestorTrafegoPagoFranca />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
