@@ -26,12 +26,29 @@ import Layout from "@/components/layout/Layout";
 
 const queryClient = new QueryClient();
 
+const routerBasename = (() => {
+  // Suporta deploy em domínio raiz ("/") e em subpasta (ex: "/repo") no GitHub Pages,
+  // sem depender de import.meta (para manter compatibilidade com o tsconfig atual).
+  const knownTopLevelPaths = new Set([
+    "links",
+    "sobre",
+    "blog",
+    "solucoes",
+    "politica-de-privacidade",
+    "termos-de-uso",
+    "gestor-trafego-pago-franca",
+  ]);
+
+  const firstSegment = window.location.pathname.split("/").filter(Boolean)[0] ?? "";
+  return firstSegment && !knownTopLevelPaths.has(firstSegment) ? `/${firstSegment}` : "/";
+})();
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={routerBasename}>
         <Routes>
           {/* Página fora do layout */}
           <Route path="/links" element={<LinksPage />} />
