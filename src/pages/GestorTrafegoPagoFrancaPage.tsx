@@ -72,7 +72,7 @@ export default function GestorTrafegoPagoFrancaPage() {
     "@type": "LocalBusiness",
     "name": "Giovanne Morais - Gestor de Tráfego Pago",
     "description": "Gestor de tráfego pago especializado em negócios locais em Franca/SP. Mais de R$ 1 milhão em mídia gerenciada, +30 negócios atendidos.",
-    "url": "https://giovanne.io/gestor-trafego-pago-franca",
+    "url": "https://giovannemorais.com.br/gestor-trafego-pago-franca",
     "telephone": "+5516988037193",
     "email": "ogiovannemorais@gmail.com",
     "address": {
@@ -135,7 +135,7 @@ export default function GestorTrafegoPagoFrancaPage() {
           content="Gestor de tráfego pago especializado em negócios locais em Franca/SP. +R$ 1 milhão em mídia gerenciada, +30 negócios atendidos. Agende seu diagnóstico gratuito." 
         />
         <meta name="keywords" content="gestor de tráfego pago franca, tráfego pago franca sp, marketing digital franca, google ads franca, facebook ads franca, instagram ads franca" />
-        <link rel="canonical" href="https://giovanne.io/gestor-trafego-pago-franca" />
+        <link rel="canonical" href="https://giovannemorais.com.br/gestor-trafego-pago-franca" />
         <meta property="og:title" content="Gestor de Tráfego Pago em Franca/SP | Giovanne Morais" />
         <meta property="og:description" content="Gestor de tráfego pago especializado em negócios locais em Franca/SP. Agende seu diagnóstico gratuito." />
         <meta property="og:type" content="website" />
@@ -151,12 +151,15 @@ export default function GestorTrafegoPagoFrancaPage() {
           <div className="container-custom relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in text-center lg:text-left">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance">
-                  Seu negócio em Franca merece mais clientes.{' '}
-                  <span className="text-primary">Eu posso ajudar.</span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-balance">
+                  Gestor de Tráfego Pago em Franca{' '}
+                  <span className="text-primary">para atrair mais clientes todos os dias</span>
                 </h1>
+                <p className="text-xl md:text-2xl font-medium mb-4 text-foreground/90">
+                  Seu negócio em Franca – SP merece mais clientes. Eu posso ajudar.
+                </p>
                 <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0">
-                  Sou Giovanne Morais, Gestor de Tráfego especializado em negócios locais. Foco total em ROI e resultados para sua empresa em Franca.
+                  Sou Giovanne Morais, Gestor de Tráfego especializado em negócios locais de Franca e região. Atendo empresas que desejam gerar leads e vendas através de campanhas estratégicas no Google Ads e Meta Ads, com foco em ROI e crescimento previsível.
                 </p>
 
                 <Button variant="hero" size="xl" asChild className="w-full sm:w-auto">
@@ -201,8 +204,11 @@ export default function GestorTrafegoPagoFrancaPage() {
         <section className="py-16 md:py-24 bg-card/50">
           <div className="container-custom">
             <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center animate-fade-in">
-              Se você é dono de um negócio em Franca, talvez isso soe familiar...
+              Por que escolher um Gestor de Tráfego local em Franca?
             </h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Se você é dono de um negócio em Franca – SP, talvez isso soe familiar...
+            </p>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               <div className="p-8 bg-card border border-border rounded-2xl animate-fade-in">
@@ -231,16 +237,16 @@ export default function GestorTrafegoPagoFrancaPage() {
           <div className="container-custom">
             <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
               <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                Chega de achismo. Meu método une Tráfego Pago, Clareza e Foco em ROI.
+                Google Ads e Meta Ads para negócios locais em Franca
               </h2>
               <p className="text-lg text-muted-foreground">
-                Ao longo de mais de 30 projetos e com mais de R$ 1 milhão em mídia gerenciada, desenvolvi um processo que transforma seu investimento em clientes reais. Esqueça a complexidade; meu trabalho é entregar resultados que você entende e vê no caixa.
+                Chega de achismo. Meu método une Tráfego Pago, Clareza e Foco em ROI. Ao longo de mais de 30 projetos em Franca e região, e com mais de R$ 1 milhão em mídia gerenciada, desenvolvi um processo que transforma seu investimento em clientes reais. Atendimento para empresas de Franca – SP que buscam crescimento previsível.
               </p>
             </div>
 
-            <h3 className="text-xl font-semibold mb-8 text-center">
-              Como meu método funciona na prática para o seu negócio em Franca:
-            </h3>
+            <h2 className="text-xl font-semibold mb-8 text-center">
+              Como ajudo empresas de Franca a crescer com tráfego pago
+            </h2>
 
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {methodSteps.map((step, index) => (
@@ -276,7 +282,7 @@ export default function GestorTrafegoPagoFrancaPage() {
         <section className="py-16 md:py-24 bg-card/50">
           <div className="container-custom">
             <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center animate-fade-in">
-              Resultados reais de negócios que confiaram no meu método:
+              Resultados reais com tráfego pago em Franca
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -319,7 +325,7 @@ export default function GestorTrafegoPagoFrancaPage() {
           <div className="container-custom">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
               <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                Pronto para ter um método de crescimento para o seu negócio em Franca?
+                Agende um diagnóstico gratuito para seu negócio em Franca
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Chega de depender de sorte ou de indicações. Vamos criar juntos uma estratégia de anúncios que gera resultados reais e previsíveis. Agende um diagnóstico de marketing gratuito e sem compromisso diretamente comigo.
