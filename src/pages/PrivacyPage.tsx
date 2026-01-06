@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-function PrivacyPage() {
+export default function PrivacyPage() {
   return (
     <div className="beams-background">
       <section className="section-padding">
@@ -77,5 +77,3 @@ function PrivacyPage() {
     </div>
   );
 }
-
-export default PrivacyPage;

@@ -91,7 +91,7 @@ const packages = [
   },
 ];
 
-export default function NewLandingPagesPage() {
+export default function LandingPagesPage() {
   return (
     <SolutionLayout
       title="Sua Empresa Invisível na Internet? Transforme Cliques em Clientes com Landing Pages que Vendem por Você."

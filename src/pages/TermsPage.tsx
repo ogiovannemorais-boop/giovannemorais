@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-function TermsPage() {
+export default function TermsPage() {
   return (
     <div className="beams-background">
       <section className="section-padding">
@@ -87,5 +87,3 @@ function TermsPage() {
     </div>
   );
 }
-
-export default TermsPage;

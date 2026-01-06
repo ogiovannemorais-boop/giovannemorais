@@ -34,7 +34,7 @@ const solutions = [
   },
 ];
 
-const SolucoesPage = () => {
+export default function SolucoesPage() {
   return (
     <div className="min-h-screen bg-background">
       <section className="py-20 px-4">
@@ -74,6 +74,4 @@ const SolucoesPage = () => {
       </section>
     </div>
   );
-};
-
-export default SolucoesPage;
+}
