@@ -66,7 +66,7 @@ const cases = [
   },
 ];
 
-export default function GestorTrafegoPagoFrancaPage() {
+export default function GestorTrafegoPagoFranca() {
   const schemaLocalBusiness = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
