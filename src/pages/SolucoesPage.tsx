@@ -5,13 +5,13 @@ const solutions = [
   {
     title: "Geração de Leads",
     description: "Campanhas de tráfego pago otimizadas para captar leads qualificados e aumentar suas vendas.",
-    href: "/solucoes/geracao-de-leads",
+    href: "/solucoes/geracao-de-leads-trafego-pago",
     icon: Target,
   },
   {
     title: "E-commerce",
     description: "Estratégias de tráfego pago específicas para lojas virtuais com foco em conversão.",
-    href: "/solucoes/ecommerce",
+    href: "/solucoes/ecommerce-trafego-pago",
     icon: ShoppingCart,
   },
   {
