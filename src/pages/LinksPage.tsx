@@ -37,7 +37,7 @@ const links = [
   },
 ];
 
-const LinksPage = () => {
+export default function LinksPage() {
   return (
     <div className="min-h-screen bg-[#0D0D0D] flex flex-col items-center justify-center px-5 py-12">
       <div className="w-full max-w-md flex flex-col items-center gap-6">
@@ -99,6 +99,4 @@ const LinksPage = () => {
       </div>
     </div>
   );
-};
-
-export default LinksPage;
+}
