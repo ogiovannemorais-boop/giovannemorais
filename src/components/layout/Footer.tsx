@@ -55,6 +55,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link 
+                  to="/gestor-trafego-pago-franca"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Tráfego Pago em Franca
+                </Link>
+              </li>
             </ul>
           </div>
 
