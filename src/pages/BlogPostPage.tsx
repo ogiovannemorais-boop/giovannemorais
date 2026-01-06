@@ -157,7 +157,7 @@ IA não vai substituir seu negócio, mas negócios que usam IA vão superar os q
   },
 };
 
-export function BlogPostPage() {
+export default function BlogPostPage() {
   const { slug } = useParams();
   const post = slug ? blogPosts[slug] : null;
 
@@ -279,4 +279,4 @@ export function BlogPostPage() {
   );
 }
 
-export default BlogPostPage;
+
