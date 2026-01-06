@@ -18,7 +18,7 @@ const values = [
   { icon: Users, title: 'Processos', description: 'Governança em cada etapa' },
 ];
 
-export function AboutPage() {
+export default function AboutPage() {
   return (
     <div className="beams-background">
       {/* Hero */}
@@ -128,4 +128,4 @@ export function AboutPage() {
   );
 }
 
-export default AboutPage;
+

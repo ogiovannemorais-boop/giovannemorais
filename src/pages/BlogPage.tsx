@@ -59,7 +59,7 @@ const blogPosts = [
   },
 ];
 
-export function BlogPage() {
+export default function BlogPage() {
   return (
     <div className="beams-background">
       <section className="section-padding">
@@ -140,4 +140,4 @@ export function BlogPage() {
   );
 }
 
-export default BlogPage;
+
