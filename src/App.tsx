@@ -21,22 +21,20 @@ import GoogleBusinessPage from "@/pages/solutions/GoogleBusinessPage";
 import AIPage from "@/pages/solutions/AIPage";
 import ConsultoriaEstrategicaPage from "@/pages/solutions/ConsultoriaEstrategicaPage";
 
-import GestorTrafegoPagoFranca from "@/pages/GestorTrafegoPagoFranca";
+import GestorTrafegoPagoFrancaPage from "@/pages/GestorTrafegoPagoFrancaPage";
 
 import Layout from "@/components/layout/Layout";
 
 const queryClient = new QueryClient();
 
 const routerBasename = (() => {
-  // Suporta deploy em domínio raiz ("/") e em subpasta (ex: "/repo") no GitHub Pages,
-  // sem depender de import.meta (para manter compatibilidade com o tsconfig atual).
   const knownTopLevelPaths = new Set([
     "links",
     "sobre",
     "blog",
     "solucoes",
-    "politica-de-privacidade",
-    "termos-de-uso",
+    "politica-privacidade",
+    "termos",
     "gestor-trafego-pago-franca",
   ]);
 
@@ -63,19 +61,19 @@ const App = () => (
 
             {/* Soluções */}
             <Route path="/solucoes" element={<SolucoesPage />} />
-            <Route path="/solucoes/geracao-de-leads" element={<LeadGenerationPage />} />
-            <Route path="/solucoes/ecommerce" element={<EcommercePage />} />
+            <Route path="/solucoes/geracao-de-leads-trafego-pago" element={<LeadGenerationPage />} />
+            <Route path="/solucoes/ecommerce-trafego-pago" element={<EcommercePage />} />
             <Route path="/solucoes/landing-pages" element={<LandingPagesPage />} />
             <Route path="/solucoes/google-meu-negocio" element={<GoogleBusinessPage />} />
             <Route path="/solucoes/inteligencia-artificial" element={<AIPage />} />
             <Route path="/solucoes/consultoria-estrategica" element={<ConsultoriaEstrategicaPage />} />
 
             {/* Legais */}
-            <Route path="/politica-de-privacidade" element={<PrivacyPage />} />
-            <Route path="/termos-de-uso" element={<TermsPage />} />
+            <Route path="/politica-privacidade" element={<PrivacyPage />} />
+            <Route path="/termos" element={<TermsPage />} />
 
             {/* Páginas de tráfego local (SEO) - não visíveis no menu */}
-            <Route path="/gestor-trafego-pago-franca" element={<GestorTrafegoPagoFranca />} />
+            <Route path="/gestor-trafego-pago-franca" element={<GestorTrafegoPagoFrancaPage />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />

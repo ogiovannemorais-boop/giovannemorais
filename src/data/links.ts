@@ -48,12 +48,12 @@ export const solutions = [
   { 
     name: 'Geração de Leads | Tráfego Pago', 
     shortName: 'Geração de Leads',
-    href: '/solucoes/geracao-de-leads' 
+    href: '/solucoes/geracao-de-leads-trafego-pago' 
   },
   { 
     name: 'E-commerce | Tráfego Pago', 
     shortName: 'E-commerce',
-    href: '/solucoes/ecommerce' 
+    href: '/solucoes/ecommerce-trafego-pago' 
   },
   { 
     name: 'Criação de Páginas (Landing Page)', 
@@ -89,7 +89,7 @@ export const footerLinks = {
   company: [
     { name: 'Sobre mim', href: '/sobre' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Política de Privacidade', href: '/politica-de-privacidade' },
-    { name: 'Termos de Uso', href: '/termos-de-uso' },
+    { name: 'Política de Privacidade', href: '/politica-privacidade' },
+    { name: 'Termos de Uso', href: '/termos' },
   ],
 };
