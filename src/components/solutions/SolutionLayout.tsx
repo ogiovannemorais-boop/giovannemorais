@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import giovannePhoto from '@/assets/giovanne-photo.png';
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio";
 
@@ -37,69 +36,41 @@ export function SolutionLayout({
 }: SolutionLayoutProps) {
   return (
     <div className="beams-background">
-      {/* Hero - Full Width Corporate Premium */}
-      <section className="relative min-h-screen w-full overflow-hidden">
-        {/* Unified dark corporate gradient background */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            background: 'linear-gradient(135deg, hsl(210 15% 6%) 0%, hsl(210 20% 8%) 30%, hsl(210 25% 10%) 60%, hsl(205 30% 12%) 100%)'
-          }}
-        />
-        
-        {/* Subtle ambient lighting effects */}
-        <div className="absolute inset-0 z-[1] pointer-events-none">
-          <div className="absolute top-1/4 right-[20%] w-[500px] h-[500px] bg-primary/8 rounded-full blur-[180px] hidden lg:block" />
-          <div className="absolute bottom-1/4 right-[30%] w-[300px] h-[300px] bg-primary/5 rounded-full blur-[120px] hidden lg:block" />
-        </div>
+      {/* Hero */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <nav className="mb-8 fade-in">
+            <Link 
+              to="/" 
+              className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Voltar ao início
+            </Link>
+          </nav>
 
-        {/* Grid Layout: Text Left | Image Right */}
-        <div className="container-custom relative z-10 min-h-screen">
-          <div className="grid lg:grid-cols-2 min-h-screen items-center gap-8 lg:gap-0">
-            
-            {/* Left Column - Text Content (clean negative space) */}
-            <div className="relative z-20 py-24 lg:py-0 order-2 lg:order-1">
-              <nav className="mb-8 fade-in">
-                <Link 
-                  to="/" 
-                  className="inline-flex items-center text-sm text-white/60 hover:text-primary transition-colors"
-                >
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Voltar ao início
-                </Link>
-              </nav>
-
-              <div className="max-w-xl fade-in delay-100">
-                <h1 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-[1.1] mb-6 tracking-tight text-white">
-                  {title}
-                </h1>
-                <p className="text-lg md:text-xl text-white/70 mb-10 leading-relaxed">
-                  {subtitle}
-                </p>
-                <div className="scale-in delay-300">
-                  <Button variant="hero" size="xl" asChild className="btn-hover">
-                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                      {ctaText}
-                      <ArrowRight className="w-5 h-5" />
-                    </a>
-                  </Button>
-                </div>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="max-w-4xl fade-in delay-100">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
+                {title}
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground mb-8">
+                {subtitle}
+              </p>
+              <div className="scale-in delay-300">
+                <Button variant="hero" size="xl" asChild className="btn-hover">
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                    {ctaText}
+                    <ArrowRight className="w-5 h-5" />
+                  </a>
+                </Button>
               </div>
             </div>
-
-            {/* Right Column - Professional Image (seamlessly integrated) */}
-            <div className="relative order-1 lg:order-2 hidden lg:flex items-end justify-end h-full">
-              <img 
-                src={giovannePhoto} 
-                alt="Especialista em Marketing Digital" 
-                className="h-[92%] w-auto max-w-none object-contain object-bottom slide-in-right"
-                style={{ 
-                  maskImage: 'linear-gradient(to left, black 0%, black 40%, rgba(0,0,0,0.6) 70%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to left, black 0%, black 40%, rgba(0,0,0,0.6) 70%, transparent 100%)'
-                }}
-                loading="eager"
-              />
-            </div>
+            {heroImage && (
+              <div className="slide-in-right delay-200">
+                <img src={heroImage} alt="Especialista em Marketing Digital" className="rounded-2xl shadow-2xl" />
+              </div>
+            )}
           </div>
         </div>
       </section>

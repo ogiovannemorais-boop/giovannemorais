@@ -146,83 +146,57 @@ export default function GestorTrafegoPagoFranca() {
       </Helmet>
 
       <div className="beams-background">
-        {/* Hero Section - Full Width Corporate Premium */}
-        <section className="relative min-h-screen w-full overflow-hidden">
-          {/* Unified dark corporate gradient background */}
-          <div 
-            className="absolute inset-0 z-0"
-            style={{
-              background: 'linear-gradient(135deg, hsl(210 15% 6%) 0%, hsl(210 20% 8%) 30%, hsl(210 25% 10%) 60%, hsl(205 30% 12%) 100%)'
-            }}
-          />
-          
-          {/* Subtle ambient lighting effects */}
-          <div className="absolute inset-0 z-[1] pointer-events-none">
-            <div className="absolute top-1/4 right-[20%] w-[500px] h-[500px] bg-primary/8 rounded-full blur-[180px] hidden lg:block" />
-            <div className="absolute bottom-1/4 right-[30%] w-[300px] h-[300px] bg-primary/5 rounded-full blur-[120px] hidden lg:block" />
-          </div>
+        {/* Hero Section */}
+        <section className="relative min-h-[90vh] flex items-center section-padding">
+          <div className="container-custom relative z-10">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="fade-in text-center lg:text-left">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-balance">
+                  Gestor de Tráfego Pago em Franca{' '}
+                  <span className="text-primary">para atrair mais clientes todos os dias</span>
+                </h1>
+                <p className="text-xl md:text-2xl font-medium mb-4 text-foreground/90 slide-in-left delay-200">
+                  Seu negócio em Franca – SP merece mais clientes. Eu posso ajudar.
+                </p>
+                <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0 slide-in-left delay-300">
+                  Sou Giovanne Morais, Gestor de Tráfego especializado em negócios locais de Franca e região. Atendo empresas que desejam gerar leads e vendas através de campanhas estratégicas no Google Ads e Meta Ads, com foco em ROI e crescimento previsível.
+                </p>
 
-          {/* Grid Layout: Text Left | Image Right */}
-          <div className="container-custom relative z-10 min-h-screen">
-            <div className="grid lg:grid-cols-2 min-h-screen items-center gap-8 lg:gap-0">
-              
-              {/* Left Column - Text Content (clean negative space) */}
-              <div className="relative z-20 py-24 lg:py-0 order-2 lg:order-1">
-                <div className="max-w-xl fade-in text-center lg:text-left mx-auto lg:mx-0">
-                  {/* Headline */}
-                  <h1 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-[1.1] mb-4 tracking-tight text-white">
-                    Gestor de Tráfego Pago em Franca{' '}
-                    <span className="text-primary">para atrair mais clientes todos os dias</span>
-                  </h1>
-                  
-                  {/* Subheadline */}
-                  <p className="text-lg md:text-xl font-medium mb-4 text-white/90 slide-in-left delay-200">
-                    Seu negócio em Franca – SP merece mais clientes. Eu posso ajudar.
-                  </p>
-                  <p className="text-base md:text-lg text-white/70 mb-8 slide-in-left delay-300 leading-relaxed">
-                    Sou Giovanne Morais, Gestor de Tráfego especializado em negócios locais de Franca e região. Atendo empresas que desejam gerar leads e vendas através de campanhas estratégicas no Google Ads e Meta Ads, com foco em ROI e crescimento previsível.
-                  </p>
-
-                  {/* CTA */}
-                  <div className="scale-in delay-400">
-                    <Button variant="hero" size="xl" asChild className="w-full sm:w-auto btn-hover">
-                      <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                        Agendar Diagnóstico Gratuito
-                        <ArrowRight className="w-5 h-5" />
-                      </a>
-                    </Button>
-                  </div>
-
-                  {/* Trust badges */}
-                  <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 stagger-children">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full scale-in delay-500">
-                      <Award className="w-5 h-5 text-primary" />
-                      <span className="text-sm font-medium text-white">Google Partner</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full scale-in delay-600">
-                      <Award className="w-5 h-5 text-primary" />
-                      <span className="text-sm font-medium text-white">Meta Business Partner</span>
-                    </div>
-                  </div>
-
-                  <p className="mt-6 text-sm text-white/60 fade-in delay-700">
-                    Junte-se a mais de 30 empresários de Franca e região que transformaram seus negócios.
-                  </p>
+                <div className="scale-in delay-400">
+                  <Button variant="hero" size="xl" asChild className="w-full sm:w-auto btn-hover">
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                      Agendar Diagnóstico Gratuito
+                      <ArrowRight className="w-5 h-5" />
+                    </a>
+                  </Button>
                 </div>
+
+                <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 stagger-children">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full scale-in delay-500">
+                    <Award className="w-5 h-5 text-primary" />
+                    <span className="text-sm font-medium">Google Partner</span>
+                  </div>
+                  <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full scale-in delay-600">
+                    <Award className="w-5 h-5 text-primary" />
+                    <span className="text-sm font-medium">Meta Business Partner</span>
+                  </div>
+                </div>
+
+                <p className="mt-6 text-sm text-muted-foreground fade-in delay-700">
+                  Junte-se a mais de 30 empresários de Franca e região que transformaram seus negócios.
+                </p>
               </div>
 
-              {/* Right Column - Professional Image (seamlessly integrated) */}
-              <div className="relative order-1 lg:order-2 hidden lg:flex items-end justify-end h-full">
-                <img 
-                  src={giovannePhoto} 
-                  alt="Giovanne Morais - Gestor de Tráfego Pago em Franca SP"
-                  className="h-[92%] w-auto max-w-none object-contain object-bottom slide-in-right"
-                  style={{ 
-                    maskImage: 'linear-gradient(to left, black 0%, black 40%, rgba(0,0,0,0.6) 70%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to left, black 0%, black 40%, rgba(0,0,0,0.6) 70%, transparent 100%)'
-                  }}
-                  loading="eager"
-                />
+              <div className="relative slide-in-right delay-200 order-first lg:order-last">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl blur-3xl" />
+                  <img 
+                    src={giovannePhoto} 
+                    alt="Giovanne Morais - Gestor de Tráfego Pago em Franca SP" 
+                    className="relative rounded-2xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto"
+                    loading="eager"
+                  />
+                </div>
               </div>
             </div>
           </div>

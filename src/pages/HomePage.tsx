@@ -99,60 +99,50 @@ const blogPosts = [
 export default function HomePage() {
   return (
     <div className="beams-background">
-      {/* Hero Section - Full Width Corporate Premium */}
-      <section className="relative min-h-screen w-full overflow-hidden">
-        {/* Unified dark corporate gradient background */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            background: 'linear-gradient(135deg, hsl(210 15% 6%) 0%, hsl(210 20% 8%) 30%, hsl(210 25% 10%) 60%, hsl(205 30% 12%) 100%)'
-          }}
-        />
-        
-        {/* Subtle ambient lighting effects */}
-        <div className="absolute inset-0 z-[1] pointer-events-none">
-          <div className="absolute top-1/4 right-[20%] w-[500px] h-[500px] bg-primary/8 rounded-full blur-[180px] hidden lg:block" />
-          <div className="absolute bottom-1/4 right-[30%] w-[300px] h-[300px] bg-primary/5 rounded-full blur-[120px] hidden lg:block" />
-        </div>
-
-        {/* Grid Layout: Text Left | Image Right */}
-        <div className="container-custom relative z-10 min-h-screen">
-          <div className="grid lg:grid-cols-2 min-h-screen items-center gap-8 lg:gap-0">
-            
-            {/* Left Column - Text Content (clean negative space) */}
-            <div className="relative z-20 py-24 lg:py-0 order-2 lg:order-1">
-              <div className="max-w-xl fade-in">
-                {/* Headline */}
-                <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] mb-6 tracking-tight text-white">
-                  Seu crescimento não pode depender de{' '}
-                  <span className="gradient-text">sorte</span>, ele precisa de{' '}
-                  <span className="gradient-text">método</span>.
-                </h1>
-                
-                {/* Subheadline */}
-                <p className="text-lg md:text-xl text-white/70 mb-10 max-w-lg leading-relaxed">
-                  Tráfego pago, landing pages e automações de IA com governança e foco em ROI.
-                </p>
-                
-                {/* CTA */}
-                <div className="scale-in delay-300">
-                  <CTAButton size="xl" />
-                </div>
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center section-padding">
+        <div className="container-custom relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="fade-in">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance">
+                Seu crescimento não pode depender de{' '}
+                <span className="gradient-text">sorte</span>, ele precisa de{' '}
+                <span className="gradient-text">método</span>.
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+                Tráfego pago, landing pages e automações de IA com governança e foco em ROI.
+              </p>
+              <div className="scale-in delay-300">
+                <CTAButton size="xl" />
               </div>
             </div>
 
-            {/* Right Column - Professional Image (seamlessly integrated) */}
-            <div className="relative order-1 lg:order-2 hidden lg:flex items-end justify-end h-full">
-              <img 
-                src={giovannePhoto} 
-                alt={`${specialistInfo.fullName} - ${specialistInfo.title}`}
-                className="h-[92%] w-auto max-w-none object-contain object-bottom slide-in-right"
-                style={{ 
-                  maskImage: 'linear-gradient(to left, black 0%, black 40%, rgba(0,0,0,0.6) 70%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to left, black 0%, black 40%, rgba(0,0,0,0.6) 70%, transparent 100%)'
-                }}
-                loading="eager"
-              />
+            {/* Hero Image - Artistic composition */}
+            <div className="relative slide-in-right hidden lg:block">
+              <div className="relative w-full max-w-lg mx-auto">
+                {/* Background glow effects */}
+                <div className="absolute -top-10 -right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
+                <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-primary-light/15 rounded-full blur-3xl" />
+                
+                {/* Image container with artistic shape */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-primary-light/20 rounded-[2rem] rounded-bl-[4rem] rounded-tr-[4rem]" />
+                  <div className="relative rounded-[2rem] rounded-bl-[4rem] rounded-tr-[4rem] overflow-hidden aspect-[3/4]">
+                    <img 
+                      src={giovannePhoto} 
+                      alt={`${specialistInfo.fullName} - ${specialistInfo.title}`}
+                      className="w-full h-full object-cover object-top scale-105"
+                      loading="lazy"
+                    />
+                    {/* Overlay gradient for artistic effect */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                  </div>
+                  
+                  {/* Decorative elements */}
+                  <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-primary/30 rounded-2xl" />
+                  <div className="absolute -top-4 -left-4 w-16 h-16 border-2 border-primary-light/30 rounded-full" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
