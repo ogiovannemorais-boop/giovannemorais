@@ -146,27 +146,37 @@ export default function GestorTrafegoPagoFranca() {
       </Helmet>
 
       <div className="beams-background">
-        {/* Hero Section */}
-        <section className="relative min-h-[90vh] flex items-center section-padding overflow-hidden">
-          {/* Background image - integrated into section */}
+        {/* Hero Section - Full Width Corporate */}
+        <section className="relative min-h-screen w-full flex items-center overflow-hidden">
+          {/* Full-width background with integrated specialist */}
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/30 z-10" />
-            <div className="absolute right-0 top-0 h-full w-full lg:w-2/3 slide-in-right">
+            {/* Gradient overlays */}
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 via-50% to-transparent z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/40 z-10" />
+            
+            {/* Specialist image */}
+            <div className="absolute right-0 top-0 h-full w-full flex justify-end slide-in-right">
               <img 
                 src={giovannePhoto} 
                 alt="Giovanne Morais - Gestor de Tráfego Pago em Franca SP"
-                className="absolute right-0 bottom-0 h-full w-auto object-contain object-right-bottom opacity-30 lg:opacity-70"
+                className="h-full w-auto max-w-none object-cover object-top opacity-40 lg:opacity-90"
+                style={{ 
+                  maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)'
+                }}
                 loading="eager"
               />
-              {/* Glow effects */}
-              <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/25 rounded-full blur-3xl" />
-              <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-primary-light/20 rounded-full blur-3xl" />
             </div>
+            
+            {/* Ambient glow effects */}
+            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-primary/25 rounded-full blur-[120px] z-0" />
+            <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-primary-light/20 rounded-full blur-[100px] z-0" />
           </div>
 
-          <div className="container-custom relative z-10">
+          {/* Content */}
+          <div className="container-custom relative z-20 py-20 lg:py-0">
             <div className="max-w-2xl fade-in text-center lg:text-left mx-auto lg:mx-0">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-balance">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 text-balance">
                 Gestor de Tráfego Pago em Franca{' '}
                 <span className="text-primary">para atrair mais clientes todos os dias</span>
               </h1>
