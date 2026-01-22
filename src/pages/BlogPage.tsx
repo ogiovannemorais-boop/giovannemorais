@@ -64,19 +64,19 @@ export default function BlogPage() {
     <div className="beams-background">
       <section className="section-padding">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
+          <div className="max-w-3xl mx-auto text-center mb-16 fade-in">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
             <p className="text-lg text-muted-foreground">
               Conteúdo educativo sobre tráfego pago, landing pages, IA e crescimento digital.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
             {blogPosts.map((post, index) => (
               <Link
                 key={post.slug}
                 to={`/blog/${post.slug}`}
-                className={`group bg-card border border-border rounded-2xl overflow-hidden card-hover animate-fade-in`}
+                className="group bg-card border border-border rounded-2xl overflow-hidden interactive-card slide-in-left"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="aspect-video bg-secondary relative overflow-hidden">
@@ -116,20 +116,20 @@ export default function BlogPage() {
           </div>
 
           {/* Newsletter CTA */}
-          <div className="mt-16 bg-card border border-border rounded-2xl p-8 md:p-12 text-center animate-fade-in">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          <div className="mt-16 bg-card border border-border rounded-2xl p-8 md:p-12 text-center scale-in">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 fade-in">
               Receba conteúdo exclusivo
             </h2>
-            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+            <p className="text-muted-foreground mb-6 max-w-xl mx-auto fade-in delay-100">
               Assine a newsletter e receba dicas práticas de marketing digital diretamente no seu e-mail.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto slide-in-left delay-200">
               <input
                 type="email"
                 placeholder="Seu melhor e-mail"
                 className="flex-1 h-12 px-4 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <Button variant="hero" size="lg">
+              <Button variant="hero" size="lg" className="btn-hover">
                 Assinar
               </Button>
             </div>
@@ -139,5 +139,4 @@ export default function BlogPage() {
     </div>
   );
 }
-
 

@@ -36,10 +36,10 @@ const solutions = [
 
 export default function SolucoesPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background beams-background">
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 fade-in">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Nossas Soluções
             </h1>
@@ -48,14 +48,15 @@ export default function SolucoesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {solutions.map((solution) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+            {solutions.map((solution, index) => (
               <Link
                 key={solution.href}
                 to={solution.href}
-                className="group bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg"
+                className="group bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 interactive-card slide-in-left"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors scale-in" style={{ animationDelay: `${index * 100 + 200}ms` }}>
                   <solution.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
