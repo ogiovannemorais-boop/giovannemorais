@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Target, ShoppingCart, Layout, MapPin, Bot, Eye, FileText, TrendingUp, Shield, Sparkles, BarChart3 } from 'lucide-react';
-import giovannePhoto from '@/assets/giovanne-photo.png';
+import heroGiovanne from '@/assets/hero-giovanne.png';
 import { CTAButton } from '@/components/CTAButton';
 import { Section } from '@/components/Section';
 import { SolutionCard } from '@/components/SolutionCard';
@@ -117,30 +117,21 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Hero Image - Artistic composition */}
+            {/* Hero Image - Professional composition */}
             <div className="relative slide-in-right hidden lg:block">
-              <div className="relative w-full max-w-lg mx-auto">
+              <div className="relative w-full max-w-2xl mx-auto">
                 {/* Background glow effects */}
-                <div className="absolute -top-10 -right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
-                <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-primary-light/15 rounded-full blur-3xl" />
+                <div className="absolute -top-10 -right-10 w-80 h-80 bg-primary/25 rounded-full blur-3xl" />
+                <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl" />
                 
-                {/* Image container with artistic shape */}
+                {/* Image container */}
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-primary-light/20 rounded-[2rem] rounded-bl-[4rem] rounded-tr-[4rem]" />
-                  <div className="relative rounded-[2rem] rounded-bl-[4rem] rounded-tr-[4rem] overflow-hidden aspect-[3/4]">
-                    <img 
-                      src={giovannePhoto} 
-                      alt={`${specialistInfo.fullName} - ${specialistInfo.title}`}
-                      className="w-full h-full object-cover object-top scale-105"
-                      loading="lazy"
-                    />
-                    {/* Overlay gradient for artistic effect */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
-                  </div>
-                  
-                  {/* Decorative elements */}
-                  <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-primary/30 rounded-2xl" />
-                  <div className="absolute -top-4 -left-4 w-16 h-16 border-2 border-primary-light/30 rounded-full" />
+                  <img 
+                    src={heroGiovanne} 
+                    alt={`${specialistInfo.fullName} - ${specialistInfo.title}`}
+                    className="w-full h-auto object-contain"
+                    loading="eager"
+                  />
                 </div>
               </div>
             </div>
