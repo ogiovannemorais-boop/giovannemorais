@@ -37,35 +37,40 @@ export function SolutionLayout({
 }: SolutionLayoutProps) {
   return (
     <div className="beams-background">
-      {/* Hero - Full Width Corporate */}
+      {/* Hero - Full Width Corporate Premium */}
       <section className="relative min-h-screen w-full flex items-center overflow-hidden">
-        {/* Full-width background with integrated specialist */}
-        <div className="absolute inset-0 z-0">
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 via-50% to-transparent z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/40 z-10" />
-          
-          {/* Specialist image */}
-          <div className="absolute right-0 top-0 h-full w-full flex justify-end slide-in-right">
+        {/* Clean background base */}
+        <div className="absolute inset-0 bg-background z-0" />
+        
+        {/* Specialist image - positioned right, 3/4 body composition */}
+        <div className="absolute right-0 top-0 h-full w-full lg:w-3/5 z-[1] slide-in-right">
+          <div className="relative h-full w-full flex justify-end items-end">
             <img 
               src={giovannePhoto} 
               alt="Especialista em Marketing Digital" 
-              className="h-full w-auto max-w-none object-cover object-top opacity-40 lg:opacity-85"
+              className="h-[85%] lg:h-[95%] w-auto max-w-none object-contain object-bottom opacity-30 lg:opacity-100"
               style={{ 
-                maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)'
+                maskImage: 'linear-gradient(to left, black 50%, black 30%, transparent 95%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 50%, black 30%, transparent 95%)'
               }}
               loading="eager"
             />
           </div>
-          
-          {/* Ambient glow effects */}
-          <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] z-0" />
-          <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-primary-light/15 rounded-full blur-[100px] z-0" />
+        </div>
+        
+        {/* Premium ambient lighting effects */}
+        <div className="absolute inset-0 z-[2] pointer-events-none">
+          <div className="absolute top-1/4 right-[15%] w-[600px] h-[600px] bg-primary/15 rounded-full blur-[150px]" />
+          <div className="absolute bottom-1/3 right-[25%] w-[400px] h-[400px] bg-primary-light/10 rounded-full blur-[120px]" />
         </div>
 
-        {/* Content */}
-        <div className="container-custom relative z-20 py-20 lg:py-0">
+        {/* Left side clean zone */}
+        <div className="absolute left-0 top-0 h-full w-full lg:w-[55%] z-[3]">
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background to-transparent" />
+        </div>
+
+        {/* Content - Institutional Text Area */}
+        <div className="container-custom relative z-20 py-24 lg:py-0">
           <nav className="mb-8 fade-in">
             <Link 
               to="/" 
@@ -76,12 +81,12 @@ export function SolutionLayout({
             </Link>
           </nav>
 
-          <div className="max-w-2xl">
+          <div className="max-w-xl lg:max-w-2xl">
             <div className="fade-in delay-100">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-balance">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
                 {title}
               </h1>
-              <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8">
+              <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 leading-relaxed">
                 {subtitle}
               </p>
               <div className="scale-in delay-300">
