@@ -147,58 +147,59 @@ export default function GestorTrafegoPagoFranca() {
 
       <div className="beams-background">
         {/* Hero Section */}
-        <section className="relative min-h-[90vh] flex items-center section-padding">
+        <section className="relative min-h-[90vh] flex items-center section-padding overflow-hidden">
+          {/* Background image - integrated into section */}
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/30 z-10" />
+            <div className="absolute right-0 top-0 h-full w-full lg:w-2/3 slide-in-right">
+              <img 
+                src={giovannePhoto} 
+                alt="Giovanne Morais - Gestor de Tráfego Pago em Franca SP"
+                className="absolute right-0 bottom-0 h-full w-auto object-contain object-right-bottom opacity-30 lg:opacity-70"
+                loading="eager"
+              />
+              {/* Glow effects */}
+              <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/25 rounded-full blur-3xl" />
+              <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-primary-light/20 rounded-full blur-3xl" />
+            </div>
+          </div>
+
           <div className="container-custom relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="fade-in text-center lg:text-left">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-balance">
-                  Gestor de Tráfego Pago em Franca{' '}
-                  <span className="text-primary">para atrair mais clientes todos os dias</span>
-                </h1>
-                <p className="text-xl md:text-2xl font-medium mb-4 text-foreground/90 slide-in-left delay-200">
-                  Seu negócio em Franca – SP merece mais clientes. Eu posso ajudar.
-                </p>
-                <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0 slide-in-left delay-300">
-                  Sou Giovanne Morais, Gestor de Tráfego especializado em negócios locais de Franca e região. Atendo empresas que desejam gerar leads e vendas através de campanhas estratégicas no Google Ads e Meta Ads, com foco em ROI e crescimento previsível.
-                </p>
+            <div className="max-w-2xl fade-in text-center lg:text-left mx-auto lg:mx-0">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-balance">
+                Gestor de Tráfego Pago em Franca{' '}
+                <span className="text-primary">para atrair mais clientes todos os dias</span>
+              </h1>
+              <p className="text-xl md:text-2xl font-medium mb-4 text-foreground/90 slide-in-left delay-200">
+                Seu negócio em Franca – SP merece mais clientes. Eu posso ajudar.
+              </p>
+              <p className="text-lg md:text-xl text-muted-foreground mb-6 slide-in-left delay-300">
+                Sou Giovanne Morais, Gestor de Tráfego especializado em negócios locais de Franca e região. Atendo empresas que desejam gerar leads e vendas através de campanhas estratégicas no Google Ads e Meta Ads, com foco em ROI e crescimento previsível.
+              </p>
 
-                <div className="scale-in delay-400">
-                  <Button variant="hero" size="xl" asChild className="w-full sm:w-auto btn-hover">
-                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                      Agendar Diagnóstico Gratuito
-                      <ArrowRight className="w-5 h-5" />
-                    </a>
-                  </Button>
-                </div>
-
-                <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 stagger-children">
-                  <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full scale-in delay-500">
-                    <Award className="w-5 h-5 text-primary" />
-                    <span className="text-sm font-medium">Google Partner</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full scale-in delay-600">
-                    <Award className="w-5 h-5 text-primary" />
-                    <span className="text-sm font-medium">Meta Business Partner</span>
-                  </div>
-                </div>
-
-                <p className="mt-6 text-sm text-muted-foreground fade-in delay-700">
-                  Junte-se a mais de 30 empresários de Franca e região que transformaram seus negócios.
-                </p>
+              <div className="scale-in delay-400">
+                <Button variant="hero" size="xl" asChild className="w-full sm:w-auto btn-hover">
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                    Agendar Diagnóstico Gratuito
+                    <ArrowRight className="w-5 h-5" />
+                  </a>
+                </Button>
               </div>
 
-              <div className="relative slide-in-right delay-200 order-first lg:order-last">
-                <div className="relative w-full max-w-2xl mx-auto">
-                  <div className="absolute -top-10 -right-10 w-80 h-80 bg-primary/25 rounded-full blur-3xl" />
-                  <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl" />
-                  <img 
-                    src={giovannePhoto} 
-                    alt="Giovanne Morais - Gestor de Tráfego Pago em Franca SP" 
-                    className="relative w-full h-auto object-contain"
-                    loading="eager"
-                  />
+              <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 stagger-children">
+                <div className="flex items-center gap-2 px-4 py-2 bg-card/80 backdrop-blur-sm border border-border rounded-full scale-in delay-500">
+                  <Award className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-medium">Google Partner</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-card/80 backdrop-blur-sm border border-border rounded-full scale-in delay-600">
+                  <Award className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-medium">Meta Business Partner</span>
                 </div>
               </div>
+
+              <p className="mt-6 text-sm text-muted-foreground fade-in delay-700">
+                Junte-se a mais de 30 empresários de Franca e região que transformaram seus negócios.
+              </p>
             </div>
           </div>
         </section>

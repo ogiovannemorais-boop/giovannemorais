@@ -100,40 +100,35 @@ export default function HomePage() {
   return (
     <div className="beams-background">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center section-padding">
-        <div className="container-custom relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="fade-in">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance">
-                Seu crescimento não pode depender de{' '}
-                <span className="gradient-text">sorte</span>, ele precisa de{' '}
-                <span className="gradient-text">método</span>.
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-                Tráfego pago, landing pages e automações de IA com governança e foco em ROI.
-              </p>
-              <div className="scale-in delay-300">
-                <CTAButton size="xl" />
-              </div>
-            </div>
+      <section className="relative min-h-[90vh] flex items-center section-padding overflow-hidden">
+        {/* Background image - integrated into section */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/30 z-10" />
+          <div className="absolute right-0 top-0 h-full w-full lg:w-2/3 slide-in-right">
+            <img 
+              src={giovannePhoto} 
+              alt={`${specialistInfo.fullName} - ${specialistInfo.title}`}
+              className="absolute right-0 bottom-0 h-full w-auto object-contain object-right-bottom opacity-30 lg:opacity-70"
+              loading="eager"
+            />
+            {/* Glow effects */}
+            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/25 rounded-full blur-3xl" />
+            <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-primary-light/20 rounded-full blur-3xl" />
+          </div>
+        </div>
 
-            {/* Hero Image - Professional composition */}
-            <div className="relative slide-in-right hidden lg:block">
-              <div className="relative w-full max-w-2xl mx-auto">
-                {/* Background glow effects */}
-                <div className="absolute -top-10 -right-10 w-80 h-80 bg-primary/25 rounded-full blur-3xl" />
-                <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl" />
-                
-                {/* Image container */}
-                <div className="relative">
-                  <img 
-                    src={giovannePhoto} 
-                    alt={`${specialistInfo.fullName} - ${specialistInfo.title}`}
-                    className="w-full h-auto object-contain"
-                    loading="eager"
-                  />
-                </div>
-              </div>
+        <div className="container-custom relative z-10">
+          <div className="max-w-2xl fade-in">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance">
+              Seu crescimento não pode depender de{' '}
+              <span className="gradient-text">sorte</span>, ele precisa de{' '}
+              <span className="gradient-text">método</span>.
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+              Tráfego pago, landing pages e automações de IA com governança e foco em ROI.
+            </p>
+            <div className="scale-in delay-300">
+              <CTAButton size="xl" />
             </div>
           </div>
         </div>

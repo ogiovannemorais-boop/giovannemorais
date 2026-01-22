@@ -38,8 +38,24 @@ export function SolutionLayout({
   return (
     <div className="beams-background">
       {/* Hero */}
-      <section className="section-padding">
-        <div className="container-custom">
+      <section className="relative min-h-[85vh] flex items-center section-padding overflow-hidden">
+        {/* Background image - integrated into section */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/40 z-10" />
+          <div className="absolute right-0 top-0 h-full w-full lg:w-2/3 slide-in-right">
+            <img 
+              src={giovannePhoto} 
+              alt="Especialista em Marketing Digital" 
+              className="absolute right-0 bottom-0 h-full w-auto object-contain object-right-bottom opacity-30 lg:opacity-60"
+              loading="eager"
+            />
+            {/* Glow effects */}
+            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-1/4 right-1/3 w-72 h-72 bg-primary-light/15 rounded-full blur-3xl" />
+          </div>
+        </div>
+
+        <div className="container-custom relative z-10">
           <nav className="mb-8 fade-in">
             <Link 
               to="/" 
@@ -50,8 +66,8 @@ export function SolutionLayout({
             </Link>
           </nav>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="max-w-4xl fade-in delay-100">
+          <div className="max-w-2xl">
+            <div className="fade-in delay-100">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
                 {title}
               </h1>
@@ -65,18 +81,6 @@ export function SolutionLayout({
                     <ArrowRight className="w-5 h-5" />
                   </a>
                 </Button>
-              </div>
-            </div>
-            <div className="relative slide-in-right delay-200 hidden lg:block">
-              <div className="relative w-full max-w-2xl mx-auto">
-                <div className="absolute -top-10 -right-10 w-80 h-80 bg-primary/25 rounded-full blur-3xl" />
-                <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl" />
-                <img 
-                  src={giovannePhoto} 
-                  alt="Especialista em Marketing Digital" 
-                  className="relative w-full h-auto object-contain"
-                  loading="eager"
-                />
               </div>
             </div>
           </div>
