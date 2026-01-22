@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowRight, Target, LineChart, Users, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FAQ } from '@/components/FAQ';
-import giovannePhoto from '@/assets/giovanne-photo.png';
+import heroGiovanne from '@/assets/hero-giovanne.png';
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Olá!%20Vim%20da%20página%20de%20Gestor%20de%20Tráfego%20em%20Franca.%20Quero%20agendar%20meu%20diagnóstico%20gratuito.";
 
@@ -188,12 +188,13 @@ export default function GestorTrafegoPagoFranca() {
               </div>
 
               <div className="relative slide-in-right delay-200 order-first lg:order-last">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl blur-3xl" />
+                <div className="relative w-full max-w-2xl mx-auto">
+                  <div className="absolute -top-10 -right-10 w-80 h-80 bg-primary/25 rounded-full blur-3xl" />
+                  <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl" />
                   <img 
-                    src={giovannePhoto} 
+                    src={heroGiovanne} 
                     alt="Giovanne Morais - Gestor de Tráfego Pago em Franca SP" 
-                    className="relative rounded-2xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto"
+                    className="relative w-full h-auto object-contain"
                     loading="eager"
                   />
                 </div>

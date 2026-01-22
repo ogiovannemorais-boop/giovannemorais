@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import heroGiovanne from '@/assets/hero-giovanne.png';
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio";
 
@@ -49,7 +50,7 @@ export function SolutionLayout({
             </Link>
           </nav>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-4xl fade-in delay-100">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
                 {title}
@@ -66,11 +67,18 @@ export function SolutionLayout({
                 </Button>
               </div>
             </div>
-            {heroImage && (
-              <div className="slide-in-right delay-200">
-                <img src={heroImage} alt="Especialista em Marketing Digital" className="rounded-2xl shadow-2xl" />
+            <div className="relative slide-in-right delay-200 hidden lg:block">
+              <div className="relative w-full max-w-2xl mx-auto">
+                <div className="absolute -top-10 -right-10 w-80 h-80 bg-primary/25 rounded-full blur-3xl" />
+                <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl" />
+                <img 
+                  src={heroGiovanne} 
+                  alt="Especialista em Marketing Digital" 
+                  className="relative w-full h-auto object-contain"
+                  loading="eager"
+                />
               </div>
-            )}
+            </div>
           </div>
         </div>
       </section>
