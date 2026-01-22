@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowRight, Target, LineChart, Users, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FAQ } from '@/components/FAQ';
-import heroGiovanne from '@/assets/hero-giovanne.png';
+import giovannePhoto from '@/assets/giovanne-photo.png';
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Olá!%20Vim%20da%20página%20de%20Gestor%20de%20Tráfego%20em%20Franca.%20Quero%20agendar%20meu%20diagnóstico%20gratuito.";
 
@@ -192,7 +192,7 @@ export default function GestorTrafegoPagoFranca() {
                   <div className="absolute -top-10 -right-10 w-80 h-80 bg-primary/25 rounded-full blur-3xl" />
                   <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl" />
                   <img 
-                    src={heroGiovanne} 
+                    src={giovannePhoto} 
                     alt="Giovanne Morais - Gestor de Tráfego Pago em Franca SP" 
                     className="relative w-full h-auto object-contain"
                     loading="eager"
