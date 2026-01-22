@@ -150,42 +150,44 @@ export default function GestorTrafegoPagoFranca() {
         <section className="relative min-h-[90vh] flex items-center section-padding">
           <div className="container-custom relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="animate-fade-in text-center lg:text-left">
+              <div className="fade-in text-center lg:text-left">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-balance">
                   Gestor de Tráfego Pago em Franca{' '}
                   <span className="text-primary">para atrair mais clientes todos os dias</span>
                 </h1>
-                <p className="text-xl md:text-2xl font-medium mb-4 text-foreground/90">
+                <p className="text-xl md:text-2xl font-medium mb-4 text-foreground/90 slide-in-left delay-200">
                   Seu negócio em Franca – SP merece mais clientes. Eu posso ajudar.
                 </p>
-                <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0">
+                <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0 slide-in-left delay-300">
                   Sou Giovanne Morais, Gestor de Tráfego especializado em negócios locais de Franca e região. Atendo empresas que desejam gerar leads e vendas através de campanhas estratégicas no Google Ads e Meta Ads, com foco em ROI e crescimento previsível.
                 </p>
 
-                <Button variant="hero" size="xl" asChild className="w-full sm:w-auto">
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                    Agendar Diagnóstico Gratuito
-                    <ArrowRight className="w-5 h-5" />
-                  </a>
-                </Button>
+                <div className="scale-in delay-400">
+                  <Button variant="hero" size="xl" asChild className="w-full sm:w-auto btn-hover">
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                      Agendar Diagnóstico Gratuito
+                      <ArrowRight className="w-5 h-5" />
+                    </a>
+                  </Button>
+                </div>
 
-                <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                  <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full">
+                <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 stagger-children">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full scale-in delay-500">
                     <Award className="w-5 h-5 text-primary" />
                     <span className="text-sm font-medium">Google Partner</span>
                   </div>
-                  <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full scale-in delay-600">
                     <Award className="w-5 h-5 text-primary" />
                     <span className="text-sm font-medium">Meta Business Partner</span>
                   </div>
                 </div>
 
-                <p className="mt-6 text-sm text-muted-foreground">
+                <p className="mt-6 text-sm text-muted-foreground fade-in delay-700">
                   Junte-se a mais de 30 empresários de Franca e região que transformaram seus negócios.
                 </p>
               </div>
 
-              <div className="relative animate-fade-in delay-200 order-first lg:order-last">
+              <div className="relative slide-in-right delay-200 order-first lg:order-last">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl blur-3xl" />
                   <img 
@@ -348,10 +350,10 @@ export default function GestorTrafegoPagoFranca() {
         {/* FAQ Section */}
         <section className="py-16 md:py-24 bg-card/50">
           <div className="container-custom">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center animate-fade-in">
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center fade-in">
               Perguntas Frequentes
             </h2>
-            <div className="max-w-3xl mx-auto animate-fade-in delay-100">
+            <div className="max-w-3xl mx-auto slide-in-left delay-100">
               <FAQ items={faqItems} />
             </div>
           </div>
@@ -360,19 +362,21 @@ export default function GestorTrafegoPagoFranca() {
         {/* Final CTA */}
         <section className="section-padding">
           <div className="container-custom">
-            <div className="max-w-2xl mx-auto text-center animate-fade-in">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            <div className="max-w-2xl mx-auto text-center scale-in">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 fade-in">
                 Vamos conversar sobre o seu negócio?
               </h2>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-muted-foreground mb-8 fade-in delay-100">
                 Agende uma conversa gratuita e descubra como o tráfego pago pode transformar seu negócio em Franca.
               </p>
-              <Button variant="hero" size="xl" asChild>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  Agendar Diagnóstico Gratuito
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-              </Button>
+              <div className="scale-in delay-200">
+                <Button variant="hero" size="xl" asChild className="btn-hover">
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                    Agendar Diagnóstico Gratuito
+                    <ArrowRight className="w-5 h-5" />
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </section>

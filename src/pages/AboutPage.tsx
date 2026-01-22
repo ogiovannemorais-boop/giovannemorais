@@ -25,13 +25,13 @@ export default function AboutPage() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <div className="animate-fade-in">
+            <div className="fade-in">
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
                 Clareza, método e IA para transformar{' '}
                 <span className="gradient-text">marketing em receita</span>.
               </h1>
               
-              <div className="bg-card border border-border rounded-2xl p-6 md:p-8 mb-12">
+              <div className="bg-card border border-border rounded-2xl p-6 md:p-8 mb-12 slide-in-left delay-200">
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                   Faço negócios venderem com previsibilidade: estruturo tráfego pago, crio páginas que convertem e implemento automações com IA. Sem promessas fáceis, com governança, relatórios claros e foco no resultado.
                 </p>
@@ -40,8 +40,8 @@ export default function AboutPage() {
 
             {/* Bio */}
             <div className="grid lg:grid-cols-3 gap-8 mb-16">
-              <div className="lg:col-span-1 animate-fade-in delay-100">
-                <div className="bg-card border border-border rounded-2xl p-6 sticky top-24">
+              <div className="lg:col-span-1 slide-in-left delay-100">
+                <div className="bg-card border border-border rounded-2xl p-6 sticky top-24 interactive-card">
                   <div className="relative w-40 h-48 mx-auto mb-4 overflow-hidden rounded-2xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-light/20 blur-xl" />
                     <img 
@@ -55,10 +55,10 @@ export default function AboutPage() {
                     {specialistInfo.title}
                   </p>
                   <div className="flex justify-center gap-2 flex-wrap mb-4">
-                    <div className="px-3 py-1 bg-primary/10 rounded-full text-xs text-primary">
+                    <div className="px-3 py-1 bg-primary/10 rounded-full text-xs text-primary scale-in delay-300">
                       Meta Partner
                     </div>
-                    <div className="px-3 py-1 bg-primary/10 rounded-full text-xs text-primary">
+                    <div className="px-3 py-1 bg-primary/10 rounded-full text-xs text-primary scale-in delay-400">
                       Google Partner
                     </div>
                   </div>
@@ -71,7 +71,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="lg:col-span-2 animate-fade-in delay-200">
+              <div className="lg:col-span-2 slide-in-right delay-200">
                 <h3 className="text-2xl font-semibold mb-4">Sobre mim</h3>
                 <div className="prose prose-invert max-w-none">
                   <p className="text-muted-foreground leading-relaxed mb-6">
@@ -85,11 +85,11 @@ export default function AboutPage() {
             </div>
 
             {/* Qualifications */}
-            <div className="mb-16 animate-fade-in delay-300">
+            <div className="mb-16 fade-in delay-300">
               <h3 className="text-2xl font-semibold mb-6">Qualificações</h3>
-              <div className="space-y-4">
-                {qualifications.map((qual) => (
-                  <div key={qual} className="flex items-start gap-3 p-4 bg-card border border-border rounded-xl">
+              <div className="space-y-4 stagger-children">
+                {qualifications.map((qual, index) => (
+                  <div key={qual} className="flex items-start gap-3 p-4 bg-card border border-border rounded-xl slide-in-left interactive-card" style={{ animationDelay: `${index * 100}ms` }}>
                     <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{qual}</span>
                   </div>
@@ -98,12 +98,12 @@ export default function AboutPage() {
             </div>
 
             {/* Values */}
-            <div className="animate-fade-in delay-400">
+            <div className="fade-in delay-400">
               <h3 className="text-2xl font-semibold mb-6">Valores</h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {values.map((value) => (
-                  <div key={value.title} className="p-4 bg-card border border-border rounded-xl">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
+                {values.map((value, index) => (
+                  <div key={value.title} className="p-4 bg-card border border-border rounded-xl slide-in-right interactive-card" style={{ animationDelay: `${index * 100}ms` }}>
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 scale-in" style={{ animationDelay: `${index * 100 + 200}ms` }}>
                       <value.icon className="w-5 h-5 text-primary" />
                     </div>
                     <h4 className="font-semibold mb-1">{value.title}</h4>
@@ -114,12 +114,14 @@ export default function AboutPage() {
             </div>
 
             {/* CTA */}
-            <div className="mt-16 text-center animate-fade-in delay-500">
-              <h3 className="text-2xl font-semibold mb-4">Pronto para começar?</h3>
-              <p className="text-muted-foreground mb-6">
+            <div className="mt-16 text-center scale-in delay-500">
+              <h3 className="text-2xl font-semibold mb-4 fade-in">Pronto para começar?</h3>
+              <p className="text-muted-foreground mb-6 fade-in delay-100">
                 Vamos conversar sobre como posso ajudar seu negócio a crescer.
               </p>
-              <CTAButton size="xl" />
+              <div className="scale-in delay-200">
+                <CTAButton size="xl" />
+              </div>
             </div>
           </div>
         </div>
@@ -127,5 +129,4 @@ export default function AboutPage() {
     </div>
   );
 }
-
 

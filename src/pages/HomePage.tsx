@@ -103,7 +103,7 @@ export default function HomePage() {
       <section className="relative min-h-[90vh] flex items-center section-padding">
         <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="animate-fade-in">
+            <div className="fade-in">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance">
                 Seu crescimento não pode depender de{' '}
                 <span className="gradient-text">sorte</span>, ele precisa de{' '}
@@ -112,11 +112,13 @@ export default function HomePage() {
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
                 Tráfego pago, landing pages e automações de IA com governança e foco em ROI.
               </p>
-              <CTAButton size="xl" />
+              <div className="scale-in delay-300">
+                <CTAButton size="xl" />
+              </div>
             </div>
 
             {/* Hero Image - Artistic composition */}
-            <div className="relative animate-fade-in delay-200 hidden lg:block">
+            <div className="relative slide-in-right hidden lg:block">
               <div className="relative w-full max-w-lg mx-auto">
                 {/* Background glow effects */}
                 <div className="absolute -top-10 -right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
@@ -149,16 +151,16 @@ export default function HomePage() {
       {/* Social Proof */}
       <section className="py-12 border-y border-border/50 bg-card/50">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="animate-fade-in">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center stagger-children">
+            <div className="scale-in">
               <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">+30</div>
               <p className="text-muted-foreground">negócios atendidos</p>
             </div>
-            <div className="animate-fade-in delay-100">
+            <div className="scale-in">
               <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">+R$ 1MM</div>
               <p className="text-muted-foreground">em mídia gerenciada</p>
             </div>
-            <div className="animate-fade-in delay-200">
+            <div className="scale-in">
               <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">100%</div>
               <p className="text-muted-foreground">crescimento consistente</p>
             </div>
@@ -171,7 +173,7 @@ export default function HomePage() {
         title="Soluções para o seu negócio"
         subtitle="Estratégias personalizadas para cada etapa do seu crescimento digital."
       >
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
           {solutionsData.map((solution, index) => (
             <SolutionCard
               key={solution.href}
@@ -179,6 +181,7 @@ export default function HomePage() {
               description={solution.description}
               href={solution.href}
               icon={solution.icon}
+              className="slide-in-left"
               style={{ animationDelay: `${index * 100}ms` }}
             />
           ))}
@@ -191,14 +194,14 @@ export default function HomePage() {
         subtitle="Diferenciais que garantem resultados reais para o seu negócio."
         variant="card"
       >
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
           {differentials.map((diff, index) => (
             <div
               key={diff.title}
-              className="flex items-start gap-4 p-6 bg-card border border-border rounded-xl animate-fade-in"
+              className="flex items-start gap-4 p-6 bg-card border border-border rounded-xl slide-in-right interactive-card"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 scale-in" style={{ animationDelay: `${index * 100 + 200}ms` }}>
                 <diff.icon className="w-5 h-5 text-primary" />
               </div>
               <div>
@@ -215,7 +218,7 @@ export default function HomePage() {
         title="Cases de sucesso"
         subtitle="Resultados reais de clientes que confiaram no meu trabalho."
       >
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 stagger-children">
           {cases.map((caseItem, index) => (
             <CaseCard
               key={caseItem.client}
@@ -223,6 +226,7 @@ export default function HomePage() {
               challenge={caseItem.challenge}
               strategy={caseItem.strategy}
               results={caseItem.results}
+              className="slide-in-left"
               style={{ animationDelay: `${index * 100}ms` }}
             />
           ))}
@@ -232,11 +236,11 @@ export default function HomePage() {
       {/* Blog Preview */}
       <Section variant="card">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12">
-          <div className="animate-fade-in">
+          <div className="fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-2">Blog</h2>
             <p className="text-muted-foreground">Conteúdo educativo para o seu negócio crescer.</p>
           </div>
-          <Button variant="outline" asChild>
+          <Button variant="outline" asChild className="btn-hover">
             <Link to="/blog">
               Ver todos os artigos
               <ArrowRight className="w-4 h-4" />
@@ -244,7 +248,7 @@ export default function HomePage() {
           </Button>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 stagger-children">
           {blogPosts.map((post, index) => (
             <BlogCard
               key={post.slug}
@@ -253,6 +257,7 @@ export default function HomePage() {
               excerpt={post.excerpt}
               date={post.date}
               image={post.image}
+              className="slide-in-right"
               style={{ animationDelay: `${index * 100}ms` }}
             />
           ))}
@@ -261,16 +266,18 @@ export default function HomePage() {
 
       {/* Final CTA */}
       <Section>
-        <div className="relative bg-card border border-border rounded-3xl p-8 md:p-16 text-center overflow-hidden">
+        <div className="relative bg-card border border-border rounded-3xl p-8 md:p-16 text-center overflow-hidden scale-in">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary-light/5" />
-          <div className="relative z-10 max-w-2xl mx-auto animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 fade-in">
               Vamos mudar a realidade do seu negócio?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-muted-foreground mb-8 fade-in delay-100">
               Agende uma conversa gratuita e descubra como podemos acelerar seus resultados.
             </p>
-            <CTAButton size="xl" />
+            <div className="scale-in delay-200">
+              <CTAButton size="xl" />
+            </div>
           </div>
         </div>
       </Section>

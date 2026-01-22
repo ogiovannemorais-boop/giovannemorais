@@ -39,7 +39,7 @@ export function SolutionLayout({
       {/* Hero */}
       <section className="section-padding">
         <div className="container-custom">
-          <nav className="mb-8 animate-fade-in">
+          <nav className="mb-8 fade-in">
             <Link 
               to="/" 
               className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -50,22 +50,24 @@ export function SolutionLayout({
           </nav>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="max-w-4xl animate-fade-in delay-100">
+            <div className="max-w-4xl fade-in delay-100">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
                 {title}
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8">
                 {subtitle}
               </p>
-              <Button variant="hero" size="xl" asChild>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  {ctaText}
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-              </Button>
+              <div className="scale-in delay-300">
+                <Button variant="hero" size="xl" asChild className="btn-hover">
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                    {ctaText}
+                    <ArrowRight className="w-5 h-5" />
+                  </a>
+                </Button>
+              </div>
             </div>
             {heroImage && (
-              <div className="animate-fade-in delay-200">
+              <div className="slide-in-right delay-200">
                 <img src={heroImage} alt="Especialista em Marketing Digital" className="rounded-2xl shadow-2xl" />
               </div>
             )}
@@ -76,15 +78,15 @@ export function SolutionLayout({
       {/* Pains */}
       <section className="py-16 bg-card/50">
         <div className="container-custom">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 animate-fade-in">Você se identifica?</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 fade-in">Você se identifica?</h2>
+          <div className="grid md:grid-cols-3 gap-6 stagger-children">
             {pains.map((pain, index) => (
               <div 
                 key={pain}
-                className="p-6 bg-card border border-destructive/20 rounded-xl animate-fade-in"
+                className="p-6 bg-card border border-destructive/20 rounded-xl slide-in-left interactive-card"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="w-8 h-8 rounded-full bg-destructive/10 flex items-center justify-center mb-4">
+                <div className="w-8 h-8 rounded-full bg-destructive/10 flex items-center justify-center mb-4 scale-in" style={{ animationDelay: `${index * 100 + 200}ms` }}>
                   <span className="text-destructive font-bold">!</span>
                 </div>
                 <p className="text-muted-foreground">{pain}</p>
@@ -97,20 +99,20 @@ export function SolutionLayout({
       {/* Solution */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="max-w-3xl animate-fade-in">
+          <div className="max-w-3xl fade-in">
             <h2 className="text-2xl md:text-3xl font-bold mb-6">A solução</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">{solution}</p>
           </div>
 
           {playbook && (
-            <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
               {playbook.map((step, index) => (
                 <div 
                   key={step.step}
-                  className="relative p-6 bg-card border border-border rounded-xl animate-fade-in"
+                  className="relative p-6 bg-card border border-border rounded-xl slide-in-right interactive-card"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-sm font-bold text-primary-foreground">
+                  <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-sm font-bold text-primary-foreground scale-in" style={{ animationDelay: `${index * 100 + 200}ms` }}>
                     {index + 1}
                   </div>
                   <h3 className="font-semibold mb-2 mt-2">{step.step}</h3>
@@ -128,11 +130,11 @@ export function SolutionLayout({
       <section className="py-16 bg-card/50">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="animate-fade-in">
+            <div className="slide-in-left">
               <h2 className="text-2xl font-bold mb-6">O que você recebe</h2>
-              <div className="space-y-3">
-                {deliverables.map((item) => (
-                  <div key={item} className="flex items-start gap-3">
+              <div className="space-y-3 stagger-children">
+                {deliverables.map((item, index) => (
+                  <div key={item} className="flex items-start gap-3 fade-in" style={{ animationDelay: `${index * 100}ms` }}>
                     <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{item}</span>
                   </div>
@@ -140,11 +142,11 @@ export function SolutionLayout({
               </div>
             </div>
 
-            <div className="animate-fade-in delay-200">
+            <div className="slide-in-right delay-200">
               <h2 className="text-2xl font-bold mb-6">KPIs monitorados</h2>
-              <div className="space-y-3">
-                {kpis.map((kpi) => (
-                  <div key={kpi} className="flex items-center gap-3 p-3 bg-card border border-border rounded-lg">
+              <div className="space-y-3 stagger-children">
+                {kpis.map((kpi, index) => (
+                  <div key={kpi} className="flex items-center gap-3 p-3 bg-card border border-border rounded-lg fade-in interactive-card" style={{ animationDelay: `${index * 100}ms` }}>
                     <div className="w-2 h-2 rounded-full bg-primary" />
                     <span className="text-muted-foreground">{kpi}</span>
                   </div>
@@ -159,13 +161,13 @@ export function SolutionLayout({
       {microBait && (
         <section className="section-padding">
           <div className="container-custom">
-            <div className="max-w-2xl mx-auto bg-card border border-primary/20 rounded-2xl p-8 text-center animate-fade-in">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+            <div className="max-w-2xl mx-auto bg-card border border-primary/20 rounded-2xl p-8 text-center scale-in interactive-card">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 scale-in delay-200">
                 <ArrowRight className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">{microBait.title}</h3>
-              <p className="text-muted-foreground mb-6">{microBait.description}</p>
-              <Button variant="outline" asChild>
+              <h3 className="text-xl font-semibold mb-2 fade-in delay-100">{microBait.title}</h3>
+              <p className="text-muted-foreground mb-6 fade-in delay-200">{microBait.description}</p>
+              <Button variant="outline" asChild className="btn-hover">
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                   Baixar checklist gratuito
                 </a>
@@ -178,14 +180,14 @@ export function SolutionLayout({
       {/* FAQ */}
       <section className="py-16 bg-card/50">
         <div className="container-custom">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center animate-fade-in">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center fade-in">
             Perguntas frequentes
           </h2>
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="max-w-3xl mx-auto space-y-4 stagger-children">
             {faqs.map((faq, index) => (
               <details 
                 key={faq.question}
-                className="group bg-card border border-border rounded-xl overflow-hidden animate-fade-in"
+                className="group bg-card border border-border rounded-xl overflow-hidden slide-in-left interactive-card"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
@@ -204,19 +206,21 @@ export function SolutionLayout({
       {/* Final CTA */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="max-w-2xl mx-auto text-center animate-fade-in">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          <div className="max-w-2xl mx-auto text-center scale-in">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 fade-in">
               Pronto para começar?
             </h2>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-muted-foreground mb-8 fade-in delay-100">
               Agende uma conversa gratuita e descubra como essa solução pode transformar seu negócio.
             </p>
-            <Button variant="hero" size="xl" asChild>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                {ctaText}
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </Button>
+            <div className="scale-in delay-200">
+              <Button variant="hero" size="xl" asChild className="btn-hover">
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                  {ctaText}
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
