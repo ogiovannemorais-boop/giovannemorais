@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import heroGiovanne from '@/assets/hero-giovanne.png';
+import giovannePhoto from '@/assets/giovanne-photo.png';
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio";
 
@@ -72,7 +72,7 @@ export function SolutionLayout({
                 <div className="absolute -top-10 -right-10 w-80 h-80 bg-primary/25 rounded-full blur-3xl" />
                 <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl" />
                 <img 
-                  src={heroGiovanne} 
+                  src={giovannePhoto} 
                   alt="Especialista em Marketing Digital" 
                   className="relative w-full h-auto object-contain"
                   loading="eager"

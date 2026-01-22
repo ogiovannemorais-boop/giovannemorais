@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Target, ShoppingCart, Layout, MapPin, Bot, Eye, FileText, TrendingUp, Shield, Sparkles, BarChart3 } from 'lucide-react';
-import heroGiovanne from '@/assets/hero-giovanne.png';
+import giovannePhoto from '@/assets/giovanne-photo.png';
 import { CTAButton } from '@/components/CTAButton';
 import { Section } from '@/components/Section';
 import { SolutionCard } from '@/components/SolutionCard';
@@ -127,7 +127,7 @@ export default function HomePage() {
                 {/* Image container */}
                 <div className="relative">
                   <img 
-                    src={heroGiovanne} 
+                    src={giovannePhoto} 
                     alt={`${specialistInfo.fullName} - ${specialistInfo.title}`}
                     className="w-full h-auto object-contain"
                     loading="eager"
