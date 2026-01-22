@@ -146,47 +146,56 @@ export default function GestorTrafegoPagoFranca() {
       </Helmet>
 
       <div className="beams-background">
-        {/* Hero Section - Full Width Corporate */}
+        {/* Hero Section - Full Width Corporate Premium */}
         <section className="relative min-h-screen w-full flex items-center overflow-hidden">
-          {/* Full-width background with integrated specialist */}
-          <div className="absolute inset-0 z-0">
-            {/* Gradient overlays */}
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 via-50% to-transparent z-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/40 z-10" />
-            
-            {/* Specialist image */}
-            <div className="absolute right-0 top-0 h-full w-full flex justify-end slide-in-right">
+          {/* Clean background base */}
+          <div className="absolute inset-0 bg-background z-0" />
+          
+          {/* Specialist image - positioned right, 3/4 body composition */}
+          <div className="absolute right-0 top-0 h-full w-full lg:w-3/5 z-[1] slide-in-right">
+            <div className="relative h-full w-full flex justify-end items-end">
               <img 
                 src={giovannePhoto} 
                 alt="Giovanne Morais - Gestor de Tráfego Pago em Franca SP"
-                className="h-full w-auto max-w-none object-cover object-top opacity-40 lg:opacity-90"
+                className="h-[85%] lg:h-[95%] w-auto max-w-none object-contain object-bottom opacity-30 lg:opacity-100"
                 style={{ 
-                  maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)'
+                  maskImage: 'linear-gradient(to left, black 50%, black 30%, transparent 95%)',
+                  WebkitMaskImage: 'linear-gradient(to left, black 50%, black 30%, transparent 95%)'
                 }}
                 loading="eager"
               />
             </div>
-            
-            {/* Ambient glow effects */}
-            <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-primary/25 rounded-full blur-[120px] z-0" />
-            <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-primary-light/20 rounded-full blur-[100px] z-0" />
+          </div>
+          
+          {/* Premium ambient lighting effects */}
+          <div className="absolute inset-0 z-[2] pointer-events-none">
+            <div className="absolute top-1/4 right-[15%] w-[600px] h-[600px] bg-primary/15 rounded-full blur-[150px]" />
+            <div className="absolute bottom-1/3 right-[25%] w-[400px] h-[400px] bg-primary-light/10 rounded-full blur-[120px]" />
           </div>
 
-          {/* Content */}
-          <div className="container-custom relative z-20 py-20 lg:py-0">
-            <div className="max-w-2xl fade-in text-center lg:text-left mx-auto lg:mx-0">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 text-balance">
+          {/* Left side clean zone */}
+          <div className="absolute left-0 top-0 h-full w-full lg:w-[55%] z-[3]">
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background to-transparent" />
+          </div>
+
+          {/* Content - Institutional Text Area */}
+          <div className="container-custom relative z-20 py-24 lg:py-0">
+            <div className="max-w-xl lg:max-w-2xl fade-in text-center lg:text-left mx-auto lg:mx-0">
+              {/* Headline */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mb-4 tracking-tight">
                 Gestor de Tráfego Pago em Franca{' '}
                 <span className="text-primary">para atrair mais clientes todos os dias</span>
               </h1>
+              
+              {/* Subheadline */}
               <p className="text-xl md:text-2xl font-medium mb-4 text-foreground/90 slide-in-left delay-200">
                 Seu negócio em Franca – SP merece mais clientes. Eu posso ajudar.
               </p>
-              <p className="text-lg md:text-xl text-muted-foreground mb-6 slide-in-left delay-300">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 slide-in-left delay-300 leading-relaxed">
                 Sou Giovanne Morais, Gestor de Tráfego especializado em negócios locais de Franca e região. Atendo empresas que desejam gerar leads e vendas através de campanhas estratégicas no Google Ads e Meta Ads, com foco em ROI e crescimento previsível.
               </p>
 
+              {/* CTA */}
               <div className="scale-in delay-400">
                 <Button variant="hero" size="xl" asChild className="w-full sm:w-auto btn-hover">
                   <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
@@ -196,6 +205,7 @@ export default function GestorTrafegoPagoFranca() {
                 </Button>
               </div>
 
+              {/* Trust badges */}
               <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 stagger-children">
                 <div className="flex items-center gap-2 px-4 py-2 bg-card/80 backdrop-blur-sm border border-border rounded-full scale-in delay-500">
                   <Award className="w-5 h-5 text-primary" />

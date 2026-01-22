@@ -99,45 +99,57 @@ const blogPosts = [
 export default function HomePage() {
   return (
     <div className="beams-background">
-      {/* Hero Section - Full Width Corporate */}
+      {/* Hero Section - Full Width Corporate Premium */}
       <section className="relative min-h-screen w-full flex items-center overflow-hidden">
-        {/* Full-width background with integrated specialist */}
-        <div className="absolute inset-0 z-0">
-          {/* Gradient overlay - stronger on left for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 via-50% to-transparent z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/40 z-10" />
-          
-          {/* Specialist image - positioned right, integrated into background */}
-          <div className="absolute right-0 top-0 h-full w-full flex justify-end slide-in-right">
+        {/* Clean background base */}
+        <div className="absolute inset-0 bg-background z-0" />
+        
+        {/* Specialist image - positioned right, 3/4 body composition */}
+        <div className="absolute right-0 top-0 h-full w-full lg:w-3/5 z-[1] slide-in-right">
+          <div className="relative h-full w-full flex justify-end items-end">
             <img 
               src={giovannePhoto} 
               alt={`${specialistInfo.fullName} - ${specialistInfo.title}`}
-              className="h-full w-auto max-w-none object-cover object-top opacity-40 lg:opacity-90"
+              className="h-[85%] lg:h-[95%] w-auto max-w-none object-contain object-bottom opacity-30 lg:opacity-100"
               style={{ 
-                maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)'
+                maskImage: 'linear-gradient(to left, black 50%, black 30%, transparent 95%)',
+                WebkitMaskImage: 'linear-gradient(to left, black 50%, black 30%, transparent 95%)'
               }}
               loading="eager"
             />
           </div>
-          
-          {/* Ambient glow effects */}
-          <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] z-0" />
-          <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-primary-light/15 rounded-full blur-[100px] z-0" />
-          <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[80px] z-0" />
+        </div>
+        
+        {/* Premium ambient lighting effects */}
+        <div className="absolute inset-0 z-[2] pointer-events-none">
+          {/* Soft primary glow behind specialist */}
+          <div className="absolute top-1/4 right-[15%] w-[600px] h-[600px] bg-primary/15 rounded-full blur-[150px]" />
+          <div className="absolute bottom-1/3 right-[25%] w-[400px] h-[400px] bg-primary-light/10 rounded-full blur-[120px]" />
+          {/* Subtle left side accent */}
+          <div className="absolute top-1/2 left-[10%] w-[200px] h-[200px] bg-primary/5 rounded-full blur-[80px]" />
         </div>
 
-        {/* Content */}
-        <div className="container-custom relative z-20 py-20 lg:py-0">
-          <div className="max-w-2xl fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 text-balance">
+        {/* Left side clean zone with solid background for text */}
+        <div className="absolute left-0 top-0 h-full w-full lg:w-[55%] z-[3]">
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background to-transparent" />
+        </div>
+
+        {/* Content - Institutional Text Area */}
+        <div className="container-custom relative z-20 py-24 lg:py-0">
+          <div className="max-w-xl lg:max-w-2xl fade-in">
+            {/* Headline */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mb-6 tracking-tight">
               Seu crescimento não pode depender de{' '}
               <span className="gradient-text">sorte</span>, ele precisa de{' '}
               <span className="gradient-text">método</span>.
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-xl">
+            
+            {/* Subheadline */}
+            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 max-w-lg leading-relaxed">
               Tráfego pago, landing pages e automações de IA com governança e foco em ROI.
             </p>
+            
+            {/* CTA */}
             <div className="scale-in delay-300">
               <CTAButton size="xl" />
             </div>
