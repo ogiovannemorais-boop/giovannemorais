@@ -38,65 +38,63 @@ export function SolutionLayout({
   return (
     <div className="beams-background">
       {/* Hero - Full Width Corporate Premium */}
-      <section className="relative min-h-screen w-full flex items-center overflow-hidden">
+      <section className="relative min-h-screen w-full overflow-hidden">
         {/* Clean background base */}
         <div className="absolute inset-0 bg-background z-0" />
         
-        {/* Specialist image - positioned right, 3/4 body composition */}
-        <div className="absolute right-0 top-0 h-full w-full lg:w-3/5 z-[1] slide-in-right">
-          <div className="relative h-full w-full flex justify-end items-end">
-            <img 
-              src={giovannePhoto} 
-              alt="Especialista em Marketing Digital" 
-              className="h-[85%] lg:h-[95%] w-auto max-w-none object-contain object-bottom opacity-30 lg:opacity-100"
-              style={{ 
-                maskImage: 'linear-gradient(to left, black 50%, black 30%, transparent 95%)',
-                WebkitMaskImage: 'linear-gradient(to left, black 50%, black 30%, transparent 95%)'
-              }}
-              loading="eager"
-            />
-          </div>
-        </div>
-        
         {/* Premium ambient lighting effects */}
-        <div className="absolute inset-0 z-[2] pointer-events-none">
-          <div className="absolute top-1/4 right-[15%] w-[600px] h-[600px] bg-primary/15 rounded-full blur-[150px]" />
-          <div className="absolute bottom-1/3 right-[25%] w-[400px] h-[400px] bg-primary-light/10 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 z-[1] pointer-events-none">
+          <div className="absolute top-1/4 right-[15%] w-[600px] h-[600px] bg-primary/15 rounded-full blur-[150px] hidden lg:block" />
+          <div className="absolute bottom-1/3 right-[25%] w-[400px] h-[400px] bg-primary-light/10 rounded-full blur-[120px] hidden lg:block" />
         </div>
 
-        {/* Left side clean zone */}
-        <div className="absolute left-0 top-0 h-full w-full lg:w-[55%] z-[3]">
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background to-transparent" />
-        </div>
+        {/* Grid Layout: Text Left | Image Right */}
+        <div className="container-custom relative z-10 min-h-screen">
+          <div className="grid lg:grid-cols-2 min-h-screen items-center gap-8 lg:gap-0">
+            
+            {/* Left Column - Text Content (always visible, never overlapped) */}
+            <div className="relative z-20 py-24 lg:py-0 order-2 lg:order-1">
+              <nav className="mb-8 fade-in">
+                <Link 
+                  to="/" 
+                  className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Voltar ao início
+                </Link>
+              </nav>
 
-        {/* Content - Institutional Text Area */}
-        <div className="container-custom relative z-20 py-24 lg:py-0">
-          <nav className="mb-8 fade-in">
-            <Link 
-              to="/" 
-              className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Voltar ao início
-            </Link>
-          </nav>
-
-          <div className="max-w-xl lg:max-w-2xl">
-            <div className="fade-in delay-100">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] mb-6 tracking-tight">
-                {title}
-              </h1>
-              <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 leading-relaxed">
-                {subtitle}
-              </p>
-              <div className="scale-in delay-300">
-                <Button variant="hero" size="xl" asChild className="btn-hover">
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                    {ctaText}
-                    <ArrowRight className="w-5 h-5" />
-                  </a>
-                </Button>
+              <div className="max-w-xl fade-in delay-100">
+                <h1 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-[1.1] mb-6 tracking-tight">
+                  {title}
+                </h1>
+                <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed">
+                  {subtitle}
+                </p>
+                <div className="scale-in delay-300">
+                  <Button variant="hero" size="xl" asChild className="btn-hover">
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                      {ctaText}
+                      <ArrowRight className="w-5 h-5" />
+                    </a>
+                  </Button>
+                </div>
               </div>
+            </div>
+
+            {/* Right Column - Specialist Image (hidden on mobile, visible on desktop) */}
+            <div className="relative order-1 lg:order-2 hidden lg:flex items-end justify-end h-full">
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background z-10" />
+              <img 
+                src={giovannePhoto} 
+                alt="Especialista em Marketing Digital" 
+                className="h-[90%] w-auto max-w-none object-contain object-bottom slide-in-right"
+                style={{ 
+                  maskImage: 'linear-gradient(to left, black 60%, black 40%, transparent 90%)',
+                  WebkitMaskImage: 'linear-gradient(to left, black 60%, black 40%, transparent 90%)'
+                }}
+                loading="eager"
+              />
             </div>
           </div>
         </div>
