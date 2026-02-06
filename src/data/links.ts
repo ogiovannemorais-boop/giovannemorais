@@ -7,8 +7,8 @@ export const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&
 export const specialistInfo = {
   name: 'Giovanne',
   fullName: 'Giovanne Morais',
-  title: 'Gestor de Tráfego e Consultor de IA',
-  bio: 'Gestor de tráfego e consultor de IA. +30 negócios atendidos, +R$ 1MM em mídia gerenciada.',
+  title: 'Gestor de Performance para E-commerce',
+  bio: 'Especialista em mídia paga e performance para e-commerce. Método validado para escalar vendas com organização e lucro.',
   email: 'ogiovannemorais@gmail.com',
   phone: '(16) 98803-7193',
   cnpj: '42.434.651/0001-30',
@@ -43,52 +43,17 @@ export const socialLinks = [
   },
 ];
 
-// Solutions Data
-export const solutions = [
-  { 
-    name: 'Geração de Leads | Tráfego Pago', 
-    shortName: 'Geração de Leads',
-    href: '/solucoes/geracao-de-leads-trafego-pago' 
-  },
-  { 
-    name: 'E-commerce | Tráfego Pago', 
-    shortName: 'E-commerce',
-    href: '/solucoes/ecommerce-trafego-pago' 
-  },
-  { 
-    name: 'Criação de Páginas (Landing Page)', 
-    shortName: 'Landing Pages',
-    href: '/solucoes/landing-pages' 
-  },
-  { 
-    name: 'Google Meu Negócio', 
-    shortName: 'Google Meu Negócio',
-    href: '/solucoes/google-meu-negocio' 
-  },
-  { 
-    name: 'Inteligência Artificial para Negócios', 
-    shortName: 'Inteligência Artificial',
-    href: '/solucoes/inteligencia-artificial' 
-  },
-  {
-    name: 'Consultoria Estratégica',
-    shortName: 'Consultoria Estratégica',
-    href: '/solucoes/consultoria-estrategica',
-  },
-];
-
-// Navigation Links
+// Navigation Links (simplified for landing page)
 export const navLinks = [
   { name: 'Início', href: '/' },
-  { name: 'Sobre mim', href: '/sobre' },
-  { name: 'Blog', href: '/blog' },
 ];
+
+// Solutions Data (kept for backward compatibility)
+export const solutions: { name: string; shortName: string; href: string }[] = [];
 
 // Footer Links
 export const footerLinks = {
   company: [
-    { name: 'Sobre mim', href: '/sobre' },
-    { name: 'Blog', href: '/blog' },
     { name: 'Política de Privacidade', href: '/politica-privacidade' },
     { name: 'Termos de Uso', href: '/termos' },
   ],

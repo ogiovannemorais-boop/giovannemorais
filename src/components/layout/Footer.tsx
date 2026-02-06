@@ -1,66 +1,47 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone } from 'lucide-react';
 import { SocialLinks } from '@/components/SocialLinks';
-import { solutions, footerLinks, specialistInfo, WHATSAPP_LINK } from '@/data/links';
+import { specialistInfo, WHATSAPP_LINK } from '@/data/links';
 
 export function Footer() {
   return (
     <footer className="bg-card border-t border-border">
       <div className="container-custom section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div>
             <Link to="/" className="font-semibold text-lg mb-4 inline-block">
               {specialistInfo.name}
             </Link>
             <p className="text-sm text-muted-foreground mb-6">
-              {specialistInfo.bio}
+              Especialista em mídia paga e performance para e-commerce. Método validado para escalar vendas com organização e lucro.
             </p>
             
             {/* Social Links */}
             <div className="mb-4">
-              <h4 className="text-sm font-medium mb-3">Siga-me</h4>
+              <h4 className="text-sm font-medium mb-3">Redes sociais</h4>
               <SocialLinks variant="default" size="md" />
             </div>
           </div>
 
-          {/* Solutions */}
+          {/* Links */}
           <div>
-            <h3 className="font-semibold mb-4">Soluções</h3>
+            <h3 className="font-semibold mb-4">Links</h3>
             <ul className="space-y-3">
-              {solutions.map((solution) => (
-                <li key={solution.href}>
-                  <Link 
-                    to={solution.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {solution.shortName}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="font-semibold mb-4">Empresa</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link 
-                    to={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
               <li>
                 <Link 
-                  to="/gestor-trafego-pago-franca"
+                  to="/politica-privacidade"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Tráfego Pago em Franca
+                  Política de Privacidade
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/termos"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Termos de Uso
                 </Link>
               </li>
             </ul>
