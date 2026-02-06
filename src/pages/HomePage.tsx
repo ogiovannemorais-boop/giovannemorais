@@ -1,10 +1,9 @@
-import { ArrowRight, Check, X, Clock, TrendingUp, Briefcase, BarChart3, Settings, DollarSign, Rocket, Shield, Lock, MessageCircle, Ban, Eye } from 'lucide-react';
+import { Check, X, Clock, TrendingUp, Briefcase, BarChart3, Settings, DollarSign, Rocket, Shield, Lock, MessageCircle, Ban, Eye } from 'lucide-react';
 import giovannePhoto from '@/assets/giovanne-photo.png';
 import { CTAButton } from '@/components/CTAButton';
 import { Section } from '@/components/Section';
 import { FAQ } from '@/components/FAQ';
-import { WHATSAPP_LINK, specialistInfo } from '@/data/links';
-import { Button } from '@/components/ui/button';
+import { specialistInfo } from '@/data/links';
 
 const faqItems = [
   {
@@ -35,19 +34,19 @@ export default function HomePage() {
       {/* ===== 1. HERO SECTION ===== */}
       <section className="relative min-h-[90vh] flex items-center section-padding">
         <div className="container-custom relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="max-w-3xl mx-auto text-center">
             <div className="fade-in">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance">
                 Transforme Seu E-commerce em uma{' '}
                 <span className="gradient-text">Máquina de Vendas</span>{' '}
                 Previsível e Lucrativa
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-                Ajudo donos de loja online a venderem mais todos os meses, com método, clareza e estratégia — sem depender de sorte.
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
+                Ajudo donos de loja online a venderem mais todos os meses, com método, clareza e estratégia. Sem depender de sorte.
               </p>
 
               {/* Destaques rápidos */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 stagger-children">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 max-w-lg mx-auto stagger-children">
                 {[
                   'Método validado na prática',
                   'Foco em lucro, não só em vendas',
@@ -61,7 +60,7 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="flex items-center gap-3 mb-6 text-sm text-muted-foreground fade-in delay-200">
+              <div className="flex items-center justify-center gap-3 mb-6 text-sm text-muted-foreground fade-in delay-200">
                 <span className="text-lg">🏅</span>
                 <span>+3 anos ajudando empresas a crescer no digital</span>
               </div>
@@ -70,32 +69,10 @@ export default function HomePage() {
                 <CTAButton text="Agendar Análise Gratuita Agora" size="xl" />
               </div>
 
-              <p className="mt-4 text-sm text-muted-foreground flex items-center gap-2 fade-in delay-400">
+              <p className="mt-4 text-sm text-muted-foreground flex items-center justify-center gap-2 fade-in delay-400">
                 <Clock className="w-4 h-4" />
                 Vagas limitadas por semana
               </p>
-            </div>
-
-            {/* Hero Image */}
-            <div className="relative slide-in-right hidden lg:block">
-              <div className="relative w-full max-w-lg mx-auto">
-                <div className="absolute -top-10 -right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
-                <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-primary-light/15 rounded-full blur-3xl" />
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-primary-light/20 rounded-[2rem] rounded-bl-[4rem] rounded-tr-[4rem]" />
-                  <div className="relative rounded-[2rem] rounded-bl-[4rem] rounded-tr-[4rem] overflow-hidden aspect-[3/4]">
-                    <img
-                      src={giovannePhoto}
-                      alt={`${specialistInfo.fullName} - Gestor de Performance para E-commerce`}
-                      className="w-full h-full object-cover object-top scale-105"
-                      loading="eager"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
-                  </div>
-                  <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-primary/30 rounded-2xl" />
-                  <div className="absolute -top-4 -left-4 w-16 h-16 border-2 border-primary-light/30 rounded-full" />
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -157,7 +134,7 @@ export default function HomePage() {
         </p>
       </Section>
 
-      {/* ===== 4. QUEBRA DE PADRÃO — ANTI AGÊNCIA ===== */}
+      {/* ===== 4. QUEBRA DE PADRÃO ===== */}
       <Section variant="card">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 fade-in">
@@ -165,7 +142,6 @@ export default function HomePage() {
             <span className="gradient-text">Precisa de Orientação.</span>
           </h2>
           <div className="grid md:grid-cols-2 gap-8 mt-10">
-            {/* O que outros entregam */}
             <div className="p-6 rounded-xl border border-destructive/20 bg-destructive/5 text-left slide-in-left">
               <p className="text-sm font-semibold text-destructive mb-4 uppercase tracking-wider">Muitos serviços entregam:</p>
               <div className="space-y-3">
@@ -177,7 +153,6 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            {/* O que eu entrego */}
             <div className="p-6 rounded-xl border border-primary/30 bg-primary/5 text-left slide-in-right">
               <p className="text-sm font-semibold text-primary mb-4 uppercase tracking-wider">Mas não entregam:</p>
               <div className="space-y-3">
@@ -239,13 +214,13 @@ export default function HomePage() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 stagger-children">
             {[
-              { icon: TrendingUp, label: 'Vendas todos os meses', emoji: '📈' },
-              { icon: Briefcase, label: 'Negócio organizado', emoji: '💼' },
-              { icon: BarChart3, label: 'Controle financeiro', emoji: '📊' },
-              { icon: Settings, label: 'Processos simples', emoji: '⚙️' },
-              { icon: DollarSign, label: 'Mais lucro', emoji: '💰' },
-              { icon: Rocket, label: 'Crescimento real', emoji: '🚀' },
-            ].map(({ icon: Icon, label, emoji }) => (
+              { icon: TrendingUp, label: 'Vendas todos os meses' },
+              { icon: Briefcase, label: 'Negócio organizado' },
+              { icon: BarChart3, label: 'Controle financeiro' },
+              { icon: Settings, label: 'Processos simples' },
+              { icon: DollarSign, label: 'Mais lucro' },
+              { icon: Rocket, label: 'Crescimento real' },
+            ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex flex-col items-center gap-3 p-5 bg-card border border-border rounded-xl interactive-card scale-in">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Icon className="w-6 h-6 text-primary" />
@@ -330,7 +305,7 @@ export default function HomePage() {
               <div className="relative rounded-2xl overflow-hidden aspect-[3/4] border-2 border-primary/20">
                 <img
                   src={giovannePhoto}
-                  alt={`${specialistInfo.fullName} - Especialista em Performance para E-commerce`}
+                  alt={`${specialistInfo.fullName} Especialista em Performance para E-commerce`}
                   className="w-full h-full object-cover object-top"
                   loading="lazy"
                 />
@@ -348,7 +323,6 @@ export default function HomePage() {
             Para Quem É / <span className="gradient-text">Não É</span>
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Para quem é */}
             <div className="p-6 rounded-xl border border-primary/30 bg-primary/5 slide-in-left">
               <h3 className="font-bold text-lg mb-4 text-primary">✅ Para Quem É</h3>
               <div className="space-y-3">
@@ -366,7 +340,6 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            {/* Não é para quem */}
             <div className="p-6 rounded-xl border border-destructive/20 bg-destructive/5 slide-in-right">
               <h3 className="font-bold text-lg mb-4 text-destructive">❌ Não É Para Quem</h3>
               <div className="space-y-3">
@@ -397,23 +370,22 @@ export default function HomePage() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto stagger-children">
           {[
-            { name: 'Lucas M.', emoji: '🧑‍💼', quote: '"Hoje sei exatamente quanto investir."' },
-            { name: 'Ana R.', emoji: '👩‍💼', quote: '"Passei de prejuízo para lucro."' },
-            { name: 'Carlos T.', emoji: '🧑‍💼', quote: '"Agora tenho controle."' },
+            { name: 'Lucas M.', quote: '"Hoje sei exatamente quanto investir."' },
+            { name: 'Ana R.', quote: '"Passei de prejuízo para lucro."' },
+            { name: 'Carlos T.', quote: '"Agora tenho controle."' },
           ].map((testimonial) => (
             <div
               key={testimonial.name}
               className="p-6 bg-card border border-border rounded-xl text-center interactive-card scale-in"
             >
-              <span className="text-4xl mb-4 block">{testimonial.emoji}</span>
-              <p className="text-foreground italic mb-4">{testimonial.quote}</p>
+              <p className="text-foreground italic mb-4 text-lg">{testimonial.quote}</p>
               <p className="text-sm font-semibold text-primary">{testimonial.name}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* ===== 12. FAQ ===== */}
+      {/* ===== 11. FAQ ===== */}
       <Section
         title="Dúvidas Frequentes"
       >
@@ -422,7 +394,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ===== 13. CTA FINAL ===== */}
+      {/* ===== 12. CTA FINAL ===== */}
       <Section>
         <div className="relative bg-card border border-border rounded-3xl p-8 md:p-16 text-center overflow-hidden scale-in">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary-light/5" />
@@ -454,7 +426,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ===== 14. SEGURANÇA E CONFIANÇA ===== */}
+      {/* ===== 13. SEGURANÇA E CONFIANÇA ===== */}
       <section className="py-12 border-t border-border/50">
         <div className="container-custom">
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-sm text-muted-foreground stagger-children">
