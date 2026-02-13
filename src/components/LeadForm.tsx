@@ -3,16 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Check, AlertTriangle, Shield } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectValue,
-} from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 
 interface LeadFormProps {
@@ -21,46 +11,31 @@ interface LeadFormProps {
   className?: string;
 }
 
-const phoneRegex = /^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/;
-
 export function LeadForm({ id, buttonText = 'Quero Meu Diagnóstico Gratuito', className }: LeadFormProps) {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    revenue: '',
-    challenge: '',
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const validate = () => {
-    const errs: Record<string, string> = {};
-    if (!formData.name.trim()) errs.name = 'Informe seu nome';
-    if (!formData.phone.trim()) errs.phone = 'Informe seu WhatsApp';
-    else if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) errs.phone = 'Formato inválido';
-    if (!formData.email.trim()) errs.email = 'Informe seu e-mail';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errs.email = 'E-mail inválido';
-    if (!formData.revenue) errs.revenue = 'Selecione uma opção';
-    if (!formData.challenge) errs.challenge = 'Selecione uma opção';
-    setErrors(errs);
-    return Object.keys(errs).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!validate()) return;
+    const form = e.currentTarget;
+    
+    // Native form validation
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const formData = new FormData(form);
     setIsSubmitting(true);
 
     try {
       const { error } = await supabase.from('leads').insert({
-        name: formData.name.trim(),
-        phone: formData.phone.trim(),
-        email: formData.email.trim(),
-        revenue: formData.revenue,
-        challenge: formData.challenge,
+        name: (formData.get('name') as string).trim(),
+        phone: (formData.get('phone') as string).trim(),
+        email: (formData.get('email') as string).trim(),
+        revenue: formData.get('revenue') as string,
+        challenge: formData.get('challenge') as string,
       });
 
       if (error) throw error;
@@ -78,13 +53,8 @@ export function LeadForm({ id, buttonText = 'Quero Meu Diagnóstico Gratuito', c
     }
   };
 
-  const handleChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: '' }));
-  };
-
   return (
-    <div id={id} className={cn('bg-card border border-border rounded-2xl p-6 md:p-8', className)}>
+    <div className={cn('bg-card border border-border rounded-2xl p-6 md:p-8', className)}>
       {/* Social proof */}
       <p className="text-xs text-muted-foreground text-center mb-4 flex items-center justify-center gap-1.5">
         <Shield className="w-3.5 h-3.5 text-primary" />
@@ -100,92 +70,103 @@ export function LeadForm({ id, buttonText = 'Quero Meu Diagnóstico Gratuito', c
         <span className="font-medium text-foreground">Sem custo. Sem compromisso.</span>
       </p>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form
+        id="form-diagnostico"
+        name="form-diagnostico"
+        method="POST"
+        onSubmit={handleSubmit}
+        className="space-y-5"
+      >
         {/* Nome */}
         <div className="space-y-1.5">
-          <Label htmlFor={`${id}-name`}>Seu Nome Completo</Label>
-          <Input
-            id={`${id}-name`}
-            placeholder="Como você gostaria de ser chamado?"
-            value={formData.name}
-            onChange={(e) => handleChange('name', e.target.value)}
+          <label htmlFor="lead-name" className="text-sm font-medium text-foreground">
+            Seu Nome Completo
+          </label>
+          <input
+            id="lead-name"
+            name="name"
+            type="text"
+            required
             maxLength={100}
-            className={cn(errors.name && 'border-destructive')}
+            placeholder="Como você gostaria de ser chamado?"
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           />
-          {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
         </div>
 
         {/* WhatsApp */}
         <div className="space-y-1.5">
-          <Label htmlFor={`${id}-phone`}>Seu WhatsApp Principal</Label>
-          <Input
-            id={`${id}-phone`}
-            placeholder="(00) 00000-0000"
-            value={formData.phone}
-            onChange={(e) => handleChange('phone', e.target.value)}
+          <label htmlFor="lead-phone" className="text-sm font-medium text-foreground">
+            Seu WhatsApp Principal
+          </label>
+          <input
+            id="lead-phone"
+            name="phone"
+            type="tel"
+            required
             maxLength={20}
-            className={cn(errors.phone && 'border-destructive')}
+            placeholder="(00) 00000-0000"
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           />
-          {errors.phone && <p className="text-xs text-destructive">{errors.phone}</p>}
           <p className="text-xs text-muted-foreground">Usamos apenas para enviar seu diagnóstico e falar com você caso necessário.</p>
         </div>
 
         {/* Email */}
         <div className="space-y-1.5">
-          <Label htmlFor={`${id}-email`}>Seu Melhor E-mail</Label>
-          <Input
-            id={`${id}-email`}
+          <label htmlFor="lead-email" className="text-sm font-medium text-foreground">
+            Seu Melhor E-mail
+          </label>
+          <input
+            id="lead-email"
+            name="email"
             type="email"
-            placeholder="seu@email.com"
-            value={formData.email}
-            onChange={(e) => handleChange('email', e.target.value)}
+            required
             maxLength={255}
-            className={cn(errors.email && 'border-destructive')}
+            placeholder="seu@email.com"
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           />
-          {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
           <p className="text-xs text-muted-foreground">Você receberá um resumo estratégico por e-mail.</p>
         </div>
 
         {/* Faturamento */}
         <div className="space-y-1.5">
-          <Label htmlFor={`${id}-revenue`}>Qual é seu faturamento mensal atual?</Label>
-          <Select value={formData.revenue} onValueChange={(v) => handleChange('revenue', v)}>
-            <SelectTrigger
-              id={`${id}-revenue`}
-              className={cn(errors.revenue && 'border-destructive')}
-            >
-              <SelectValue placeholder="Selecione uma opção" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="Ainda não faturo">Ainda não faturo</SelectItem>
-              <SelectItem value="Até R$10 mil/mês">Até R$10 mil/mês</SelectItem>
-              <SelectItem value="R$10k – R$50k/mês">R$10k – R$50k/mês</SelectItem>
-              <SelectItem value="R$50k – R$200k/mês">R$50k – R$200k/mês</SelectItem>
-              <SelectItem value="R$200k+/mês">R$200k+/mês</SelectItem>
-            </SelectContent>
-          </Select>
+          <label htmlFor="lead-revenue" className="text-sm font-medium text-foreground">
+            Qual é seu faturamento mensal atual?
+          </label>
+          <select
+            id="lead-revenue"
+            name="revenue"
+            required
+            defaultValue=""
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none cursor-pointer"
+          >
+            <option value="" disabled className="text-muted-foreground">Selecione uma opção</option>
+            <option value="Ainda não faturo">Ainda não faturo</option>
+            <option value="Até R$10 mil/mês">Até R$10 mil/mês</option>
+            <option value="R$10k – R$50k/mês">R$10k – R$50k/mês</option>
+            <option value="R$50k – R$200k/mês">R$50k – R$200k/mês</option>
+            <option value="R$200k+/mês">R$200k+/mês</option>
+          </select>
           <p className="text-xs text-muted-foreground">Isso nos ajuda a adaptar a estratégia ao seu momento.</p>
-          {errors.revenue && <p className="text-xs text-destructive">{errors.revenue}</p>}
         </div>
 
         {/* Desafio */}
         <div className="space-y-1.5">
-          <Label htmlFor={`${id}-challenge`}>Hoje, qual é seu maior desafio?</Label>
-          <Select value={formData.challenge} onValueChange={(v) => handleChange('challenge', v)}>
-            <SelectTrigger
-              id={`${id}-challenge`}
-              className={cn(errors.challenge && 'border-destructive')}
-            >
-              <SelectValue placeholder="Selecione seu principal desafio" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="Não sei o que fazer para vender mais">Não sei o que fazer para vender mais</SelectItem>
-              <SelectItem value="Não tenho previsibilidade de faturamento">Não tenho previsibilidade de faturamento</SelectItem>
-              <SelectItem value="Minha conversão e ROI estão baixos">Minha conversão e ROI estão baixos</SelectItem>
-            </SelectContent>
-          </Select>
+          <label htmlFor="lead-challenge" className="text-sm font-medium text-foreground">
+            Hoje, qual é seu maior desafio?
+          </label>
+          <select
+            id="lead-challenge"
+            name="challenge"
+            required
+            defaultValue=""
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none cursor-pointer"
+          >
+            <option value="" disabled className="text-muted-foreground">Selecione seu principal desafio</option>
+            <option value="Não sei o que fazer para vender mais">Não sei o que fazer para vender mais</option>
+            <option value="Não tenho previsibilidade de faturamento">Não tenho previsibilidade de faturamento</option>
+            <option value="Minha conversão e ROI estão baixos">Minha conversão e ROI estão baixos</option>
+          </select>
           <p className="text-xs text-muted-foreground">Queremos entender exatamente onde você está travando.</p>
-          {errors.challenge && <p className="text-xs text-destructive">{errors.challenge}</p>}
         </div>
 
         {/* Tempo de preenchimento */}
@@ -200,24 +181,17 @@ export function LeadForm({ id, buttonText = 'Quero Meu Diagnóstico Gratuito', c
         </p>
 
         {/* Submit */}
-        <Button
+        <button
           type="submit"
-          variant="hero"
-          size="xl"
-          className="w-full"
           disabled={isSubmitting}
+          className="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] h-14 px-10 rounded-xl"
         >
           {isSubmitting ? 'Enviando...' : `👉 ${buttonText}`}
-        </Button>
+        </button>
 
         {/* Trust badges */}
         <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-          {[
-            '100% gratuito',
-            'Sem compromisso',
-            'Atendimento humano',
-            'Dados protegidos',
-          ].map((item) => (
+          {['100% gratuito', 'Sem compromisso', 'Atendimento humano', 'Dados protegidos'].map((item) => (
             <div key={item} className="flex items-center gap-1.5">
               <Check className="w-3.5 h-3.5 text-primary shrink-0" />
               <span>{item}</span>
