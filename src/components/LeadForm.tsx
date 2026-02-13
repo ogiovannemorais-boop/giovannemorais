@@ -5,6 +5,12 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
+
 interface LeadFormProps {
   id?: string;
   buttonText?: string;
@@ -39,6 +45,11 @@ export function LeadForm({ id, buttonText = 'Quero Meu Diagnóstico Gratuito', c
       });
 
       if (error) throw error;
+
+      // Track form submission success in GTM
+      window.dataLayer.push({
+        event: 'form_submit_sucesso'
+      });
 
       navigate('/obrigado');
     } catch (err) {
