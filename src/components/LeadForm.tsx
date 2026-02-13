@@ -54,7 +54,7 @@ export function LeadForm({ id, buttonText = 'Quero Meu Diagnóstico Gratuito', c
   };
 
   return (
-    <div className={cn('bg-card border border-border rounded-2xl p-6 md:p-8', className)}>
+    <div id={id} className={cn('bg-card border border-border rounded-2xl p-6 md:p-8', className)}>
       {/* Social proof */}
       <p className="text-xs text-muted-foreground text-center mb-4 flex items-center justify-center gap-1.5">
         <Shield className="w-3.5 h-3.5 text-primary" />
