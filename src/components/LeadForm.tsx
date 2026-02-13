@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Check, AlertTriangle, Shield } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -23,6 +25,7 @@ const phoneRegex = /^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/;
 
 export function LeadForm({ id, buttonText = 'Quero Meu Diagnóstico Gratuito', className }: LeadFormProps) {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -51,11 +54,28 @@ export function LeadForm({ id, buttonText = 'Quero Meu Diagnóstico Gratuito', c
     if (!validate()) return;
     setIsSubmitting(true);
 
-    // Simulate submission (replace with real endpoint later)
-    await new Promise((r) => setTimeout(r, 800));
+    try {
+      const { error } = await supabase.from('leads').insert({
+        name: formData.name.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        revenue: formData.revenue,
+        challenge: formData.challenge,
+      });
 
-    setIsSubmitting(false);
-    navigate('/obrigado');
+      if (error) throw error;
+
+      navigate('/obrigado');
+    } catch (err) {
+      console.error('Lead submission error:', err);
+      toast({
+        title: 'Erro ao enviar',
+        description: 'Não foi possível enviar seus dados. Tente novamente.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
