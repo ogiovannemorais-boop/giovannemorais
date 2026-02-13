@@ -4,7 +4,13 @@ import { Check, AlertTriangle, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+} from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 
 interface LeadFormProps {
@@ -121,44 +127,51 @@ export function LeadForm({ id, buttonText = 'Quero Meu Diagnóstico Gratuito', c
         </div>
 
         {/* Faturamento */}
-        <div className="space-y-2">
-          <Label>Qual é seu faturamento mensal atual?</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor={`${id}-revenue`}>Qual é seu faturamento mensal atual?</Label>
+          <Select value={formData.revenue} onValueChange={(v) => handleChange('revenue', v)}>
+            <SelectTrigger
+              id={`${id}-revenue`}
+              className={cn(errors.revenue && 'border-destructive')}
+            >
+              <SelectValue placeholder="Selecione uma opção" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Ainda não faturo">Ainda não faturo</SelectItem>
+              <SelectItem value="Até R$10 mil/mês">Até R$10 mil/mês</SelectItem>
+              <SelectItem value="R$10k – R$50k/mês">R$10k – R$50k/mês</SelectItem>
+              <SelectItem value="R$50k – R$200k/mês">R$50k – R$200k/mês</SelectItem>
+              <SelectItem value="R$200k+/mês">R$200k+/mês</SelectItem>
+            </SelectContent>
+          </Select>
           <p className="text-xs text-muted-foreground">Isso nos ajuda a adaptar a estratégia ao seu momento.</p>
-          <RadioGroup value={formData.revenue} onValueChange={(v) => handleChange('revenue', v)} className="space-y-2">
-            {[
-              'Ainda não faturo',
-              'Até R$10 mil/mês',
-              'R$10k – R$50k/mês',
-              'R$50k – R$200k/mês',
-              'R$200k+/mês',
-            ].map((opt) => (
-              <div key={opt} className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border hover:border-primary/30 transition-colors cursor-pointer">
-                <RadioGroupItem value={opt} id={`${id}-rev-${opt}`} />
-                <Label htmlFor={`${id}-rev-${opt}`} className="cursor-pointer font-normal flex-1">{opt}</Label>
-              </div>
-            ))}
-          </RadioGroup>
           {errors.revenue && <p className="text-xs text-destructive">{errors.revenue}</p>}
         </div>
 
         {/* Desafio */}
-        <div className="space-y-2">
-          <Label>Hoje, qual é seu maior desafio?</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor={`${id}-challenge`}>Hoje, qual é seu maior desafio?</Label>
+          <Select value={formData.challenge} onValueChange={(v) => handleChange('challenge', v)}>
+            <SelectTrigger
+              id={`${id}-challenge`}
+              className={cn(errors.challenge && 'border-destructive')}
+            >
+              <SelectValue placeholder="Selecione seu principal desafio" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Não sei o que fazer para vender mais">Não sei o que fazer para vender mais</SelectItem>
+              <SelectItem value="Não tenho previsibilidade de faturamento">Não tenho previsibilidade de faturamento</SelectItem>
+              <SelectItem value="Minha conversão e ROI estão baixos">Minha conversão e ROI estão baixos</SelectItem>
+            </SelectContent>
+          </Select>
           <p className="text-xs text-muted-foreground">Queremos entender exatamente onde você está travando.</p>
-          <RadioGroup value={formData.challenge} onValueChange={(v) => handleChange('challenge', v)} className="space-y-2">
-            {[
-              'Não sei o que fazer para vender mais',
-              'Não tenho previsibilidade de faturamento',
-              'Minha conversão e ROI estão baixos',
-            ].map((opt) => (
-              <div key={opt} className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border hover:border-primary/30 transition-colors cursor-pointer">
-                <RadioGroupItem value={opt} id={`${id}-ch-${opt}`} />
-                <Label htmlFor={`${id}-ch-${opt}`} className="cursor-pointer font-normal flex-1">{opt}</Label>
-              </div>
-            ))}
-          </RadioGroup>
           {errors.challenge && <p className="text-xs text-destructive">{errors.challenge}</p>}
         </div>
+
+        {/* Tempo de preenchimento */}
+        <p className="text-xs text-center text-muted-foreground">
+          Leva menos de 1 minuto para preencher.
+        </p>
 
         {/* Urgência */}
         <p className="text-xs text-center text-muted-foreground flex items-center justify-center gap-1.5">
