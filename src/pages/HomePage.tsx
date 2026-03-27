@@ -1,9 +1,8 @@
-import { Check, X, Clock, TrendingUp, Briefcase, BarChart3, Settings, DollarSign, Rocket, Shield, Lock, MessageCircle, Ban, Eye, Users, CalendarCheck, FileSearch, Handshake } from 'lucide-react';
+import { Check, X, Clock, TrendingUp, Briefcase, BarChart3, Settings, DollarSign, Rocket, Shield, Lock, MessageCircle, Ban, Eye, Users, ArrowRight, CalendarCheck, FileSearch, Handshake, ChartNoAxesCombined } from 'lucide-react';
 import giovannePhoto from '@/assets/giovanne-photo.png';
 import { CTAButton } from '@/components/CTAButton';
 import { Section } from '@/components/Section';
 import { CountdownTimer } from '@/components/CountdownTimer';
-import { LeadForm } from '@/components/LeadForm';
 import { specialistInfo } from '@/data/links';
 
 const faqItems = [
@@ -51,8 +50,7 @@ export default function HomePage() {
       {/* ===== 1. HERO SECTION ===== */}
       <section className="relative min-h-[90vh] flex items-center section-padding">
         <div className="container-custom relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left: Text */}
+          <div className="max-w-3xl mx-auto text-center">
             <div className="fade-in">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-sm text-primary font-medium mb-6 scale-in">
                 <Users className="w-4 h-4" />
@@ -65,12 +63,12 @@ export default function HomePage() {
                 <span className="gradient-text">Máquina de Vendas</span>{' '}
                 Previsível e Lucrativa
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
                 Ajudo donos de loja online a venderem mais todos os meses, com método, clareza e estratégia. Sem depender de sorte.
               </p>
 
               {/* Destaques rápidos */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 stagger-children">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 max-w-lg mx-auto stagger-children">
                 {[
                   'Método validado na prática',
                   'Foco em lucro, não só em vendas',
@@ -85,7 +83,7 @@ export default function HomePage() {
               </div>
 
               {/* Prova social rápida */}
-              <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-sm text-muted-foreground fade-in delay-200">
+              <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-8 text-sm text-muted-foreground fade-in delay-200">
                 <div className="flex items-center gap-2">
                   <span className="text-lg">🏅</span>
                   <span>+3 anos no digital</span>
@@ -100,18 +98,13 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="scale-in delay-300 lg:hidden">
-                <CTAButton text="Preencher Formulário Abaixo" size="xl" scrollTo="hero-form" />
+              <div className="scale-in delay-300">
+                <CTAButton text="Agendar Análise Gratuita Agora" size="xl" />
               </div>
 
               <div className="mt-6">
                 <CountdownTimer />
               </div>
-            </div>
-
-            {/* Right: Form */}
-            <div className="fade-in delay-200">
-              <LeadForm id="hero-form" />
             </div>
           </div>
         </div>
@@ -159,14 +152,19 @@ export default function HomePage() {
       </Section>
 
       {/* ===== 3. SEGMENTAÇÃO DOS PROBLEMAS ===== */}
-      <Section title="Qual Desses Problemas É o Seu?">
+      <Section
+        title="Qual Desses Problemas É o Seu?"
+      >
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto stagger-children">
           {[
             { emoji: '1️⃣', title: '"Não sei o que fazer para vender mais"', desc: 'Falta de estratégia clara.' },
             { emoji: '2️⃣', title: '"Nunca sei quanto vou faturar"', desc: 'Resultados instáveis.' },
             { emoji: '3️⃣', title: '"Vendo, mas sobra pouco dinheiro"', desc: 'Baixa conversão e desperdício.' },
           ].map((problem) => (
-            <div key={problem.title} className="p-6 bg-card border border-border rounded-xl text-center interactive-card slide-in-left">
+            <div
+              key={problem.title}
+              className="p-6 bg-card border border-border rounded-xl text-center interactive-card slide-in-left"
+            >
               <span className="text-3xl mb-4 block">{problem.emoji}</span>
               <h3 className="font-semibold mb-2 text-foreground">{problem.title}</h3>
               <p className="text-sm text-muted-foreground">{problem.desc}</p>
@@ -313,7 +311,7 @@ export default function HomePage() {
         <div className="container-custom text-center">
           <p className="text-foreground font-semibold mb-2">Gostou do método?</p>
           <p className="text-sm text-muted-foreground mb-4">Agende uma análise gratuita e descubra como aplicar no seu e-commerce</p>
-          <CTAButton text="Quero Minha Análise Gratuita" size="lg" scrollTo="bottom-form" />
+          <CTAButton text="Quero Minha Análise Gratuita" size="lg" />
         </div>
       </div>
 
@@ -326,8 +324,12 @@ export default function HomePage() {
             </h2>
             <div className="space-y-4 text-muted-foreground">
               <p className="text-foreground text-lg font-medium">Me chamo Giovanne.</p>
-              <p>Sou especialista em mídia paga e performance para e-commerce.</p>
-              <p>Desde 2022 ajudo empresas a crescerem no digital com:</p>
+              <p>
+                Sou especialista em mídia paga e performance para e-commerce.
+              </p>
+              <p>
+                Desde 2022 ajudo empresas a crescerem no digital com:
+              </p>
               <div className="grid grid-cols-2 gap-3 my-6">
                 {['Trabalho inteligente', 'Gestão', 'Processos', 'Clareza'].map((item) => (
                   <div key={item} className="flex items-center gap-2">
@@ -438,7 +440,10 @@ export default function HomePage() {
             { name: 'Ana R.', role: 'Loja de moda feminina', quote: '"Passei de prejuízo para lucro em menos de 3 meses. O método realmente funciona quando você aplica."' },
             { name: 'Carlos T.', role: 'E-commerce de eletrônicos', quote: '"Agora tenho controle total da minha operação. Sei o que funciona e o que precisa melhorar."' },
           ].map((testimonial) => (
-            <div key={testimonial.name} className="p-6 bg-card border border-border rounded-xl interactive-card scale-in">
+            <div
+              key={testimonial.name}
+              className="p-6 bg-card border border-border rounded-xl interactive-card scale-in"
+            >
               <div className="flex items-center gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <span key={i} className="text-primary text-sm">★</span>
@@ -496,13 +501,16 @@ export default function HomePage() {
             ))}
           </div>
           <div className="mt-10 scale-in delay-300">
-            <CTAButton text="Agendar Minha Análise Gratuita" size="xl" scrollTo="bottom-form" />
+            <CTAButton text="Agendar Minha Análise Gratuita" size="xl" />
           </div>
         </div>
       </Section>
 
       {/* ===== 12. FAQ ===== */}
-      <Section variant="card" title="Perguntas Frequentes" subtitle="Tire suas dúvidas antes de dar o próximo passo">
+      <Section variant="card"
+        title="Perguntas Frequentes"
+        subtitle="Tire suas dúvidas antes de dar o próximo passo"
+      >
         <div className="max-w-3xl mx-auto fade-in">
           <div className="space-y-4">
             {faqItems.map((item, index) => (
@@ -520,23 +528,43 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ===== 13. FORMULÁRIO FINAL ===== */}
+      {/* ===== 13. CTA FINAL ===== */}
       <Section>
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-destructive/10 border border-destructive/20 rounded-full text-sm text-destructive font-medium mb-6">
-            <Clock className="w-4 h-4" />
-            Apenas 5 vagas por mês
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 fade-in">
-            Pronto Para Crescer{' '}
-            <span className="gradient-text">Com Segurança?</span>
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Preencha agora e receba seu diagnóstico estratégico personalizado.
-          </p>
-          <LeadForm id="bottom-form" buttonText="Agendar Diagnóstico Gratuito" />
-          <div className="mt-6">
-            <CountdownTimer />
+        <div className="relative bg-card border border-border rounded-3xl p-8 md:p-16 text-center overflow-hidden scale-in">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary-light/5" />
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-destructive/10 border border-destructive/20 rounded-full text-sm text-destructive font-medium mb-6">
+              <Clock className="w-4 h-4" />
+              Apenas 5 vagas por mês
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 fade-in">
+              Pronto Para Crescer{' '}
+              <span className="gradient-text">Com Segurança?</span>
+            </h2>
+            <p className="text-muted-foreground mb-6">
+              Descubra agora onde seu e-commerce perde dinheiro e como escalar com método:
+            </p>
+            <div className="space-y-3 mb-8 text-left max-w-sm mx-auto stagger-children">
+              {[
+                'Onde você perde dinheiro',
+                'Onde pode melhorar imediatamente',
+                'Como escalar com previsibilidade',
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 text-foreground animate-fade-in">
+                  <span className="text-primary">📌</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+            <div className="scale-in delay-200">
+              <CTAButton text="Agendar Diagnóstico Gratuito" size="xl" />
+            </div>
+            <div className="mt-6">
+              <CountdownTimer />
+            </div>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Focamos em empresas comprometidas com crescimento real
+            </p>
           </div>
         </div>
       </Section>

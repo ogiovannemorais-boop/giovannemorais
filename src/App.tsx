@@ -9,7 +9,6 @@ import LinksPage from "@/pages/LinksPage";
 import PrivacyPage from "@/pages/PrivacyPage";
 import TermsPage from "@/pages/TermsPage";
 import NotFound from "@/pages/NotFound";
-import ObrigadoPage from "@/pages/ObrigadoPage";
 
 import GestorTrafegoPagoFranca from "./pages/GestorTrafegoPagoFranca";
 
@@ -23,7 +22,6 @@ const routerBasename = (() => {
     "politica-privacidade",
     "termos",
     "gestor-trafego-pago-franca",
-    "obrigado",
   ]);
 
   const firstSegment = window.location.pathname.split("/").filter(Boolean)[0] ?? "";
@@ -50,9 +48,6 @@ const App = () => (
 
             {/* Páginas de tráfego local (SEO) */}
             <Route path="/gestor-trafego-pago-franca" element={<GestorTrafegoPagoFranca />} />
-
-            {/* Obrigado */}
-            <Route path="/obrigado" element={<ObrigadoPage />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />

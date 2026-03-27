@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { WHATSAPP_LINK } from '@/data/links';
 import { cn } from '@/lib/utils';
 
 interface CTAButtonProps {
@@ -9,7 +10,6 @@ interface CTAButtonProps {
   size?: 'default' | 'sm' | 'lg' | 'xl';
   className?: string;
   fullWidth?: boolean;
-  scrollTo?: string;
 }
 
 export function CTAButton({
@@ -19,24 +19,18 @@ export function CTAButton({
   size = 'lg',
   className,
   fullWidth = false,
-  scrollTo = 'hero-form',
 }: CTAButtonProps) {
-  const handleClick = () => {
-    const el = document.getElementById(scrollTo);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-
   return (
-    <Button
-      variant={variant}
-      size={size}
-      className={cn(fullWidth && 'w-full', className)}
-      onClick={handleClick}
+    <Button 
+      variant={variant} 
+      size={size} 
+      className={cn(fullWidth && 'w-full', className)} 
+      asChild
     >
-      {text}
-      {showArrow && <ArrowRight className="w-5 h-5" />}
+      <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+        {text}
+        {showArrow && <ArrowRight className="w-5 h-5" />}
+      </a>
     </Button>
   );
 }
