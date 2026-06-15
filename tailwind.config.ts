@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sora: ['Sora', 'Inter', 'system-ui', 'sans-serif'],
+        sora: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
