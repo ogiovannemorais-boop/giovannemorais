@@ -1,596 +1,478 @@
-import { Check, X, Clock, TrendingUp, Briefcase, BarChart3, Settings, DollarSign, Rocket, Shield, Lock, MessageCircle, Ban, Eye, Users, ArrowRight, CalendarCheck, FileSearch, Handshake, ChartNoAxesCombined } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import giovannePhoto from '@/assets/giovanne-photo.png';
-import { CTAButton } from '@/components/CTAButton';
-import { Section } from '@/components/Section';
-import { CountdownTimer } from '@/components/CountdownTimer';
-import { specialistInfo } from '@/data/links';
+import { WHATSAPP_LINK } from '@/data/links';
 
-const faqItems = [
+/* ------------------------------------------------------------------ */
+/* Conteúdo                                                            */
+/* ------------------------------------------------------------------ */
+
+const sections = [
+  { id: 'abertura', label: 'Abertura' },
+  { id: 'problema', label: 'O que costuma falhar' },
+  { id: 'solucoes', label: 'No que eu trabalho' },
+  { id: 'metodo', label: 'Como conduzo' },
+  { id: 'sobre', label: 'Sobre' },
+  { id: 'depoimentos', label: 'Quem já trabalhou comigo' },
+  { id: 'objecoes', label: 'Serve pro meu caso?' },
+  { id: 'vagas', label: 'Vagas' },
+];
+
+const solucoes = [
   {
-    question: 'Já tentei tráfego pago antes e não deu certo. Por que seria diferente agora?',
-    answer: 'A maioria dos e-commerces que "tentaram e não deu certo" trabalharam sem método. Apenas subiam campanhas e esperavam resultados. Aqui é diferente: existe um processo estruturado de diagnóstico, organização e otimização contínua. Não é sobre rodar anúncios, é sobre construir uma operação previsível. Se antes você investiu sem estratégia, agora vai investir com direção.',
+    n: '01',
+    titulo: 'Mídia paga',
+    detalhe:
+      'Meta, Google e TikTok. Quem distribui verba, quem decide pausar criativo e quem responde por CAC. Não é só "subir campanha".',
   },
   {
-    question: 'Funciona para quem está começando no e-commerce?',
-    answer: 'Sim. O método se adapta ao estágio do seu negócio. Se você está começando, vamos estruturar sua operação desde o início para que cada real investido em tráfego traga retorno. Se já fatura, vamos identificar os gargalos que impedem o crescimento. O importante é ter compromisso com o processo.',
+    n: '02',
+    titulo: 'Oferta',
+    detalhe:
+      'A maior parte dos resultados ruins não é problema de tráfego. É a oferta que não está pronta pra encontrar o público frio.',
   },
   {
-    question: 'E se eu não entender de tráfego pago ou marketing digital?',
-    answer: 'Você não precisa ser especialista em marketing. Todo o processo é explicado de forma clara e objetiva. Você vai entender exatamente o que está sendo feito, por que está sendo feito e quais resultados esperar. Meu trabalho é traduzir estratégia em ação simples para você focar no que importa: seu negócio.',
+    n: '03',
+    titulo: 'Funil',
+    detalhe:
+      'O que acontece entre o clique e o boleto pago. Onde o lead desaparece, onde ele esfria, e o que reconquista.',
   },
   {
-    question: 'Meu time consegue acompanhar e aplicar as mudanças?',
-    answer: 'Sim. Tudo é organizado de forma prática para que você e sua equipe consigam acompanhar. Criamos processos claros, reuniões objetivas e relatórios que qualquer pessoa entende. O objetivo é que sua operação funcione de forma independente e escalável.',
+    n: '04',
+    titulo: 'Copy',
+    detalhe:
+      'Anúncios, páginas e mensagens. Texto escrito pra quem vai ler com pressa, no celular, no meio de outras vinte abas.',
   },
   {
-    question: 'Quanto custa o serviço?',
-    answer: 'O investimento varia conforme o estágio e a necessidade do seu e-commerce. Mas pense assim: quanto você já perdeu investindo sem direção? O diagnóstico gratuito serve exatamente para entender sua situação e mostrar se faz sentido trabalharmos juntos. Sem pressão, sem compromisso.',
+    n: '05',
+    titulo: 'Criativos',
+    detalhe:
+      'Roteiro, edição, variações. Direção criativa pensada pra performance, não pra portfólio de agência.',
   },
   {
-    question: 'Em quanto tempo vou ver resultados?',
-    answer: 'Os primeiros ajustes de organização e otimização já geram impacto nas primeiras semanas. Resultados consistentes de vendas e previsibilidade geralmente aparecem entre 30 e 90 dias, dependendo do estágio da sua loja. O foco é construir algo sólido, não resultados artificiais que desaparecem no mês seguinte.',
+    n: '06',
+    titulo: 'Landing pages',
+    detalhe:
+      'Reescrita de página, hierarquia visual, prova social, fricção de checkout. A página é parte do anúncio.',
   },
   {
-    question: 'Vocês atendem qualquer tipo de e-commerce?',
-    answer: 'Atendemos e-commerces de diversos nichos, desde moda e beleza até eletrônicos e produtos personalizados. O critério principal não é o nicho, mas sim o comprometimento do dono. Se você leva seu negócio a sério e quer crescer com método, podemos ajudar.',
+    n: '07',
+    titulo: 'Métricas',
+    detalhe:
+      'Painel honesto. Saber o que olhar segunda de manhã sem precisar abrir cinco plataformas.',
+  },
+  {
+    n: '08',
+    titulo: 'Acompanhamento',
+    detalhe:
+      'Reunião curta, decisão escrita, próximo passo claro. Sem call de uma hora pra alinhar coisa que cabia em mensagem.',
   },
 ];
 
-export default function HomePage() {
+const objecoes = [
+  {
+    pergunta: 'Nunca anunciei.',
+    resposta:
+      'Tudo bem. Começamos pelo básico estruturado, e não por uma campanha avulsa que vira presságio do resto.',
+  },
+  {
+    pergunta: 'Já anunciei e não rendeu.',
+    resposta:
+      'É o caso mais comum. A primeira coisa é entender se o problema é mídia, oferta, página ou processo. Quase nunca é só mídia.',
+  },
+  {
+    pergunta: 'Hoje vivo de indicação.',
+    resposta:
+      'Indicação é ótimo enquanto rende. O risco é que ela não escala e some sem aviso. A ideia é construir um segundo canal sem matar o primeiro.',
+  },
+  {
+    pergunta: 'Já tenho time comercial.',
+    resposta:
+      'Melhor. Mídia paga sem time comercial preparado costuma queimar lead. Com time, o trabalho é alimentar o funil com qualidade.',
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Componentes locais                                                  */
+/* ------------------------------------------------------------------ */
+
+function SectionIndex({ active }: { active: string }) {
   return (
-    <div className="beams-background">
-      {/* ===== BARRA DE EXCLUSIVIDADE ===== */}
-      <div className="bg-primary/10 border-b border-primary/20 py-2.5 text-center fade-in">
-        <div className="container-custom flex items-center justify-center gap-2 text-sm font-medium text-primary">
-          <Shield className="w-4 h-4 shrink-0" />
-          <span>Exclusivo para Donos de E-commerce</span>
-        </div>
-      </div>
+    <nav
+      aria-label="Índice da página"
+      className="hidden lg:flex fixed left-8 top-1/2 -translate-y-1/2 z-30 flex-col gap-3 text-[11px] uppercase tracking-[0.18em]"
+    >
+      {sections.map((s, i) => {
+        const isActive = active === s.id;
+        return (
+          <a
+            key={s.id}
+            href={`#${s.id}`}
+            className="group flex items-center gap-3 text-foreground/40 hover:text-foreground transition-colors"
+            data-active={isActive}
+          >
+            <span
+              aria-hidden
+              className={`h-px transition-all ${
+                isActive ? 'w-10 bg-primary' : 'w-4 bg-foreground/30 group-hover:bg-foreground/60'
+              }`}
+            />
+            <span className={isActive ? 'text-foreground' : ''}>
+              {String(i + 1).padStart(2, '0')}
+            </span>
+          </a>
+        );
+      })}
+    </nav>
+  );
+}
 
-      {/* ===== 1. HERO SECTION ===== */}
-      <section className="relative min-h-[90vh] flex items-center section-padding">
-        <div className="container-custom relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="fade-in">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-sm text-primary font-medium mb-6 scale-in">
-                <Users className="w-4 h-4" />
-                Atendemos apenas 5 novos clientes por mês
-              </div>
+function Solucao({ n, titulo, detalhe }: { n: string; titulo: string; detalhe: string }) {
+  return (
+    <details className="group border-b border-foreground/10 py-6">
+      <summary className="flex items-baseline gap-6 cursor-pointer list-none">
+        <span className="text-foreground/40 text-sm tabular-nums">{n}</span>
+        <span className="text-2xl md:text-4xl font-bold tracking-tight flex-1 group-hover:text-primary transition-colors">
+          {titulo}
+        </span>
+        <span
+          aria-hidden
+          className="text-foreground/40 text-sm transition-transform group-open:rotate-45"
+        >
+          +
+        </span>
+      </summary>
+      <p className="pl-[3.25rem] md:pl-[3.5rem] pt-4 max-w-xl text-foreground/70 leading-relaxed">
+        {detalhe}
+      </p>
+    </details>
+  );
+}
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Transforme Seu{' '}
-                <span className="whitespace-nowrap">E-commerce</span> em uma{' '}
-                <span className="gradient-text">Máquina de Vendas</span>{' '}
-                Previsível e Lucrativa
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
-                Ajudo donos de loja online a venderem mais todos os meses, com método, clareza e estratégia. Sem depender de sorte.
-              </p>
+/* ------------------------------------------------------------------ */
+/* Página                                                              */
+/* ------------------------------------------------------------------ */
 
-              {/* Destaques rápidos */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 max-w-lg mx-auto stagger-children">
-                {[
-                  'Método validado na prática',
-                  'Foco em lucro, não só em vendas',
-                  'Crescimento com organização',
-                  'Sem achismo, sem promessas vazias',
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-sm text-foreground animate-fade-in">
-                    <Check className="w-4 h-4 text-primary shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
+export default function HomePage() {
+  const [active, setActive] = useState('abertura');
 
-              {/* Prova social rápida */}
-              <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-8 text-sm text-muted-foreground fade-in delay-200">
-                <div className="flex items-center gap-2">
-                  <span className="text-lg">🏅</span>
-                  <span>+3 anos no digital</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-lg">💰</span>
-                  <span>+R$ 1MM em mídia gerenciada</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-lg">🏪</span>
-                  <span>+30 negócios atendidos</span>
-                </div>
-              </div>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: '-40% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+    sections.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
-              <div className="scale-in delay-300">
-                <CTAButton text="Agendar Análise Gratuita Agora" size="xl" />
-              </div>
+  return (
+    <div className="bg-background text-foreground antialiased selection:bg-primary/30">
+      {/* Mini header — só nome + WhatsApp inline */}
+      <header className="absolute top-0 left-0 right-0 z-40 px-6 md:px-12 py-6 flex justify-between items-center">
+        <a href="#abertura" className="text-sm font-bold tracking-tight">
+          Giovanne Morais
+        </a>
+        <a
+          href={WHATSAPP_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-bold relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left"
+        >
+          WhatsApp
+        </a>
+      </header>
 
-              <div className="mt-6">
-                <CountdownTimer />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SectionIndex active={active} />
 
-      {/* ===== CTA INTERMEDIÁRIO ===== */}
-      <div className="bg-primary/5 border-y border-primary/10 py-4">
-        <div className="container-custom flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
-          <p className="text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">Vagas limitadas:</span> atendemos apenas um número restrito de novos clientes por mês
+      <main className="lg:pl-32 xl:pl-40">
+        {/* 01 — Abertura ---------------------------------------------------- */}
+        <section
+          id="abertura"
+          className="min-h-svh flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-12 pt-32"
+        >
+          <p className="text-primary text-sm font-bold mb-8 tracking-[0.18em] uppercase">
+            01 — Estratégia digital
           </p>
-          <CTAButton text="Garantir Minha Vaga" size="default" showArrow={false} className="text-sm" />
-        </div>
-      </div>
-
-      {/* ===== 2. IDENTIFICAÇÃO COM A DOR ===== */}
-      <Section variant="card">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 fade-in">
-            Sua Loja Vende.<br />
-            <span className="gradient-text">Mas Poderia Vender Muito Mais.</span>
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 fade-in delay-100">Hoje você sente que:</p>
-          <div className="space-y-4 text-left max-w-xl mx-auto stagger-children">
-            {[
-              'Investe em anúncios, mas não sabe se vale a pena',
-              'Um mês vende bem, no outro cai',
-              'Trabalha muito e lucra pouco',
-              'Depende só do Instagram',
-              'Não entende seus números',
-            ].map((pain) => (
-              <div key={pain} className="flex items-start gap-3 p-3 rounded-lg bg-destructive/5 border border-destructive/10 animate-fade-in">
-                <X className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
-                <span className="text-foreground">{pain}</span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 fade-in delay-500">
-            <p className="text-lg font-medium text-foreground">
-              O problema não é falta de esforço.<br />
-              <span className="text-primary font-bold">É falta de direção e método.</span>
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* ===== 3. SEGMENTAÇÃO DOS PROBLEMAS ===== */}
-      <Section
-        title="Qual Desses Problemas É o Seu?"
-      >
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto stagger-children">
-          {[
-            { emoji: '1️⃣', title: '"Não sei o que fazer para vender mais"', desc: 'Falta de estratégia clara.' },
-            { emoji: '2️⃣', title: '"Nunca sei quanto vou faturar"', desc: 'Resultados instáveis.' },
-            { emoji: '3️⃣', title: '"Vendo, mas sobra pouco dinheiro"', desc: 'Baixa conversão e desperdício.' },
-          ].map((problem) => (
-            <div
-              key={problem.title}
-              className="p-6 bg-card border border-border rounded-xl text-center interactive-card slide-in-left"
+          <h1
+            className="font-bold leading-[0.95] tracking-[-0.04em] max-w-[18ch]"
+            style={{ fontSize: 'clamp(2.75rem, 7vw, 5.5rem)' }}
+          >
+            Anunciar é a parte fácil.
+            <br />
+            O resto é o que define se
+            <br />
+            sobra dinheiro no fim do mês.
+          </h1>
+          <p className="mt-10 max-w-xl text-foreground/70 text-lg leading-relaxed">
+            Sou Giovanne. Trabalho com donos de pequenas e médias empresas que já tentaram
+            impulsionar post, contratar gestor barato e copiar concorrente — e descobriram que
+            mídia paga sozinha não resolve. O trabalho aqui é o de fora também: oferta, página,
+            copy, criativo, processo comercial, números.
+          </p>
+          <div className="mt-12 flex flex-col sm:flex-row gap-6 sm:items-center">
+            <a
+              href="#solucoes"
+              className="group inline-flex items-center gap-4 text-lg font-bold"
             >
-              <span className="text-3xl mb-4 block">{problem.emoji}</span>
-              <h3 className="font-semibold mb-2 text-foreground">{problem.title}</h3>
-              <p className="text-sm text-muted-foreground">{problem.desc}</p>
-            </div>
-          ))}
-        </div>
-        <p className="text-center text-muted-foreground mt-8 fade-in">
-          Se você se identifica com algum deles, <span className="text-primary font-semibold">essa página é pra você.</span>
-        </p>
-      </Section>
-
-      {/* ===== 4. QUEBRA DE PADRÃO ===== */}
-      <Section variant="card">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 fade-in">
-            Você Não Precisa de Mais Cliques.<br />
-            <span className="gradient-text">Precisa de Orientação.</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8 mt-10">
-            <div className="p-6 rounded-xl border border-destructive/20 bg-destructive/5 text-left slide-in-left">
-              <p className="text-sm font-semibold text-destructive mb-4 uppercase tracking-wider">Muitos serviços entregam:</p>
-              <div className="space-y-3">
-                {['Anúncios', 'Relatórios', 'Números confusos'].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <X className="w-4 h-4 text-destructive shrink-0" />
-                    <span className="text-muted-foreground">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="p-6 rounded-xl border border-primary/30 bg-primary/5 text-left slide-in-right">
-              <p className="text-sm font-semibold text-primary mb-4 uppercase tracking-wider">Mas não entregam:</p>
-              <div className="space-y-3">
-                {['Direção', 'Organização', 'Lucro', 'Segurança'].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-primary shrink-0" />
-                    <span className="text-foreground font-medium">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <p className="mt-8 text-lg font-medium text-foreground fade-in delay-300">
-            Anunciar sem estratégia é <span className="text-destructive">jogar dinheiro fora.</span>
-          </p>
-        </div>
-      </Section>
-
-      {/* ===== 5. POSICIONAMENTO AUTORITATIVO ===== */}
-      <Section>
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 fade-in">
-            Aqui Seu Negócio É{' '}
-            <span className="gradient-text">Levado a Sério</span>
-          </h2>
-          <p className="text-lg text-muted-foreground mb-10 fade-in delay-100">
-            Eu trabalho para estruturar sua loja com:
-          </p>
-          <div className="grid sm:grid-cols-2 gap-4 text-left max-w-xl mx-auto stagger-children">
-            {[
-              'Entrada constante de clientes',
-              'Páginas que convertem mais',
-              'Processo organizado',
-              'Decisão com base em dados simples',
-              'Crescimento com segurança',
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-3 p-3 animate-fade-in">
-                <Check className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-foreground">{item}</span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 p-6 bg-card border border-border rounded-xl fade-in delay-400">
-            <p className="text-foreground font-medium">
-              Tudo com um <span className="text-primary font-bold">método exclusivo e validado</span>, criado para escalar sua operação.
-            </p>
-            <p className="text-muted-foreground mt-2 text-sm">
-              Sem improviso. Sem enrolação. Com responsabilidade.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* ===== 6. PROPOSTA DE VALOR ===== */}
-      <Section variant="card">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 fade-in">
-            O Que Você Vai <span className="gradient-text">Construir</span>
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 stagger-children">
-            {[
-              { icon: TrendingUp, label: 'Vendas todos os meses' },
-              { icon: Briefcase, label: 'Negócio organizado' },
-              { icon: BarChart3, label: 'Controle financeiro' },
-              { icon: Settings, label: 'Processos simples' },
-              { icon: DollarSign, label: 'Mais lucro' },
-              { icon: Rocket, label: 'Crescimento real' },
-            ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-3 p-5 bg-card border border-border rounded-xl interactive-card scale-in">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Icon className="w-6 h-6 text-primary" />
-                </div>
-                <span className="text-sm font-medium text-foreground text-center">{label}</span>
-              </div>
-            ))}
-          </div>
-          <p className="mt-10 text-lg text-foreground font-medium fade-in delay-500">
-            Você deixa de "tentar vender"<br />
-            e passa a <span className="text-primary font-bold">gerenciar sua loja.</span>
-          </p>
-        </div>
-      </Section>
-
-      {/* ===== 7. MÉTODO ===== */}
-      <Section>
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 fade-in">
-            O <span className="gradient-text">Método Validado</span> de Crescimento
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6 stagger-children">
-            {[
-              { step: '1', title: 'Diagnóstico', desc: 'Analisamos sua loja, anúncios e números.' },
-              { step: '2', title: 'Organização', desc: 'Ajustamos canais, ofertas e estrutura.' },
-              { step: '3', title: 'Otimização', desc: 'Melhoramos páginas, checkout e comunicação.' },
-              { step: '4', title: 'Acompanhamento', desc: 'Ajustes constantes para crescer com segurança.' },
-            ].map(({ step, title, desc }) => (
-              <div key={step} className="relative p-6 bg-card border border-border rounded-xl text-center interactive-card slide-in-left">
-                <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg mx-auto mb-4">
-                  {step}
-                </div>
-                <h3 className="font-semibold mb-2 text-foreground">{title}</h3>
-                <p className="text-sm text-muted-foreground">{desc}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-10 text-xl font-bold text-primary fade-in delay-400">
-            Resultado: previsibilidade.
-          </p>
-        </div>
-      </Section>
-
-      {/* ===== CTA INTERMEDIÁRIO 2 ===== */}
-      <div className="bg-primary/5 border-y border-primary/10 py-6">
-        <div className="container-custom text-center">
-          <p className="text-foreground font-semibold mb-2">Gostou do método?</p>
-          <p className="text-sm text-muted-foreground mb-4">Agende uma análise gratuita e descubra como aplicar no seu e-commerce</p>
-          <CTAButton text="Quero Minha Análise Gratuita" size="lg" />
-        </div>
-      </div>
-
-      {/* ===== 8. QUEM SOU EU ===== */}
-      <Section variant="card">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-          <div className="fade-in order-2 lg:order-1">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Quem Vai <span className="gradient-text">Cuidar do Seu Negócio</span>
-            </h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p className="text-foreground text-lg font-medium">Me chamo Giovanne.</p>
-              <p>
-                Sou especialista em mídia paga e performance para e-commerce.
-              </p>
-              <p>
-                Desde 2022 ajudo empresas a crescerem no digital com:
-              </p>
-              <div className="grid grid-cols-2 gap-3 my-6">
-                {['Trabalho inteligente', 'Gestão', 'Processos', 'Clareza'].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-primary shrink-0" />
-                    <span className="text-foreground text-sm font-medium">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Números de credibilidade */}
-              <div className="grid grid-cols-3 gap-4 my-6 py-4 border-y border-border">
-                {[
-                  { number: '+30', label: 'Negócios atendidos' },
-                  { number: '+3', label: 'Anos de experiência' },
-                  { number: '+1MM', label: 'Em mídia gerenciada' },
-                ].map(({ number, label }) => (
-                  <div key={label} className="text-center">
-                    <p className="text-xl font-bold text-primary">{number}</p>
-                    <p className="text-xs text-muted-foreground">{label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <p className="text-foreground italic">
-                Acredito em resultado, responsabilidade e em Deus.
-              </p>
-              <p className="text-foreground font-semibold mt-4">
-                Não vendo promessas.<br />
-                <span className="text-primary">Construo crescimento.</span>
-              </p>
-            </div>
-          </div>
-
-          {/* Photo */}
-          <div className="relative slide-in-right order-1 lg:order-2">
-            <div className="relative w-full max-w-sm mx-auto">
-              <div className="absolute -top-6 -right-6 w-48 h-48 bg-primary/20 rounded-full blur-3xl" />
-              <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-primary-light/15 rounded-full blur-3xl" />
-              <div className="relative rounded-2xl overflow-hidden aspect-[3/4] border-2 border-primary/20">
-                <img
-                  src={giovannePhoto}
-                  alt={`${specialistInfo.fullName} Especialista em Performance para E-commerce`}
-                  className="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ===== 9. PARA QUEM É / NÃO É ===== */}
-      <Section>
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center fade-in">
-            Para Quem É / <span className="gradient-text">Não É</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl border border-primary/30 bg-primary/5 slide-in-left">
-              <h3 className="font-bold text-lg mb-4 text-primary">✅ Para Quem É</h3>
-              <div className="space-y-3">
-                {[
-                  'Donos de e-commerce iniciantes ou em crescimento',
-                  'Fatura de R$0 a R$200k+/mês',
-                  'Quer aprender e evoluir',
-                  'Leva o negócio a sério',
-                  'Quer construir algo sólido',
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-primary shrink-0" />
-                    <span className="text-foreground text-sm">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="p-6 rounded-xl border border-destructive/20 bg-destructive/5 slide-in-right">
-              <h3 className="font-bold text-lg mb-4 text-destructive">❌ Não É Para Quem</h3>
-              <div className="space-y-3">
-                {[
-                  'Quer milagre',
-                  'Não quer investir',
-                  'Busca só preço',
-                  'Não aplica o método',
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <X className="w-4 h-4 text-destructive shrink-0" />
-                    <span className="text-muted-foreground text-sm">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <p className="text-center mt-8 text-foreground font-medium fade-in delay-300">
-            Isso garante <span className="text-primary font-bold">bons resultados.</span>
-          </p>
-        </div>
-      </Section>
-
-      {/* ===== 10. PROVA SOCIAL ===== */}
-      <Section variant="card">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center fade-in">
-          O Que <span className="gradient-text">Clientes Dizem</span>
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto stagger-children">
-          {[
-            { name: 'Lucas M.', role: 'Dono de e-commerce', quote: '"Hoje sei exatamente quanto investir e quanto vai voltar. Saí do achismo e passei a tomar decisões com clareza."' },
-            { name: 'Ana R.', role: 'Loja de moda feminina', quote: '"Passei de prejuízo para lucro em menos de 3 meses. O método realmente funciona quando você aplica."' },
-            { name: 'Carlos T.', role: 'E-commerce de eletrônicos', quote: '"Agora tenho controle total da minha operação. Sei o que funciona e o que precisa melhorar."' },
-          ].map((testimonial) => (
-            <div
-              key={testimonial.name}
-              className="p-6 bg-card border border-border rounded-xl interactive-card scale-in"
+              <span className="border-b-2 border-foreground pb-1 group-hover:border-primary group-hover:text-primary transition-colors">
+                Ver no que eu trabalho
+              </span>
+              <span aria-hidden className="group-hover:translate-x-1 transition-transform">↓</span>
+            </a>
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-foreground/60 hover:text-foreground transition-colors"
             >
-              <div className="flex items-center gap-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-primary text-sm">★</span>
-                ))}
-              </div>
-              <p className="text-foreground italic mb-4">{testimonial.quote}</p>
-              <div className="border-t border-border pt-3">
-                <p className="text-sm font-semibold text-foreground">{testimonial.name}</p>
-                <p className="text-xs text-muted-foreground">{testimonial.role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
+              ou fale direto no WhatsApp →
+            </a>
+          </div>
+        </section>
 
-      {/* ===== 11. PRÓXIMOS PASSOS ===== */}
-      <Section>
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 fade-in">
-            O Que Acontece Após a{' '}
-            <span className="gradient-text">Análise Gratuita?</span>
+        {/* 02 — Problema ---------------------------------------------------- */}
+        <section id="problema" className="px-6 md:px-12 py-24 md:py-40 border-t border-foreground/10">
+          <p className="text-foreground/40 text-sm tracking-[0.18em] uppercase mb-8">02</p>
+          <h2
+            className="font-bold leading-[1] tracking-[-0.03em] max-w-[20ch]"
+            style={{ fontSize: 'clamp(1.75rem, 4.5vw, 3.25rem)' }}
+          >
+            Anunciar sem estratégia é
+            <br />a forma mais rápida e mais
+            <br />
+            educada de queimar dinheiro.
           </h2>
-          <p className="text-muted-foreground mb-12 fade-in delay-100">
-            Depois de agendar, o processo é simples e direto:
+          <div className="mt-12 grid md:grid-cols-2 gap-x-16 gap-y-6 max-w-3xl text-foreground/70 leading-relaxed">
+            <p>
+              A maioria das empresas que me procura já passou por algum desses momentos:
+              impulsionou post sem objetivo, contratou gestor pelo menor preço, rodou campanha
+              sem funil por trás, postou todo dia esperando vender, copiou o anúncio do
+              concorrente sem entender o que ele faz fora do anúncio.
+            </p>
+            <p>
+              Quase nunca o problema é a plataforma. É a oferta que não está pronta. É a
+              página que não converte. É a copy que fala como folder de banco. É o criativo
+              que parodia um trend. É a equipe comercial que demora dois dias pra responder.
+              É a falta de alguém olhando os números toda semana.
+            </p>
+          </div>
+        </section>
+
+        {/* 03 — Soluções ---------------------------------------------------- */}
+        <section id="solucoes" className="px-6 md:px-12 py-24 md:py-40 border-t border-foreground/10">
+          <p className="text-foreground/40 text-sm tracking-[0.18em] uppercase mb-8">03</p>
+          <h2
+            className="font-bold leading-[1] tracking-[-0.03em] max-w-[16ch] mb-4"
+            style={{ fontSize: 'clamp(1.75rem, 4.5vw, 3.25rem)' }}
+          >
+            No que eu trabalho.
+          </h2>
+          <p className="text-foreground/60 max-w-xl mb-12">
+            Oito frentes. Quase sempre não é necessário operar nas oito. O recorte sai do
+            diagnóstico, e o resto fica documentado pra quando fizer sentido entrar.
           </p>
-          <div className="grid md:grid-cols-3 gap-8 stagger-children">
+          <div className="max-w-3xl">
+            {solucoes.map((s) => (
+              <Solucao key={s.n} {...s} />
+            ))}
+          </div>
+        </section>
+
+        {/* 04 — Método ------------------------------------------------------ */}
+        <section
+          id="metodo"
+          className="px-6 md:px-12 py-24 md:py-40 border-t border-foreground/10 bg-[hsl(225_6%_10%)]"
+        >
+          <p className="text-foreground/40 text-sm tracking-[0.18em] uppercase mb-8">04</p>
+          <h2
+            className="font-bold leading-[1] tracking-[-0.03em] max-w-[18ch] mb-16"
+            style={{ fontSize: 'clamp(1.75rem, 4.5vw, 3.25rem)' }}
+          >
+            Três momentos. Não seis etapas.
+          </h2>
+          <div className="grid md:grid-cols-3 gap-12 md:gap-8 max-w-5xl">
             {[
               {
-                icon: CalendarCheck,
-                step: '01',
-                title: 'Conversa inicial',
-                desc: 'Entendemos seu momento, seus números e seus objetivos. Sem compromisso.',
+                t: 'Entender',
+                d: 'Diagnóstico do negócio, da oferta, dos números e do momento. Aqui é onde decidimos se faz sentido seguir — e se não fizer, isso é dito.',
               },
               {
-                icon: FileSearch,
-                step: '02',
-                title: 'Diagnóstico personalizado',
-                desc: 'Analisamos sua loja, anúncios e operação. Você recebe um mapa claro do que precisa ajustar.',
+                t: 'Construir',
+                d: 'Estruturação do que está faltando: campanha, funil, página, copy, criativo. O que já existe e funciona não é desmontado por capricho.',
               },
               {
-                icon: Handshake,
-                step: '03',
-                title: 'Proposta sob medida',
-                desc: 'Se fizer sentido para os dois lados, apresentamos um plano de ação com prazos e metas claras.',
+                t: 'Operar',
+                d: 'Acompanhamento semanal, ajustes finos, decisões registradas. Os números são lidos por mim e explicados pra você, não enviados em PDF.',
               },
-            ].map(({ icon: Icon, step, title, desc }) => (
-              <div key={step} className="relative text-center slide-in-left">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-7 h-7 text-primary" />
-                </div>
-                <span className="text-xs font-bold text-primary uppercase tracking-wider">Passo {step}</span>
-                <h3 className="font-semibold text-foreground mt-2 mb-2">{title}</h3>
-                <p className="text-sm text-muted-foreground">{desc}</p>
+            ].map((m, i) => (
+              <div key={m.t}>
+                <p className="text-primary text-sm font-bold tabular-nums mb-3">
+                  {String(i + 1).padStart(2, '0')}
+                </p>
+                <h3 className="text-3xl font-bold tracking-tight mb-4">{m.t}</h3>
+                <p className="text-foreground/70 leading-relaxed">{m.d}</p>
               </div>
             ))}
           </div>
-          <div className="mt-10 scale-in delay-300">
-            <CTAButton text="Agendar Minha Análise Gratuita" size="xl" />
-          </div>
-        </div>
-      </Section>
+        </section>
 
-      {/* ===== 12. FAQ ===== */}
-      <Section variant="card"
-        title="Perguntas Frequentes"
-        subtitle="Tire suas dúvidas antes de dar o próximo passo"
-      >
-        <div className="max-w-3xl mx-auto fade-in">
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <details key={index} className="group bg-card border border-border rounded-xl overflow-hidden">
-                <summary className="flex items-center justify-between cursor-pointer p-5 text-left font-medium text-foreground hover:bg-secondary/50 transition-colors">
-                  <span>{item.question}</span>
-                  <span className="text-primary text-xl ml-4 shrink-0 group-open:rotate-45 transition-transform duration-200">+</span>
-                </summary>
-                <div className="px-5 pb-5 text-muted-foreground leading-relaxed">
-                  {item.answer}
-                </div>
-              </details>
-            ))}
+        {/* 05 — Sobre ------------------------------------------------------- */}
+        <section
+          id="sobre"
+          className="px-6 md:px-12 py-24 md:py-40 border-t border-foreground/10"
+        >
+          <p className="text-foreground/40 text-sm tracking-[0.18em] uppercase mb-8">05</p>
+          <div className="grid md:grid-cols-12 gap-12 max-w-6xl">
+            <div className="md:col-span-5">
+              <img
+                src={giovannePhoto}
+                alt="Retrato de Giovanne Morais"
+                className="w-full aspect-[3/4] object-cover object-top grayscale contrast-110"
+                loading="lazy"
+              />
+            </div>
+            <div className="md:col-span-7 md:pt-12">
+              <h2
+                className="font-bold leading-[1] tracking-[-0.03em] mb-8"
+                style={{ fontSize: 'clamp(1.75rem, 4.5vw, 3.25rem)' }}
+              >
+                Quem cuida do seu negócio.
+              </h2>
+              <div className="space-y-5 text-foreground/75 leading-relaxed max-w-prose">
+                <p>
+                  Trabalho com marketing digital desde 2021. Ajudo pequenas e médias empresas
+                  e profissionais a aumentarem faturamento com mídia paga, performance e os
+                  serviços ao redor que sustentam o resultado.
+                </p>
+                <p>
+                  Sou especialista em mídia paga. Desde 2021 ajudo empresas a crescerem no
+                  digital com trabalho inteligente, gestão e clareza.
+                </p>
+                <p>Acredito em resultado, responsabilidade e em Deus.</p>
+                <p className="text-foreground font-bold pt-2">
+                  Não vendo promessa. Construo crescimento.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </Section>
+        </section>
 
-      {/* ===== 13. CTA FINAL ===== */}
-      <Section>
-        <div className="relative bg-card border border-border rounded-3xl p-8 md:p-16 text-center overflow-hidden scale-in">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary-light/5" />
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-destructive/10 border border-destructive/20 rounded-full text-sm text-destructive font-medium mb-6">
-              <Clock className="w-4 h-4" />
-              Apenas 5 vagas por mês
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 fade-in">
-              Pronto Para Crescer{' '}
-              <span className="gradient-text">Com Segurança?</span>
-            </h2>
-            <p className="text-muted-foreground mb-6">
-              Descubra agora onde seu e-commerce perde dinheiro e como escalar com método:
-            </p>
-            <div className="space-y-3 mb-8 text-left max-w-sm mx-auto stagger-children">
-              {[
-                'Onde você perde dinheiro',
-                'Onde pode melhorar imediatamente',
-                'Como escalar com previsibilidade',
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3 text-foreground animate-fade-in">
-                  <span className="text-primary">📌</span>
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-            <div className="scale-in delay-200">
-              <CTAButton text="Agendar Diagnóstico Gratuito" size="xl" />
-            </div>
-            <div className="mt-6">
-              <CountdownTimer />
-            </div>
-            <p className="mt-4 text-xs text-muted-foreground">
-              Focamos em empresas comprometidas com crescimento real
-            </p>
+        {/* 06 — Depoimentos ------------------------------------------------- */}
+        <section
+          id="depoimentos"
+          className="px-6 md:px-12 py-24 md:py-40 border-t border-foreground/10"
+        >
+          <p className="text-foreground/40 text-sm tracking-[0.18em] uppercase mb-8">06</p>
+          <h2
+            className="font-bold leading-[1] tracking-[-0.03em] max-w-[16ch] mb-16"
+            style={{ fontSize: 'clamp(1.75rem, 4.5vw, 3.25rem)' }}
+          >
+            Quem já trabalhou comigo.
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
+            <blockquote className="border-l-2 border-primary pl-6">
+              <p className="text-xl leading-snug text-foreground/85 mb-4">
+                "primeiro mes eu nem entendi direito o que tava acontecendo, ele mexeu numa
+                coisa de oferta que eu nem sabia que era oferta e o cpm caiu pela metade
+                achei que ia ter que demitir um vendedor mas no fim contratei mais um"
+              </p>
+              <footer className="text-sm text-foreground/50">
+                — Marcos, loja de suplemento, interior de SP
+              </footer>
+            </blockquote>
+
+            <blockquote className="border-l-2 border-foreground/20 pl-6">
+              <p className="text-xl leading-snug text-foreground/85 mb-4">
+                "ele responde rapido e não enche de relatorio. eu queria menos call e mais
+                resultado, foi exatamente isso"
+              </p>
+              <footer className="text-sm text-foreground/50">
+                — Aline, prestadora de serviço B2B
+              </footer>
+            </blockquote>
           </div>
-        </div>
-      </Section>
 
-      {/* ===== 14. SEGURANÇA E CONFIANÇA ===== */}
-      <section className="py-12 border-t border-border/50">
-        <div className="container-custom">
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-sm text-muted-foreground stagger-children">
-            {[
-              { icon: Lock, text: 'Seus dados estão protegidos' },
-              { icon: MessageCircle, text: 'Atendimento humano' },
-              { icon: Ban, text: 'Sem spam' },
-              { icon: Eye, text: 'Sem compromisso inicial' },
-              { icon: Shield, text: 'Transparência total' },
-            ].map(({ icon: Icon, text }) => (
-              <div key={text} className="flex items-center gap-2 animate-fade-in">
-                <Icon className="w-4 h-4 text-primary shrink-0" />
-                <span>{text}</span>
+          <p className="mt-12 text-xs text-foreground/40 max-w-md">
+            Depoimentos publicados com autorização. Casos completos compartilhados sob NDA na
+            conversa inicial.
+          </p>
+        </section>
+
+        {/* 07 — Objeções ---------------------------------------------------- */}
+        <section
+          id="objecoes"
+          className="px-6 md:px-12 py-24 md:py-40 border-t border-foreground/10"
+        >
+          <p className="text-foreground/40 text-sm tracking-[0.18em] uppercase mb-8">07</p>
+          <h2
+            className="font-bold leading-[1] tracking-[-0.03em] max-w-[18ch] mb-16"
+            style={{ fontSize: 'clamp(1.75rem, 4.5vw, 3.25rem)' }}
+          >
+            Serve pro meu caso?
+          </h2>
+          <dl className="max-w-3xl divide-y divide-foreground/10">
+            {objecoes.map((o) => (
+              <div key={o.pergunta} className="grid md:grid-cols-12 gap-6 py-8">
+                <dt className="md:col-span-4 font-bold text-lg leading-tight">{o.pergunta}</dt>
+                <dd className="md:col-span-8 text-foreground/70 leading-relaxed">
+                  {o.resposta}
+                </dd>
               </div>
             ))}
-          </div>
-          <p className="text-center text-muted-foreground text-sm mt-6 fade-in delay-300">
-            Você será atendido com respeito.
+          </dl>
+        </section>
+
+        {/* 08 — Vagas (escassez ética) -------------------------------------- */}
+        <section
+          id="vagas"
+          className="px-6 md:px-12 py-24 md:py-40 border-t border-foreground/10"
+          style={{ backgroundColor: 'hsl(var(--deep-green))' }}
+        >
+          <p className="text-foreground/40 text-sm tracking-[0.18em] uppercase mb-8">08</p>
+          <h2
+            className="font-bold leading-[1] tracking-[-0.03em] max-w-[18ch] mb-10"
+            style={{ fontSize: 'clamp(2rem, 5.5vw, 4rem)' }}
+          >
+            Não trabalho com volume.
+          </h2>
+          <p className="max-w-xl text-foreground/75 leading-relaxed mb-16">
+            Mantenho um número pequeno de projetos ao mesmo tempo pra conseguir analisar,
+            acompanhar e responder de verdade. Antes de aceitar, conversamos pra entender se
+            o seu negócio está no momento certo. Se não estiver, isso é dito também.
           </p>
-        </div>
-      </section>
+
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-baseline gap-4 max-w-3xl"
+          >
+            <span
+              className="font-bold leading-[0.95] tracking-[-0.03em] border-b-2 border-foreground/30 group-hover:border-primary group-hover:text-primary transition-colors pb-2"
+              style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}
+            >
+              Conversar comigo no WhatsApp
+            </span>
+            <span
+              aria-hidden
+              className="text-primary text-2xl group-hover:translate-x-2 transition-transform"
+            >
+              →
+            </span>
+          </a>
+          <p className="mt-6 text-xs text-foreground/40">
+            Resposta minha, no horário comercial. Sem chatbot, sem formulário de qualificação.
+          </p>
+        </section>
+      </main>
     </div>
   );
 }
