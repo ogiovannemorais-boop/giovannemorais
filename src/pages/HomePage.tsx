@@ -75,27 +75,6 @@ function SectionIndex({ active }: { active: string }) {
   );
 }
 
-function Solucao({ n, titulo, detalhe }: { n: string; titulo: string; detalhe: string }) {
-  return (
-    <details className="group border-b border-foreground/10 py-6">
-      <summary className="flex items-baseline gap-6 cursor-pointer list-none">
-        <span className="text-foreground/40 text-sm tabular-nums">{n}</span>
-        <span className="text-2xl md:text-4xl font-bold tracking-tight flex-1 group-hover:text-primary transition-colors">
-          {titulo}
-        </span>
-        <span
-          aria-hidden
-          className="text-foreground/40 text-sm transition-transform group-open:rotate-45"
-        >
-          +
-        </span>
-      </summary>
-      <p className="pl-[3.25rem] md:pl-[3.5rem] pt-4 max-w-xl text-foreground/70 leading-relaxed">
-        {detalhe}
-      </p>
-    </details>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /* Página                                                              */
