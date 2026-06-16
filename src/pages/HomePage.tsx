@@ -174,8 +174,13 @@ export default function HomePage() {
 
   return (
     <div className="bg-background text-foreground antialiased selection:bg-primary/30">
+      {/* Barra de topo — vagas limitadas */}
+      <div className="bg-[hsl(var(--deep-green))] text-center py-2 px-4 text-xs tracking-[0.12em] uppercase text-foreground/70 border-b border-foreground/10 z-50 relative">
+        Vagas limitadas <span className="mx-2 text-foreground/30">|</span> Restam 2 vagas para este mês
+      </div>
+
       {/* Mini header — só nome + WhatsApp inline */}
-      <header className="absolute top-0 left-0 right-0 z-40 px-6 md:px-12 py-6 flex justify-between items-center">
+      <header className="absolute top-8 left-0 right-0 z-40 px-6 md:px-12 py-6 flex justify-between items-center">
         <a href="#abertura" className="text-sm font-bold tracking-tight">
           Giovanne Morais
         </a>
@@ -201,20 +206,15 @@ export default function HomePage() {
             01 — Estratégia digital
           </p>
           <h1
-            className="font-bold leading-[0.95] tracking-[-0.04em] max-w-[18ch]"
-            style={{ fontSize: 'clamp(2.75rem, 7vw, 5.5rem)' }}
+            className="font-bold leading-[0.95] tracking-[-0.04em] max-w-[22ch]"
+            style={{ fontSize: 'clamp(2.5rem, 6.5vw, 5rem)' }}
           >
-            Anunciar é a parte fácil.
-            <br />
-            O resto é o que define se
-            <br />
-            sobra dinheiro no fim do mês.
+            Mais do que anúncios: uma estratégia digital completa para transformar tráfego em faturamento previsível.
           </h1>
           <p className="mt-10 max-w-xl text-foreground/70 text-lg leading-relaxed">
-            Sou Giovanne. Trabalho com donos de pequenas e médias empresas que já tentaram
-            impulsionar post, contratar gestor barato e copiar concorrente — e descobriram que
-            mídia paga sozinha não resolve. O trabalho aqui é o de fora também: oferta, página,
-            copy, criativo, processo comercial, números.
+            Trabalho com donos de pequenas e médias empresas que já tentaram impulsionar post,
+            contratar gestor barato e copiar concorrente. E nada deu certo. Tenha um método
+            validado que aumentamos o faturamento desde 2022.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row gap-6 sm:items-center">
             <a
