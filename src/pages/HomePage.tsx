@@ -274,14 +274,74 @@ export default function HomePage() {
           >
             No que eu trabalho.
           </h2>
-          <p className="text-foreground/60 max-w-xl mb-12">
-            Oito frentes. Quase sempre não é necessário operar nas oito. O recorte sai do
-            diagnóstico, e o resto fica documentado pra quando fizer sentido entrar.
+          <p className="text-foreground/60 max-w-xl mb-16">
+            Três frentes. O recorte do que entra em cada projeto sai do diagnóstico — e o que
+            sobra fica documentado pra quando fizer sentido.
           </p>
-          <div className="max-w-3xl">
-            {solucoes.map((s) => (
-              <Solucao key={s.n} {...s} />
-            ))}
+
+          <div className="grid md:grid-cols-3 gap-12 md:gap-10 max-w-6xl">
+            {/* Bloco 1 — Mídia Paga */}
+            <div className="border-t border-foreground/10 pt-8">
+              <p className="text-primary text-sm font-bold tabular-nums mb-3">01</p>
+              <h3 className="text-2xl font-bold tracking-tight mb-4">Mídia paga</h3>
+              <p className="text-foreground/70 leading-relaxed mb-6">
+                Gestão de mídia paga com acompanhamento diário de performance. Trabalho nos três
+                contextos onde o resultado depende mais de análise do que de verba: Inside Sales,
+                e-commerce e profissionais que vendem pelo digital.
+              </p>
+              <div className="space-y-3">
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Análise de CRO em páginas e loja
+                </p>
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Leitura do funil de vendas
+                </p>
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Análise dos outros canais que afetam a conversão
+                </p>
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Revisão de copy e oferta
+                </p>
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Análise dos criativos
+                </p>
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Métricas e acompanhamento contínuo
+                </p>
+              </div>
+              <p className="mt-6 text-xs text-foreground/40 leading-relaxed">
+                O que não está incluído: criação de landing pages, produção de criativos e execução
+                de peças. Se precisar disso, eu indico quem faz. O meu trabalho é garantir que o
+                que já existe converte, e que o investimento em mídia vai para onde faz sentido.
+              </p>
+            </div>
+
+            {/* Bloco 2 — Consultoria Estratégica */}
+            <div className="border-t border-foreground/10 pt-8">
+              <p className="text-primary text-sm font-bold tabular-nums mb-3">02</p>
+              <h3 className="text-2xl font-bold tracking-tight mb-4">Consultoria estratégica</h3>
+              <p className="text-foreground/70 leading-relaxed">
+                Para empresas que precisam de clareza antes de escalar. Analiso o que está
+                funcionando, o que está sendo desperdiçado e o que falta antes de qualquer decisão
+                de investimento.
+              </p>
+            </div>
+
+            {/* Bloco 3 — Ferramentas de IA para Vendas */}
+            <div className="border-t border-foreground/10 pt-8">
+              <p className="text-primary text-sm font-bold tabular-nums mb-3">03</p>
+              <h3 className="text-2xl font-bold tracking-tight mb-4">Ferramentas de IA para vendas</h3>
+              <p className="text-foreground/70 leading-relaxed">
+                Implementação de SDR de IA para operações de Inside Sales. Automatiza a prospecção
+                e a qualificação sem tirar o comercial do loop nas conversas que importam.
+              </p>
+            </div>
           </div>
         </section>
 
