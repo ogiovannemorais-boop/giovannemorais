@@ -17,57 +17,6 @@ const sections = [
   { id: 'vagas', label: 'Vagas' },
 ];
 
-const solucoes = [
-  {
-    n: '01',
-    titulo: 'Mídia paga',
-    detalhe:
-      'Meta, Google e TikTok. Quem distribui verba, quem decide pausar criativo e quem responde por CAC. Não é só "subir campanha".',
-  },
-  {
-    n: '02',
-    titulo: 'Oferta',
-    detalhe:
-      'A maior parte dos resultados ruins não é problema de tráfego. É a oferta que não está pronta pra encontrar o público frio.',
-  },
-  {
-    n: '03',
-    titulo: 'Funil',
-    detalhe:
-      'O que acontece entre o clique e o boleto pago. Onde o lead desaparece, onde ele esfria, e o que reconquista.',
-  },
-  {
-    n: '04',
-    titulo: 'Copy',
-    detalhe:
-      'Anúncios, páginas e mensagens. Texto escrito pra quem vai ler com pressa, no celular, no meio de outras vinte abas.',
-  },
-  {
-    n: '05',
-    titulo: 'Criativos',
-    detalhe:
-      'Roteiro, edição, variações. Direção criativa pensada pra performance, não pra portfólio de agência.',
-  },
-  {
-    n: '06',
-    titulo: 'Landing pages',
-    detalhe:
-      'Reescrita de página, hierarquia visual, prova social, fricção de checkout. A página é parte do anúncio.',
-  },
-  {
-    n: '07',
-    titulo: 'Métricas',
-    detalhe:
-      'Painel honesto. Saber o que olhar segunda de manhã sem precisar abrir cinco plataformas.',
-  },
-  {
-    n: '08',
-    titulo: 'Acompanhamento',
-    detalhe:
-      'Reunião curta, decisão escrita, próximo passo claro. Sem call de uma hora pra alinhar coisa que cabia em mensagem.',
-  },
-];
-
 const objecoes = [
   {
     pergunta: 'Nunca anunciei.',
