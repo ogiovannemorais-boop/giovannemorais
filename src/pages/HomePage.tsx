@@ -17,57 +17,6 @@ const sections = [
   { id: 'vagas', label: 'Vagas' },
 ];
 
-const solucoes = [
-  {
-    n: '01',
-    titulo: 'Mídia paga',
-    detalhe:
-      'Meta, Google e TikTok. Quem distribui verba, quem decide pausar criativo e quem responde por CAC. Não é só "subir campanha".',
-  },
-  {
-    n: '02',
-    titulo: 'Oferta',
-    detalhe:
-      'A maior parte dos resultados ruins não é problema de tráfego. É a oferta que não está pronta pra encontrar o público frio.',
-  },
-  {
-    n: '03',
-    titulo: 'Funil',
-    detalhe:
-      'O que acontece entre o clique e o boleto pago. Onde o lead desaparece, onde ele esfria, e o que reconquista.',
-  },
-  {
-    n: '04',
-    titulo: 'Copy',
-    detalhe:
-      'Anúncios, páginas e mensagens. Texto escrito pra quem vai ler com pressa, no celular, no meio de outras vinte abas.',
-  },
-  {
-    n: '05',
-    titulo: 'Criativos',
-    detalhe:
-      'Roteiro, edição, variações. Direção criativa pensada pra performance, não pra portfólio de agência.',
-  },
-  {
-    n: '06',
-    titulo: 'Landing pages',
-    detalhe:
-      'Reescrita de página, hierarquia visual, prova social, fricção de checkout. A página é parte do anúncio.',
-  },
-  {
-    n: '07',
-    titulo: 'Métricas',
-    detalhe:
-      'Painel honesto. Saber o que olhar segunda de manhã sem precisar abrir cinco plataformas.',
-  },
-  {
-    n: '08',
-    titulo: 'Acompanhamento',
-    detalhe:
-      'Reunião curta, decisão escrita, próximo passo claro. Sem call de uma hora pra alinhar coisa que cabia em mensagem.',
-  },
-];
-
 const objecoes = [
   {
     pergunta: 'Nunca anunciei.',
@@ -126,27 +75,6 @@ function SectionIndex({ active }: { active: string }) {
   );
 }
 
-function Solucao({ n, titulo, detalhe }: { n: string; titulo: string; detalhe: string }) {
-  return (
-    <details className="group border-b border-foreground/10 py-6">
-      <summary className="flex items-baseline gap-6 cursor-pointer list-none">
-        <span className="text-foreground/40 text-sm tabular-nums">{n}</span>
-        <span className="text-2xl md:text-4xl font-bold tracking-tight flex-1 group-hover:text-primary transition-colors">
-          {titulo}
-        </span>
-        <span
-          aria-hidden
-          className="text-foreground/40 text-sm transition-transform group-open:rotate-45"
-        >
-          +
-        </span>
-      </summary>
-      <p className="pl-[3.25rem] md:pl-[3.5rem] pt-4 max-w-xl text-foreground/70 leading-relaxed">
-        {detalhe}
-      </p>
-    </details>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /* Página                                                              */
@@ -174,8 +102,13 @@ export default function HomePage() {
 
   return (
     <div className="bg-background text-foreground antialiased selection:bg-primary/30">
+      {/* Barra de topo — vagas limitadas */}
+      <div className="bg-[hsl(var(--deep-green))] text-center py-2 px-4 text-xs tracking-[0.12em] uppercase text-foreground/70 border-b border-foreground/10 z-50 relative">
+        Vagas limitadas <span className="mx-2 text-foreground/30">|</span> Restam 2 vagas para este mês
+      </div>
+
       {/* Mini header — só nome + WhatsApp inline */}
-      <header className="absolute top-0 left-0 right-0 z-40 px-6 md:px-12 py-6 flex justify-between items-center">
+      <header className="absolute top-8 left-0 right-0 z-40 px-6 md:px-12 py-6 flex justify-between items-center">
         <a href="#abertura" className="text-sm font-bold tracking-tight">
           Giovanne Morais
         </a>
@@ -201,20 +134,15 @@ export default function HomePage() {
             01 — Estratégia digital
           </p>
           <h1
-            className="font-bold leading-[0.95] tracking-[-0.04em] max-w-[18ch]"
-            style={{ fontSize: 'clamp(2.75rem, 7vw, 5.5rem)' }}
+            className="font-bold leading-[0.95] tracking-[-0.04em] max-w-[22ch]"
+            style={{ fontSize: 'clamp(2.5rem, 6.5vw, 5rem)' }}
           >
-            Anunciar é a parte fácil.
-            <br />
-            O resto é o que define se
-            <br />
-            sobra dinheiro no fim do mês.
+            Mais do que anúncios: uma estratégia digital completa para transformar tráfego em faturamento previsível.
           </h1>
           <p className="mt-10 max-w-xl text-foreground/70 text-lg leading-relaxed">
-            Sou Giovanne. Trabalho com donos de pequenas e médias empresas que já tentaram
-            impulsionar post, contratar gestor barato e copiar concorrente — e descobriram que
-            mídia paga sozinha não resolve. O trabalho aqui é o de fora também: oferta, página,
-            copy, criativo, processo comercial, números.
+            Trabalho com donos de pequenas e médias empresas que já tentaram impulsionar post,
+            contratar gestor barato e copiar concorrente. E nada deu certo. Tenha um método
+            validado que aumentamos o faturamento desde 2022.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row gap-6 sm:items-center">
             <a
@@ -274,14 +202,74 @@ export default function HomePage() {
           >
             No que eu trabalho.
           </h2>
-          <p className="text-foreground/60 max-w-xl mb-12">
-            Oito frentes. Quase sempre não é necessário operar nas oito. O recorte sai do
-            diagnóstico, e o resto fica documentado pra quando fizer sentido entrar.
+          <p className="text-foreground/60 max-w-xl mb-16">
+            Três frentes. O recorte do que entra em cada projeto sai do diagnóstico — e o que
+            sobra fica documentado pra quando fizer sentido.
           </p>
-          <div className="max-w-3xl">
-            {solucoes.map((s) => (
-              <Solucao key={s.n} {...s} />
-            ))}
+
+          <div className="grid md:grid-cols-3 gap-12 md:gap-10 max-w-6xl">
+            {/* Bloco 1 — Mídia Paga */}
+            <div className="border-t border-foreground/10 pt-8">
+              <p className="text-primary text-sm font-bold tabular-nums mb-3">01</p>
+              <h3 className="text-2xl font-bold tracking-tight mb-4">Mídia paga</h3>
+              <p className="text-foreground/70 leading-relaxed mb-6">
+                Gestão de mídia paga com acompanhamento diário de performance. Trabalho nos três
+                contextos onde o resultado depende mais de análise do que de verba: Inside Sales,
+                e-commerce e profissionais que vendem pelo digital.
+              </p>
+              <div className="space-y-3">
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Análise de CRO em páginas e loja
+                </p>
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Leitura do funil de vendas
+                </p>
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Análise dos outros canais que afetam a conversão
+                </p>
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Revisão de copy e oferta
+                </p>
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Análise dos criativos
+                </p>
+                <p className="text-sm text-foreground/60">
+                  <span className="text-primary mr-2">+</span>
+                  Métricas e acompanhamento contínuo
+                </p>
+              </div>
+              <p className="mt-6 text-xs text-foreground/40 leading-relaxed">
+                O que não está incluído: criação de landing pages, produção de criativos e execução
+                de peças. Se precisar disso, eu indico quem faz. O meu trabalho é garantir que o
+                que já existe converte, e que o investimento em mídia vai para onde faz sentido.
+              </p>
+            </div>
+
+            {/* Bloco 2 — Consultoria Estratégica */}
+            <div className="border-t border-foreground/10 pt-8">
+              <p className="text-primary text-sm font-bold tabular-nums mb-3">02</p>
+              <h3 className="text-2xl font-bold tracking-tight mb-4">Consultoria estratégica</h3>
+              <p className="text-foreground/70 leading-relaxed">
+                Para empresas que precisam de clareza antes de escalar. Analiso o que está
+                funcionando, o que está sendo desperdiçado e o que falta antes de qualquer decisão
+                de investimento.
+              </p>
+            </div>
+
+            {/* Bloco 3 — Ferramentas de IA para Vendas */}
+            <div className="border-t border-foreground/10 pt-8">
+              <p className="text-primary text-sm font-bold tabular-nums mb-3">03</p>
+              <h3 className="text-2xl font-bold tracking-tight mb-4">Ferramentas de IA para vendas</h3>
+              <p className="text-foreground/70 leading-relaxed">
+                Implementação de SDR de IA para operações de Inside Sales. Automatiza a prospecção
+                e a qualificação sem tirar o comercial do loop nas conversas que importam.
+              </p>
+            </div>
           </div>
         </section>
 
