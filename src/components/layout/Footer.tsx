@@ -31,6 +31,9 @@ export function Footer() {
           <a href="/termos" className="hover:text-foreground transition-colors">
             Termos
           </a>
+          <a href="/gestor-trafego-franca" className="hover:text-foreground transition-colors">
+            Gestor de tráfego em Franca
+          </a>
         </p>
       </div>
       <p className="mt-6 text-xs text-foreground/30">
