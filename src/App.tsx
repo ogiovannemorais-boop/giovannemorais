@@ -10,9 +10,10 @@ import PrivacyPage from "@/pages/PrivacyPage";
 import TermsPage from "@/pages/TermsPage";
 import NotFound from "@/pages/NotFound";
 
-import GestorTrafegoPagoFranca from "./pages/GestorTrafegoPagoFranca";
+import GestorTrafegoFranca from "./pages/GestorTrafegoFranca";
 
 import Layout from "@/components/layout/Layout";
+import { Navigate } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const routerBasename = (() => {
     "links",
     "politica-privacidade",
     "termos",
+    "gestor-trafego-franca",
     "gestor-trafego-pago-franca",
   ]);
 
@@ -35,8 +37,13 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename={routerBasename}>
         <Routes>
-          {/* Página fora do layout */}
+          {/* Página fora do layout (SEO local — sem header/footer global) */}
           <Route path="/links" element={<LinksPage />} />
+          <Route path="/gestor-trafego-franca" element={<GestorTrafegoFranca />} />
+          <Route
+            path="/gestor-trafego-pago-franca"
+            element={<Navigate to="/gestor-trafego-franca" replace />}
+          />
 
           {/* Layout principal */}
           <Route element={<Layout />}>
@@ -45,9 +52,6 @@ const App = () => (
             {/* Legais */}
             <Route path="/politica-privacidade" element={<PrivacyPage />} />
             <Route path="/termos" element={<TermsPage />} />
-
-            {/* Páginas de tráfego local (SEO) */}
-            <Route path="/gestor-trafego-pago-franca" element={<GestorTrafegoPagoFranca />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
