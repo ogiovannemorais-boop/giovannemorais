@@ -9,18 +9,18 @@ export default function CaptacaoB2B() {
         pageTitle: 'Gestão de Tráfego Pago para Empresas | Giovanne Morais',
         pageDescription:
           'Gestor dedicado em tráfego pago para empresas que precisam de leads qualificados. Tráfego, SDR de IA, automação, CRM e Google Meu Negócio.',
-        topbar:
-          'Vagas limitadas: 3 vagas para consultoria estratégica gratuita neste mês.',
+        topbar: '⚡ Vagas limitadas para este mês',
         badge: 'Gestão de tráfego pago para empresas',
         h1: (
           <>
-            Seu time comercial está ocioso? Transforme seu investimento em tráfego pago em um
-            fluxo previsível de <span className="text-[#04BFBF]">leads qualificados</span>.
+            Seu time comercial<br />
+            está <span className="text-[#04BFBF]">ocioso?</span>
           </>
         ),
-        subheadline:
-          'Chega de agências tradicionais que focam em curtidas e sobem campanhas sem estratégia. Sou o gestor dedicado que sua empresa precisa para escalar vendas, conectando anúncios de alta performance a um ecossistema completo de automação e CRM.',
-        ctaPrimario: 'Quero escalar meus leads agora',
+        subheadline: 'Fluxo previsível de leads qualificados',
+        descricao: 'Gestor dedicado. Estratégia comprovada. Resultados em 90 dias.',
+        ctaPrimario: 'Quero escalar meus leads',
+        ctaMicro: 'Conversa no WhatsApp. Sem compromisso.',
         ctaFinal: 'Agendar minha consultoria estratégica gratuita',
         agitacaoH2:
           'Anunciar sem estratégia é a forma mais rápida de queimar o orçamento da sua empresa.',
