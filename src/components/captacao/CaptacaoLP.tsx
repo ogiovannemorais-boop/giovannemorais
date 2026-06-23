@@ -1,6 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import { LeadForm } from './LeadForm';
+import { OrbitingHero } from './OrbitingHero';
+import { TrustBadges } from './TrustBadges';
+import { Testimonials } from './Testimonials';
+import { ObjectionsFAQ } from './ObjectionsFAQ';
 import { specialistInfo } from '@/data/links';
+
 
 export type CaptacaoVariant = 'b2b' | 'ecommerce';
 
