@@ -1,5 +1,5 @@
 import giovannePhoto from '@/assets/giovanne-transparent.png';
-import metaLogo from '@/assets/brand/meta.png.asset.json';
+import metaLogo from '@/assets/brand/meta-icon.png.asset.json';
 import googleAdsLogo from '@/assets/brand/google-ads.svg.asset.json';
 import tiktokLogo from '@/assets/brand/tiktok.png.asset.json';
 import analyticsLogo from '@/assets/brand/google-analytics.png.asset.json';
@@ -27,58 +27,46 @@ const MakeMark = (
 
 const logos: FloatingLogo[] = [
   {
-    label: 'Make',
-    pos: 'top-[-12px] right-[14%]',
+    label: 'Google Analytics',
+    pos: 'top-[2%] left-1/2 -translate-x-1/2',
     delay: 0,
-    node: MakeMark,
+    node: <img src={analyticsLogo.url} alt="" className="w-full h-full object-contain" />,
   },
   {
     label: 'Google Ads',
-    pos: 'top-[22%] left-[-18px]',
+    pos: 'top-[18%] left-[-18px]',
     delay: 0.6,
     node: <img src={googleAdsLogo.url} alt="" className="w-full h-full object-contain" />,
   },
   {
     label: 'Meta',
-    pos: 'top-[22%] right-[-18px]',
+    pos: 'top-[18%] right-[-18px]',
     delay: 1.2,
-    node: (
-      <img
-        src={metaLogo.url}
-        alt=""
-        className="w-full h-full object-contain"
-        style={{ objectPosition: 'left center', transform: 'scale(2.2)', transformOrigin: 'left center' }}
-      />
-    ),
+    node: <img src={metaLogo.url} alt="" className="w-full h-full object-contain" />,
   },
   {
     label: 'ChatGPT',
-    pos: 'bottom-[18%] left-[-10px]',
+    pos: 'top-[48%] left-[-22px]',
     delay: 1.8,
     node: ChatGPTMark,
   },
   {
     label: 'TikTok',
-    pos: 'bottom-[18%] right-[-10px]',
+    pos: 'top-[48%] right-[-22px]',
     delay: 2.4,
     node: <img src={tiktokLogo.url} alt="" className="w-full h-full object-contain" />,
-  },
-  {
-    label: 'Google Analytics',
-    pos: 'bottom-[-12px] left-1/2 -translate-x-1/2',
-    delay: 3,
-    node: <img src={analyticsLogo.url} alt="" className="w-full h-full object-contain" />,
   },
 ];
 
 export function OrbitingHero() {
   return (
-    <div className="relative w-full max-w-[420px] mx-auto aspect-[4/5]">
+    <div className="relative w-full max-w-[520px] mx-auto aspect-[4/5] self-end">
       {/* Soft glow behind photo, no box */}
       <div
         className="absolute inset-x-[8%] inset-y-[12%] rounded-full bg-[#04BFBF]/15 blur-3xl"
         aria-hidden
       />
+
 
       {/* Transparent photo */}
       <img
