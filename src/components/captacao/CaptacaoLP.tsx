@@ -78,9 +78,10 @@ export function CaptacaoLP({ variant, copy }: CaptacaoLPProps) {
       </div>
 
       {/* HERO */}
-      <section className="px-6 md:px-12 pt-10 md:pt-14 pb-16 md:pb-20 max-w-[1200px] mx-auto">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-10 items-center">
-          <div className="order-2 md:order-1">
+      <section className="px-6 md:px-12 pt-10 md:pt-14 pb-16 md:pb-0 max-w-[1200px] mx-auto overflow-hidden">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-10 items-end">
+          <div className="order-2 md:order-1 md:pb-16">
+
             <p className="text-[11px] tracking-[0.18em] uppercase text-[#04BFBF] mb-5">
               {copy.badge}
             </p>
