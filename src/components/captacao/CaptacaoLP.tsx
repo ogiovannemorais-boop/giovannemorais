@@ -6,7 +6,7 @@ export type CaptacaoVariant = 'b2b' | 'ecommerce';
 
 interface BlocoCopy {
   topbar: string;
-  badge: string;
+  badge: React.ReactNode;
   h1: React.ReactNode;
   subheadline: string;
   ctaPrimario: string;

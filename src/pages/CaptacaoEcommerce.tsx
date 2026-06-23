@@ -11,7 +11,12 @@ export default function CaptacaoEcommerce() {
           'Especialista em e-commerce. Escale vendas com ROAS positivo. Método validado para vender todos os dias no site próprio. Análise gratuita.',
         topbar:
           'Vagas limitadas: 3 vagas para análise gratuita do seu e-commerce neste mês.',
-        badge: <>Performance exclusiva para <span className="whitespace-nowrap">e-commerce</span></> as unknown as string,
+        badge: (
+          <>
+            Performance exclusiva para{' '}
+            <span className="whitespace-nowrap">e-commerce</span>
+          </>
+        ),
         h1: (
           <>
             Sua loja online tem visitas, mas poucas vendas? Escale seu faturamento diário com
