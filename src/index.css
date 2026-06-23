@@ -378,3 +378,19 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit-counter {
+  to { transform: rotate(-360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[orbit-spin_24s_linear_infinite\],
+  .animate-\[orbit-counter_24s_linear_infinite\] {
+    animation: none !important;
+  }
+}
+
