@@ -78,20 +78,25 @@ export function CaptacaoLP({ variant, copy }: CaptacaoLPProps) {
       </div>
 
       {/* HERO */}
-      <section className="px-6 md:px-12 pt-12 md:pt-20 pb-20 md:pb-28 max-w-[1200px] mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-10 items-center">
+      <section className="px-6 md:px-12 pt-10 md:pt-14 pb-16 md:pb-20 max-w-[1200px] mx-auto">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-10 items-center">
           <div className="order-2 md:order-1">
-            <p className="text-[11px] tracking-[0.18em] uppercase text-[#04BFBF] mb-6">
+            <p className="text-[11px] tracking-[0.18em] uppercase text-[#04BFBF] mb-5">
               {copy.badge}
             </p>
-            <h1 className="text-[clamp(2rem,5vw,3.25rem)] leading-[1.08] font-bold mb-6 text-balance">
+            <h1 className="uppercase text-[clamp(2.25rem,5.5vw,3.5rem)] leading-[1.02] font-black tracking-tight mb-5 text-balance">
               {copy.h1}
             </h1>
-            <p className="text-[1.0625rem] leading-[1.65] text-[#F2F2F2]/75 mb-8 max-w-[560px]">
+            <p className="text-[1.125rem] md:text-[1.25rem] font-semibold leading-snug text-[#04BFBF] mb-3 max-w-[520px]">
               {copy.subheadline}
             </p>
+            {copy.descricao && (
+              <p className="text-sm text-[#F2F2F2]/60 mb-6 max-w-[520px]">
+                {copy.descricao}
+              </p>
+            )}
 
-            <div className="mb-8">
+            <div className="mb-6">
               <TrustBadges />
             </div>
 
@@ -100,10 +105,10 @@ export function CaptacaoLP({ variant, copy }: CaptacaoLPProps) {
               className="inline-flex items-center gap-2 bg-[#04BFBF] text-[#00010D] font-semibold px-6 py-4 rounded-md hover:bg-[#04BFBF]/90 transition-colors"
             >
               {copy.ctaPrimario}
-              <span aria-hidden>↓</span>
+              <span aria-hidden>→</span>
             </a>
             <p className="text-xs text-[#F2F2F2]/40 mt-3">
-              Conversa direta no WhatsApp. Sem compromisso.
+              {copy.ctaMicro ?? 'Conversa direta no WhatsApp. Sem compromisso.'}
             </p>
           </div>
 
