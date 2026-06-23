@@ -9,8 +9,7 @@ export default function CaptacaoEcommerce() {
         pageTitle: 'Performance para E-commerce | Giovanne Morais',
         pageDescription:
           'Especialista em e-commerce. Escale vendas com ROAS positivo. Método validado para vender todos os dias no site próprio. Análise gratuita.',
-        topbar:
-          'Vagas limitadas: 3 vagas para análise gratuita do seu e-commerce neste mês.',
+        topbar: '⚡ Vagas limitadas para este mês',
         badge: (
           <>
             Performance exclusiva para{' '}
@@ -19,14 +18,14 @@ export default function CaptacaoEcommerce() {
         ),
         h1: (
           <>
-            Sua loja online tem visitas, mas poucas vendas? Escale seu faturamento diário com
-            tráfego pago focado 100% em{' '}
-            <span className="text-[#04BFBF]">conversão</span>.
+            Sua loja tem visitas,<br />
+            mas <span className="text-[#04BFBF]">poucas vendas?</span>
           </>
         ),
-        subheadline:
-          'Pare de queimar dinheiro com agências que só trazem curtidas. Sou o gestor especialista em performance que o seu e-commerce precisa. Aplico um método validado para gerar vendas todos os dias no seu site próprio, garantindo um Retorno Sobre o Investimento (ROAS) positivo e previsível.',
-        ctaPrimario: 'Quero escalar as vendas da minha loja',
+        subheadline: 'Escale com tráfego 100% em conversão',
+        descricao: 'Método validado. ROAS positivo. Vendas diárias.',
+        ctaPrimario: 'Quero escalar as vendas',
+        ctaMicro: 'Análise gratuita no WhatsApp.',
         ctaFinal: 'Agendar análise gratuita do meu e-commerce',
         agitacaoH2: 'Tráfego sem estratégia é o maior ralo de dinheiro do seu e-commerce.',
         agitacaoProblema:
