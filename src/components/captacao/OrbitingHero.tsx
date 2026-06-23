@@ -87,13 +87,13 @@ export function OrbitingHero() {
           return (
             <div
               key={icon.label}
-              className="absolute top-1/2 left-1/2 w-12 h-12 sm:w-14 sm:h-14 -ml-6 -mt-6 sm:-ml-7 sm:-mt-7"
+              className="absolute top-1/2 left-1/2 w-0 h-0"
               style={{
-                transform: `rotate(${angle}deg) translateY(calc(-50% - 8rem)) rotate(-${angle}deg)`,
+                transform: `rotate(${angle}deg) translateY(calc(-50% - 9rem))`,
               }}
             >
               <div
-                className="w-full h-full rounded-full flex items-center justify-center shadow-lg ring-1 ring-white/10 animate-[orbit-counter_24s_linear_infinite]"
+                className="w-12 h-12 sm:w-14 sm:h-14 -ml-6 -mt-6 sm:-ml-7 sm:-mt-7 rounded-full flex items-center justify-center shadow-xl ring-1 ring-white/10 animate-[orbit-counter_24s_linear_infinite]"
                 style={{ backgroundColor: icon.bg }}
                 title={icon.label}
               >
@@ -103,6 +103,7 @@ export function OrbitingHero() {
           );
         })}
       </div>
+
     </div>
   );
 }
