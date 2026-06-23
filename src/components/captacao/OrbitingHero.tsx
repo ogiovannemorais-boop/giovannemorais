@@ -5,37 +5,37 @@ const logos = [
     label: 'Make',
     pos: 'top-[8%] left-1/2 -translate-x-1/2',
     delay: 0,
-    url: 'https://cdn.worldvectorlogo.com/logos/make-2.svg',
+    url: 'https://cdn.simpleicons.org/make/6D00CC',
   },
   {
     label: 'Google Ads',
     pos: 'top-[22%] left-[-22px]',
     delay: 0.6,
-    url: 'https://cdn.worldvectorlogo.com/logos/google-ads-5.svg',
+    url: 'https://cdn.simpleicons.org/googleads/4285F4',
   },
   {
     label: 'Meta',
     pos: 'top-[22%] right-[-22px]',
     delay: 1.2,
-    url: 'https://cdn.worldvectorlogo.com/logos/meta-1.svg',
+    url: 'https://cdn.simpleicons.org/meta/0668E1',
   },
   {
     label: 'ChatGPT',
     pos: 'top-[52%] left-[-18px]',
     delay: 1.8,
-    url: 'https://cdn.worldvectorlogo.com/logos/openai-2.svg',
+    url: 'https://cdn.simpleicons.org/openai/10A37F',
   },
   {
     label: 'TikTok',
     pos: 'top-[52%] right-[-18px]',
     delay: 2.4,
-    url: 'https://cdn.worldvectorlogo.com/logos/tiktok-2.svg',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg',
   },
   {
     label: 'Google Analytics',
     pos: 'bottom-[8%] left-1/2 -translate-x-1/2',
     delay: 3.0,
-    url: 'https://cdn.worldvectorlogo.com/logos/google-analytics-1.svg',
+    url: 'https://cdn.simpleicons.org/googleanalytics/E37400',
   },
 ];
 
