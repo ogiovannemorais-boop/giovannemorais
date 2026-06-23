@@ -1,5 +1,5 @@
 import giovannePhoto from '@/assets/giovanne-transparent.png';
-import metaLogo from '@/assets/brand/meta.png.asset.json';
+import metaLogo from '@/assets/brand/meta-icon.png.asset.json';
 import googleAdsLogo from '@/assets/brand/google-ads.svg.asset.json';
 import tiktokLogo from '@/assets/brand/tiktok.png.asset.json';
 import analyticsLogo from '@/assets/brand/google-analytics.png.asset.json';
