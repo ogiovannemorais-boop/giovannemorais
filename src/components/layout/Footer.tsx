@@ -34,6 +34,12 @@ export function Footer() {
           <a href="/gestor-trafego-franca" className="hover:text-foreground transition-colors">
             Gestor de tráfego em Franca
           </a>
+          <a href="/empresas" className="hover:text-foreground transition-colors">
+            Para empresas
+          </a>
+          <a href="/ecommerce" className="hover:text-foreground transition-colors">
+            Para e-commerce
+          </a>
         </p>
       </div>
       <p className="mt-6 text-xs text-foreground/30">

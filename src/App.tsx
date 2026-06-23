@@ -11,6 +11,8 @@ import TermsPage from "@/pages/TermsPage";
 import NotFound from "@/pages/NotFound";
 
 import GestorTrafegoFranca from "./pages/GestorTrafegoFranca";
+import CaptacaoB2B from "./pages/CaptacaoB2B";
+import CaptacaoEcommerce from "./pages/CaptacaoEcommerce";
 
 import Layout from "@/components/layout/Layout";
 import { Navigate } from "react-router-dom";
@@ -24,6 +26,8 @@ const routerBasename = (() => {
     "termos",
     "gestor-trafego-franca",
     "gestor-trafego-pago-franca",
+    "empresas",
+    "ecommerce",
   ]);
 
   const firstSegment = window.location.pathname.split("/").filter(Boolean)[0] ?? "";
@@ -44,6 +48,8 @@ const App = () => (
             path="/gestor-trafego-pago-franca"
             element={<Navigate to="/gestor-trafego-franca" replace />}
           />
+          <Route path="/empresas" element={<CaptacaoB2B />} />
+          <Route path="/ecommerce" element={<CaptacaoEcommerce />} />
 
           {/* Layout principal */}
           <Route element={<Layout />}>
