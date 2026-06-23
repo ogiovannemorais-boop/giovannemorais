@@ -387,10 +387,19 @@
   to { transform: rotate(-360deg); }
 }
 
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-\[orbit-spin_24s_linear_infinite\],
   .animate-\[orbit-counter_24s_linear_infinite\] {
     animation: none !important;
   }
+  [style*="float-y"] {
+    animation: none !important;
+  }
 }
+
 
