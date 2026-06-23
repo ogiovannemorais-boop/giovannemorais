@@ -177,7 +177,14 @@ export function CaptacaoLP({ variant, copy }: CaptacaoLPProps) {
         </div>
       </section>
 
+      {/* DEPOIMENTOS / CASES REAIS */}
+      <Testimonials />
+
+      {/* OBJEÇÕES / FAQ */}
+      <ObjectionsFAQ />
+
       {/* CTA FINAL + FORM */}
+
       <section id="form" className="bg-[#212226] scroll-mt-8">
         <div className="px-6 md:px-12 py-20 md:py-28 max-w-[720px] mx-auto">
           <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] leading-tight font-bold mb-6">
