@@ -13,7 +13,9 @@ interface BlocoCopy {
   topbar: string;
   badge: React.ReactNode;
   h1: React.ReactNode;
-  subheadline: string;
+  subheadline: React.ReactNode;
+  descricao?: string;
+  ctaMicro?: string;
   ctaPrimario: string;
   ctaFinal: string;
   agitacaoH2: string;
