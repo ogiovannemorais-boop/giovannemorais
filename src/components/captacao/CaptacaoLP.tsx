@@ -76,27 +76,41 @@ export function CaptacaoLP({ variant, copy }: CaptacaoLPProps) {
       </div>
 
       {/* HERO */}
-      <section className="px-6 md:px-12 pt-16 md:pt-24 pb-20 md:pb-28 max-w-[720px] mx-auto">
-        <p className="text-[11px] tracking-[0.18em] uppercase text-[#04BFBF] mb-6">
-          {copy.badge}
-        </p>
-        <h1 className="text-[clamp(2.25rem,6vw,4rem)] leading-[1.05] font-bold mb-7 text-balance">
-          {copy.h1}
-        </h1>
-        <p className="text-[1.0625rem] leading-[1.65] text-[#F2F2F2]/75 mb-10 max-w-[620px]">
-          {copy.subheadline}
-        </p>
-        <a
-          href="#form"
-          className="inline-flex items-center gap-2 bg-[#04BFBF] text-[#00010D] font-semibold px-6 py-4 rounded-md hover:bg-[#04BFBF]/90 transition-colors"
-        >
-          {copy.ctaPrimario}
-          <span aria-hidden>↓</span>
-        </a>
-        <p className="text-xs text-[#F2F2F2]/40 mt-3">
-          Conversa direta no WhatsApp. Sem compromisso.
-        </p>
+      <section className="px-6 md:px-12 pt-12 md:pt-20 pb-20 md:pb-28 max-w-[1200px] mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-10 items-center">
+          <div className="order-2 md:order-1">
+            <p className="text-[11px] tracking-[0.18em] uppercase text-[#04BFBF] mb-6">
+              {copy.badge}
+            </p>
+            <h1 className="text-[clamp(2rem,5vw,3.25rem)] leading-[1.08] font-bold mb-6 text-balance">
+              {copy.h1}
+            </h1>
+            <p className="text-[1.0625rem] leading-[1.65] text-[#F2F2F2]/75 mb-8 max-w-[560px]">
+              {copy.subheadline}
+            </p>
+
+            <div className="mb-8">
+              <TrustBadges />
+            </div>
+
+            <a
+              href="#form"
+              className="inline-flex items-center gap-2 bg-[#04BFBF] text-[#00010D] font-semibold px-6 py-4 rounded-md hover:bg-[#04BFBF]/90 transition-colors"
+            >
+              {copy.ctaPrimario}
+              <span aria-hidden>↓</span>
+            </a>
+            <p className="text-xs text-[#F2F2F2]/40 mt-3">
+              Conversa direta no WhatsApp. Sem compromisso.
+            </p>
+          </div>
+
+          <div className="order-1 md:order-2 flex justify-center">
+            <OrbitingHero />
+          </div>
+        </div>
       </section>
+
 
       {/* AGITAÇÃO */}
       <section className="bg-[#212226]">
