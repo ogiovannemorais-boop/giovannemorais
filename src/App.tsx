@@ -30,6 +30,8 @@ const routerBasename = (() => {
     "gestor-trafego-pago-franca",
     "empresas",
     "ecommerce",
+    "destino",
+    "home",
   ]);
 
   const firstSegment = window.location.pathname.split("/").filter(Boolean)[0] ?? "";
