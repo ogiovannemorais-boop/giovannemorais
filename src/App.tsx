@@ -54,6 +54,8 @@ const App = () => (
           />
           <Route path="/empresas" element={<CaptacaoB2B />} />
           <Route path="/ecommerce" element={<CaptacaoEcommerce />} />
+          <Route path="/destino" element={<Destino />} />
+          <Route path="/home" element={<HomeV2 />} />
 
           {/* Layout principal */}
           <Route element={<Layout />}>
