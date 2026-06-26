@@ -1,38 +1,44 @@
 import { CaptacaoLP } from '@/components/captacao/CaptacaoLP';
 
-export default function Destino() {
+interface DestinoProps {
+  path?: string;
+}
+
+export default function Destino({ path = '/' }: DestinoProps) {
   return (
     <CaptacaoLP
       variant="b2b"
       copy={{
-        path: '/destino',
-        pageTitle: 'Gestão de Tráfego Pago com Foco em ROI | Giovanne Morais',
+        path,
+        pageTitle: 'Gestão de Tráfego Pago com Foco em Faturamento | Giovanne Morais',
         pageDescription:
-          'Gestão especializada de tráfego pago para e-commerces, empresas e comércios. Foco 100% em ROI, leads qualificados e vendas reais. Não em métricas de vaidade.',
-        topbar: '⚡ Diagnóstico gratuito: vagas limitadas para este mês',
-        badge: 'Performance & ROI em tráfego pago',
+          'Aumente o faturamento do seu negócio com gestão especializada de tráfego pago. Método, conhecimento e estratégia no digital para gerar vendas reais, não métricas de vaidade.',
+        topbar: '⚡ Vagas limitadas para novos parceiros este mês',
+        badge: 'Performance & faturamento no digital',
         h1: (
           <>
-            Seu tráfego pago não está retornando o que{' '}
-            <span className="text-[#04BFBF]">deveria</span>?
+            Poucas vendas, tráfego desqualificado ou baixo volume de pessoas{' '}
+            <span className="text-[#04BFBF]">interessadas</span>?
           </>
         ),
-        subheadline: 'Você está pagando por cliques, mas recebendo apenas curiosos.',
+        subheadline:
+          'Nosso foco é aumentar o seu faturamento com método, conhecimento e estratégia no digital.',
         descricao:
-          'Trabalho com gestão especializada de tráfego pago para e-commerces, empresas e comércios que precisam de leads qualificados e vendas reais. Meu foco é 100% em ROI, não em métricas de vaidade.',
-        ctaPrimario: 'Fale agora com o especialista',
-        ctaMicro: '🔒 Diagnóstico gratuito de suas campanhas atuais.',
-        ctaFinal: 'Fale agora com o especialista',
+          'Trabalho com gestão especializada de tráfego pago para e-commerces, empresas e comércios que precisam de vendas reais e crescimento previsível. Meu foco é faturamento, não métricas de vaidade.',
+        ctaPrimario: 'Quero conversar com o especialista',
+        ctaMicro:
+          '🔒 Conversa direta para entender seu cenário, suas dores e desejos. Sem compromisso.',
+        ctaFinal: 'Quero conversar com o especialista',
         agitacaoH2:
           'Anunciar sem estratégia é a forma mais rápida de queimar o orçamento da sua empresa.',
         agitacaoProblema:
-          'Você já contratou agências que prometeram o mundo, mas entregaram apenas relatórios cheios de métricas de vaidade: cliques, impressões, alcance, tudo vazio. Seu tráfego continua gerando leads desqualificados que não convertem, ou pior, o telefone simplesmente não toca e as vendas não saem do lugar.',
+          'Você já contratou agências que prometeram o mundo, mas entregaram apenas relatórios cheios de métricas de vaidade: cliques, impressões, alcance, tudo vazio. Seu tráfego continua gerando contatos desqualificados que não convertem, ou pior, o telefone simplesmente não toca e as vendas não saem do lugar.',
         agitacaoAgitacao: (
           <>
             Enquanto isso, seu concorrente está dominando o mercado. O problema não é o seu
             produto ou o seu time de vendas: é a falta de uma estratégia digital focada
             exclusivamente em{' '}
-            <strong className="text-[#F2F2F2]">performance e faturamento real</strong>.
+            <strong className="text-[#F2F2F2]">faturamento real e crescimento previsível</strong>.
           </>
         ),
         solucaoH2:
@@ -42,8 +48,8 @@ export default function Destino() {
             Meu nome é Giovanne Morais. Diferente das agências tradicionais que tratam sua
             empresa como apenas mais um número, meu foco é{' '}
             <strong className="text-[#F2F2F2]">qualidade e não quantidade</strong>. Atuo como
-            um gestor dedicado, implementando um método validado para atrair clientes que
-            realmente querem comprar de você.
+            um gestor dedicado, aplicando método, conhecimento e estratégia para aumentar o
+            faturamento do seu negócio no digital.
           </>
         ),
         solucaoH3: 'O ecossistema de vendas previsíveis',
@@ -51,7 +57,7 @@ export default function Destino() {
           {
             titulo: 'Tráfego pago de alta performance',
             descricao:
-              'Gestão especializada em Meta Ads e Google Ads focada 100% em ROI e leads qualificados.',
+              'Gestão especializada em Meta Ads e Google Ads focada em vendas reais e leads qualificados.',
           },
           {
             titulo: 'SDR de inteligência artificial',
@@ -77,8 +83,9 @@ export default function Destino() {
               'Seu time comercial foca apenas em fechar vendas, não em prospectar curiosos.',
           },
           {
-            titulo: 'Redução do custo de aquisição (CAC)',
-            descricao: 'Campanhas otimizadas significam pagar menos por clientes melhores.',
+            titulo: 'Mais faturamento com o mesmo investimento',
+            descricao:
+              'Campanhas otimizadas significam pagar menos por clientes melhores e vender mais.',
           },
           {
             titulo: 'Processos automatizados',
@@ -86,15 +93,15 @@ export default function Destino() {
               'A tecnologia (IA e automações) trabalha 24/7 para nutrir e qualificar contatos.',
           },
           {
-            titulo: 'Faturamento previsível',
+            titulo: 'Crescimento previsível',
             descricao:
-              'Controle total sobre o retorno do seu investimento (ROI positivo e escalável).',
+              'Controle total sobre o retorno do seu investimento, com faturamento escalável.',
           },
         ],
-        finalH2: 'Pronto para transformar seu comercial em uma máquina de vendas?',
+        finalH2: 'Pronto para aumentar o faturamento do seu negócio no digital?',
         finalTexto:
-          'Meu modelo de trabalho exige dedicação extrema a cada parceiro. Por isso, não trabalho com volume. Tenho um limite rígido de projetos para garantir resultados excepcionais.',
-        rodapeTexto: 'Gestão de tráfego pago com foco em ROI',
+          'Vamos conversar para entender seu cenário, suas dores e seus desejos, e desenhar juntos o caminho até o resultado esperado. Meu modelo de trabalho exige dedicação extrema a cada parceiro. Por isso, não trabalho com volume. Tenho um limite rígido de projetos para garantir resultados excepcionais.',
+        rodapeTexto: 'Gestão de tráfego pago com foco em faturamento',
       }}
     />
   );
