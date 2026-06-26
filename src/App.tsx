@@ -13,6 +13,8 @@ import NotFound from "@/pages/NotFound";
 import GestorTrafegoFranca from "./pages/GestorTrafegoFranca";
 import CaptacaoB2B from "./pages/CaptacaoB2B";
 import CaptacaoEcommerce from "./pages/CaptacaoEcommerce";
+import Destino from "./pages/Destino";
+import HomeV2 from "./pages/HomeV2";
 
 import Layout from "@/components/layout/Layout";
 import { Navigate } from "react-router-dom";
@@ -28,6 +30,8 @@ const routerBasename = (() => {
     "gestor-trafego-pago-franca",
     "empresas",
     "ecommerce",
+    "destino",
+    "home",
   ]);
 
   const firstSegment = window.location.pathname.split("/").filter(Boolean)[0] ?? "";
@@ -50,6 +54,8 @@ const App = () => (
           />
           <Route path="/empresas" element={<CaptacaoB2B />} />
           <Route path="/ecommerce" element={<CaptacaoEcommerce />} />
+          <Route path="/destino" element={<Destino />} />
+          <Route path="/home" element={<HomeV2 />} />
 
           {/* Layout principal */}
           <Route element={<Layout />}>
