@@ -3,38 +3,26 @@ import giovannePhoto from '@/assets/giovanne-transparent.png';
 const logos = [
   {
     label: 'Make',
-    pos: 'top-[8%] left-1/2 -translate-x-1/2',
+    pos: 'top-[2%] left-1/2 -translate-x-1/2',
     delay: 0,
     url: 'https://cdn.simpleicons.org/make/6D00CC',
   },
   {
     label: 'Google Ads',
-    pos: 'top-[22%] left-[-22px]',
-    delay: 0.6,
+    pos: 'top-[42%] left-[-22px]',
+    delay: 0.8,
     url: 'https://cdn.simpleicons.org/googleads/4285F4',
   },
   {
     label: 'Meta',
-    pos: 'top-[22%] right-[-22px]',
-    delay: 1.2,
+    pos: 'top-[42%] right-[-22px]',
+    delay: 1.6,
     url: 'https://cdn.simpleicons.org/meta/0668E1',
   },
   {
-    label: 'ChatGPT',
-    pos: 'top-[52%] left-[-18px]',
-    delay: 1.8,
-    url: 'https://cdn.simpleicons.org/openai/10A37F',
-  },
-  {
-    label: 'TikTok',
-    pos: 'top-[52%] right-[-18px]',
-    delay: 2.4,
-    url: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg',
-  },
-  {
     label: 'Google Analytics',
-    pos: 'bottom-[8%] left-1/2 -translate-x-1/2',
-    delay: 3.0,
+    pos: 'bottom-[2%] left-1/2 -translate-x-1/2',
+    delay: 2.4,
     url: 'https://cdn.simpleicons.org/googleanalytics/E37400',
   },
 ];
