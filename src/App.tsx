@@ -15,6 +15,7 @@ import CaptacaoB2B from "./pages/CaptacaoB2B";
 import CaptacaoEcommerce from "./pages/CaptacaoEcommerce";
 import Destino from "./pages/Destino";
 import HomeV2 from "./pages/HomeV2";
+import Obrigado from "./pages/Obrigado";
 
 import Layout from "@/components/layout/Layout";
 import { Navigate } from "react-router-dom";
@@ -32,6 +33,7 @@ const routerBasename = (() => {
     "ecommerce",
     "destino",
     "home",
+    "obrigado",
   ]);
 
   const firstSegment = window.location.pathname.split("/").filter(Boolean)[0] ?? "";
@@ -56,7 +58,9 @@ const App = () => (
           <Route path="/ecommerce" element={<CaptacaoEcommerce />} />
           <Route path="/destino" element={<Navigate to="/" replace />} />
           <Route path="/home" element={<HomeV2 />} />
+          <Route path="/obrigado" element={<Obrigado />} />
           <Route path="/" element={<Destino path="/" />} />
+
 
           {/* Layout principal */}
           <Route element={<Layout />}>
