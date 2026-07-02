@@ -15,6 +15,7 @@ import CaptacaoB2B from "./pages/CaptacaoB2B";
 import CaptacaoEcommerce from "./pages/CaptacaoEcommerce";
 import Destino from "./pages/Destino";
 import HomeV2 from "./pages/HomeV2";
+import Obrigado from "./pages/Obrigado";
 
 import Layout from "@/components/layout/Layout";
 import { Navigate } from "react-router-dom";
