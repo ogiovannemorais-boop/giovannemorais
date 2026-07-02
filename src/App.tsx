@@ -58,7 +58,9 @@ const App = () => (
           <Route path="/ecommerce" element={<CaptacaoEcommerce />} />
           <Route path="/destino" element={<Navigate to="/" replace />} />
           <Route path="/home" element={<HomeV2 />} />
+          <Route path="/obrigado" element={<Obrigado />} />
           <Route path="/" element={<Destino path="/" />} />
+
 
           {/* Layout principal */}
           <Route element={<Layout />}>
