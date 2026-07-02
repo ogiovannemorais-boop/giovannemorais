@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { z } from 'zod';
+import { sendLeadToSheets } from '@/lib/tracking';
 
 const schema = z.object({
   nome: z.string().trim().min(2, 'Informe seu nome').max(80),
