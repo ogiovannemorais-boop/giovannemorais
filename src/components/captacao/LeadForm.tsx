@@ -55,6 +55,15 @@ export function LeadForm({ variant, ctaLabel }: LeadFormProps) {
       }
     }
 
+    sendLeadToSheets({
+      nome: parsed.data.nome,
+      empresa: parsed.data.empresa,
+      email: parsed.data.email,
+      whatsapp: parsed.data.whatsapp,
+      contexto: parsed.data.mensagem,
+      page_variant: variant,
+    });
+
     const intro =
       variant === 'b2b'
         ? 'Olá Giovanne, vim da página de empresas e quero agendar uma conversa estratégica.'
