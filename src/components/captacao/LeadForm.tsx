@@ -17,7 +17,7 @@ const schema = z.object({
 
 type Variant = 'b2b' | 'ecommerce';
 
-const WA_PHONE = '5516988037193';
+
 
 interface LeadFormProps {
   variant: Variant;
