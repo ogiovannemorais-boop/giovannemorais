@@ -35,6 +35,7 @@ const routerBasename = (() => {
     "destino",
     "home",
     "obrigado",
+    "teste-lead",
   ]);
 
   const firstSegment = window.location.pathname.split("/").filter(Boolean)[0] ?? "";
