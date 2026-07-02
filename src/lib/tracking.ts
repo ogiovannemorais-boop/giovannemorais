@@ -1,6 +1,6 @@
 // UTM tracking + envio de leads para Google Sheets via Apps Script Webhook
 export const GOOGLE_SHEETS_WEBHOOK_URL =
-  'https://script.google.com/macros/s/AKfycbyvx8Yr40lAXtfs7WYQEE73ESPQEmk0HbJAtUEkAN_uBZ-U4wTmZA8ZX7v5I-hnFYw2/exec';
+  'https://script.google.com/macros/s/AKfycbxAz-zzk0K_fLg06SXy68BsgsuKklZpOtL2d1kManO9simhf9rLibMl5ZYR8-qz3TZB/exec';
 
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const;
 type UtmKey = (typeof UTM_KEYS)[number];
