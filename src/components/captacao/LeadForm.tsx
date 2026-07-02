@@ -64,27 +64,6 @@ export function LeadForm({ variant, ctaLabel }: LeadFormProps) {
       page_variant: variant,
     });
 
-    const intro =
-      variant === 'b2b'
-        ? 'Olá Giovanne, vim da página de empresas e quero agendar uma conversa estratégica.'
-        : 'Olá Giovanne, vim da página de e-commerce e quero agendar uma conversa.';
-
-    const body = [
-      intro,
-      '',
-      `Nome: ${parsed.data.nome}`,
-      `Empresa: ${parsed.data.empresa}`,
-      `E-mail: ${parsed.data.email}`,
-      `WhatsApp: ${parsed.data.whatsapp}`,
-      parsed.data.mensagem ? `Mensagem: ${parsed.data.mensagem}` : '',
-    ]
-      .filter(Boolean)
-      .join('\n');
-
-    const url = `https://api.whatsapp.com/send?phone=${WA_PHONE}&text=${encodeURIComponent(body)}`;
-
-    // Abre WhatsApp em nova aba e redireciona para /obrigado
-    window.open(url, '_blank', 'noopener,noreferrer');
     window.location.href = '/obrigado';
   };
 
