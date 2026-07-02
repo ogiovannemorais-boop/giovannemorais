@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { z } from 'zod';
+import { sendLeadToSheets } from '@/lib/tracking';
 
 const schema = z.object({
   nome: z.string().trim().min(2, 'Informe seu nome').max(80),
@@ -53,6 +54,15 @@ export function LeadForm({ variant, ctaLabel }: LeadFormProps) {
         dl.push({ event: 'lead_submit', page_variant: variant });
       }
     }
+
+    sendLeadToSheets({
+      nome: parsed.data.nome,
+      empresa: parsed.data.empresa,
+      email: parsed.data.email,
+      whatsapp: parsed.data.whatsapp,
+      contexto: parsed.data.mensagem,
+      page_variant: variant,
+    });
 
     const intro =
       variant === 'b2b'
