@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { z } from 'zod';
+import { toast } from 'sonner';
 import { sendLeadToSheets } from '@/lib/tracking';
 
 const schema = z.object({
@@ -38,7 +39,7 @@ export function LeadForm({ variant, ctaLabel }: LeadFormProps) {
   const onChange = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((s) => ({ ...s, [k]: e.target.value }));
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     const parsed = schema.safeParse(form);
@@ -55,7 +56,7 @@ export function LeadForm({ variant, ctaLabel }: LeadFormProps) {
       }
     }
 
-    sendLeadToSheets({
+    const result = await sendLeadToSheets({
       nome: parsed.data.nome,
       empresa: parsed.data.empresa,
       email: parsed.data.email,
@@ -64,7 +65,16 @@ export function LeadForm({ variant, ctaLabel }: LeadFormProps) {
       page_variant: variant,
     });
 
-    window.location.href = '/obrigado';
+    if (result.ok) {
+      toast.success('Recebemos seus dados. Redirecionando…');
+      window.location.href = '/obrigado';
+    } else {
+      setSending(false);
+      const msg =
+        result.error ?? `Não conseguimos registrar agora (status ${result.status}).`;
+      setError(`${msg} Tente novamente ou chame no WhatsApp.`);
+      toast.error('Falha ao enviar. Tente novamente.');
+    }
   };
 
   const inputCls =
