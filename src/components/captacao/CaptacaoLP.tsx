@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { LeadForm } from './LeadForm';
+import { WHATSAPP_LINK } from '@/data/links';
 import { OrbitingHero } from './OrbitingHero';
 import { TrustBadges } from './TrustBadges';
 import { Testimonials } from './Testimonials';
