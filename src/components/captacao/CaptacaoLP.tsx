@@ -42,7 +42,7 @@ interface CaptacaoLPProps {
 
 const BASE = 'https://giovannemorais.lovable.app';
 
-export function CaptacaoLP({ variant, copy }: CaptacaoLPProps) {
+export function CaptacaoLP({ copy }: CaptacaoLPProps) {
   const url = `${BASE}${copy.path}`;
 
   const schemaService = {
