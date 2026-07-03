@@ -1,8 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import giovannePhoto from '@/assets/giovanne-photo.png';
-
-const WHATSAPP_LINK =
-  'https://api.whatsapp.com/send?phone=5516988037193&text=Ol%C3%A1%20Giovanne%2C%20vim%20da%20p%C3%A1gina%20de%20gestor%20de%20tr%C3%A1fego%20em%20Franca.';
+import { WHATSAPP_LINK } from '@/data/links';
 const INSTAGRAM_LINK = 'https://www.instagram.com/ogiovannemorais/';
 const PAGE_URL = 'https://giovannemorais.com.br/gestor-trafego-franca';
 
