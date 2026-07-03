@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { LeadForm } from './LeadForm';
+import { WHATSAPP_LINK } from '@/data/links';
 import { OrbitingHero } from './OrbitingHero';
 import { TrustBadges } from './TrustBadges';
 import { Testimonials } from './Testimonials';
@@ -42,7 +42,7 @@ interface CaptacaoLPProps {
 
 const BASE = 'https://giovannemorais.lovable.app';
 
-export function CaptacaoLP({ variant, copy }: CaptacaoLPProps) {
+export function CaptacaoLP({ copy }: CaptacaoLPProps) {
   const url = `${BASE}${copy.path}`;
 
   const schemaService = {
@@ -102,7 +102,9 @@ export function CaptacaoLP({ variant, copy }: CaptacaoLPProps) {
             </div>
 
             <a
-              href="#form"
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#04BFBF] text-[#00010D] font-semibold px-6 py-4 rounded-md hover:bg-[#04BFBF]/90 transition-colors"
             >
               {copy.ctaPrimario}
@@ -191,17 +193,27 @@ export function CaptacaoLP({ variant, copy }: CaptacaoLPProps) {
       {/* OBJEÇÕES / FAQ */}
       <ObjectionsFAQ />
 
-      {/* CTA FINAL + FORM */}
-
-      <section id="form" className="bg-[#212226] scroll-mt-8">
-        <div className="px-6 md:px-12 py-20 md:py-28 max-w-[720px] mx-auto">
+      {/* CTA FINAL */}
+      <section id="cta-final" className="bg-[#212226] scroll-mt-8">
+        <div className="px-6 md:px-12 py-20 md:py-28 max-w-[720px] mx-auto text-center">
           <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] leading-tight font-bold mb-6">
             {copy.finalH2}
           </h2>
           <p className="text-[1.0625rem] leading-[1.7] text-[#F2F2F2]/80 mb-10">
             {copy.finalTexto}
           </p>
-          <LeadForm variant={variant} ctaLabel={copy.ctaFinal} />
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#04BFBF] text-[#00010D] font-semibold px-8 py-4 rounded-md hover:bg-[#04BFBF]/90 transition-all shadow-[0_0_30px_-5px_rgba(4,191,191,0.6)] hover:shadow-[0_0_45px_-2px_rgba(4,191,191,0.85)]"
+          >
+            {copy.ctaFinal}
+            <span aria-hidden>→</span>
+          </a>
+          <p className="text-xs text-[#F2F2F2]/40 mt-4">
+            Conversa direta no WhatsApp. Sem compromisso.
+          </p>
         </div>
       </section>
 

@@ -1,8 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio";
+import { WHATSAPP_LINK } from '@/data/links';
 
 const blogPosts: Record<string, {
   title: string;

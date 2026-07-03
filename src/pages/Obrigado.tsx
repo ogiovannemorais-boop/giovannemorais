@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
-import { specialistInfo } from '@/data/links';
+import { specialistInfo, WHATSAPP_LINK } from '@/data/links';
 
 export default function Obrigado() {
-  const waUrl = `https://api.whatsapp.com/send?phone=5516988037193`;
+  const waUrl = WHATSAPP_LINK;
 
   return (
     <main className="min-h-screen bg-[#00010D] text-[#F2F2F2] font-sans antialiased flex flex-col">

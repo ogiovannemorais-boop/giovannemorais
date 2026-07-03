@@ -1,7 +1,7 @@
 import { Linkedin, Instagram, Youtube, Twitter } from 'lucide-react';
 
 // WhatsApp CTA Link
-export const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516988037193&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio";
+export const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516993807936&text=Olá!%20Vim%20do%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços%20de%20tráfego%20pago";
 
 // Specialist Information
 export const specialistInfo = {
