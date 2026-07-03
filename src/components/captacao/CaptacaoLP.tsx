@@ -102,7 +102,9 @@ export function CaptacaoLP({ variant, copy }: CaptacaoLPProps) {
             </div>
 
             <a
-              href="#form"
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#04BFBF] text-[#00010D] font-semibold px-6 py-4 rounded-md hover:bg-[#04BFBF]/90 transition-colors"
             >
               {copy.ctaPrimario}
