@@ -5,6 +5,7 @@ import { TrustBadges } from './TrustBadges';
 import { Testimonials } from './Testimonials';
 import { ObjectionsFAQ } from './ObjectionsFAQ';
 import { specialistInfo } from '@/data/links';
+import { measureOpenAIAdsEvent } from '@/lib/openaiAds';
 
 
 export type CaptacaoVariant = 'b2b' | 'ecommerce';
@@ -59,6 +60,13 @@ export function CaptacaoLP({ copy }: CaptacaoLPProps) {
     description: copy.pageDescription,
   };
 
+  const handleWhatsAppClick = () => {
+    measureOpenAIAdsEvent('lead_created', {
+      lead_type: 'whatsapp_contact',
+      page_path: window.location.pathname,
+    });
+  };
+
   return (
     <main className="min-h-screen bg-[#00010D] text-[#F2F2F2] font-sans antialiased">
       <Helmet>
@@ -105,6 +113,7 @@ export function CaptacaoLP({ copy }: CaptacaoLPProps) {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleWhatsAppClick}
               className="inline-flex items-center gap-2 bg-[#04BFBF] text-[#00010D] font-semibold px-6 py-4 rounded-md hover:bg-[#04BFBF]/90 transition-colors"
             >
               {copy.ctaPrimario}
@@ -206,6 +215,7 @@ export function CaptacaoLP({ copy }: CaptacaoLPProps) {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleWhatsAppClick}
             className="inline-flex items-center gap-2 bg-[#04BFBF] text-[#00010D] font-semibold px-8 py-4 rounded-md hover:bg-[#04BFBF]/90 transition-all shadow-[0_0_30px_-5px_rgba(4,191,191,0.6)] hover:shadow-[0_0_45px_-2px_rgba(4,191,191,0.85)]"
           >
             {copy.ctaFinal}
