@@ -5,7 +5,8 @@ export const FATURAMENTO = ['Até R$ 30 mil', 'R$ 30 mil a R$ 100 mil', 'R$ 100 
 export const VERBA = ['Ainda não invisto', 'Até R$ 1.500', 'R$ 1.500 a R$ 5.000', 'Acima de R$ 5.000'];
 export const DESAFIO = ['Poucos clientes chegando', 'Muitos contatos que não compram', 'Anúncio caro e sem retorno', 'Dependo só de indicação', 'Outro'];
 
-export const WHATSAPP_NUMBER = '5516993807936';
+import { WHATSAPP_NUMBER } from '@/data/links';
+export { WHATSAPP_NUMBER } from '@/data/links';
 
 export const leadSchema = z.object({
   nome: z.string().trim().min(2, 'Informe seu nome').max(100),

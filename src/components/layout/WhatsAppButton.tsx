@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { WHATSAPP_NUMBER } from '@/data/links';
 
 export function WhatsAppButton() {
   const [showMessage, setShowMessage] = useState(false);
@@ -29,7 +30,7 @@ export function WhatsAppButton() {
     <>
       {/* WhatsApp Button */}
       <a
-        href="https://api.whatsapp.com/send?phone=5516988037193&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio"
+        href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=Vim%20do%20seu%20site!%20Quero%20faturar%20mais%20com%20seus%20serviços%20no%20meu%20negócio`}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed right-6 bottom-10 z-[100] w-[60px] h-[60px] transition-transform hover:scale-110"

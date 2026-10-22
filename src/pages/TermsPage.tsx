@@ -78,7 +78,7 @@ export default function TermsPage() {
               <h2>9. Contato</h2>
               <p>
                 Para dúvidas sobre estes termos, entre em contato através do WhatsApp 
-                (16) 98803-7193 ou e-mail contato@giovanne.com.br.
+                (16) 98219-3870 ou e-mail contato@giovanne.com.br.
               </p>
             </div>
           </article>
