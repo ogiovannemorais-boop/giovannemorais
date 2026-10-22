@@ -1,6 +1,7 @@
 import { SolutionLayout } from '@/components/solutions/SolutionLayout';
 import { CheckCircle, X, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { WHATSAPP_NUMBER } from '@/data/links';
 
 // Dados para a nova seção de Dores e Benefícios
 const painsAndBenefits = [
@@ -256,7 +257,7 @@ export default function LandingPagesPage() {
                 variant={pkg.highlighted ? 'default' : 'outline'}
               >
                 <a 
-                  href="https://wa.me/5516988037193?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20pacote%20de%20Landing%20Pages"
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20pacote%20de%20Landing%20Pages`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

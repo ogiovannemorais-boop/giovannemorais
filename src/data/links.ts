@@ -1,7 +1,8 @@
 import { Linkedin, Instagram, Youtube, Twitter } from 'lucide-react';
 
 // WhatsApp CTA Link
-export const WHATSAPP_LINK = "https://api.whatsapp.com/send?phone=5516993807936&text=Olá!%20Vim%20do%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços%20de%20tráfego%20pago";
+export const WHATSAPP_NUMBER = '5516982193870';
+export const WHATSAPP_LINK = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=Olá!%20Vim%20do%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços%20de%20tráfego%20pago`;
 
 // Specialist Information
 export const specialistInfo = {
@@ -10,7 +11,7 @@ export const specialistInfo = {
   title: 'Gestor de Performance para E-commerce',
   bio: 'Especialista em mídia paga e performance para e-commerce. Método validado para escalar vendas com organização e lucro.',
   email: 'ogiovannemorais@gmail.com',
-  phone: '(16) 98803-7193',
+  phone: '(16) 98219-3870',
   cnpj: '42.434.651/0001-30',
 };
 

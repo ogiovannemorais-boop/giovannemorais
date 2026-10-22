@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import giovannePhoto from '@/assets/giovanne-photo.png';
-import { WHATSAPP_LINK } from '@/data/links';
+import { WHATSAPP_LINK, WHATSAPP_NUMBER } from '@/data/links';
 const INSTAGRAM_LINK = 'https://www.instagram.com/ogiovannemorais/';
 const PAGE_URL = 'https://giovannemorais.com.br/gestor-trafego-franca';
 
@@ -22,7 +22,7 @@ export default function GestorTrafegoFranca() {
     name: 'Giovanne Morais — Gestor de Tráfego',
     url: PAGE_URL,
     image: 'https://giovannemorais.com.br/og-image.jpg',
-    telephone: '+5516988037193',
+    telephone: `+${WHATSAPP_NUMBER}`,
     priceRange: '$$',
     serviceType: 'Gestão de Tráfego Pago',
     areaServed: cidades.map((c) => ({ '@type': 'City', name: c })),
@@ -32,7 +32,7 @@ export default function GestorTrafegoFranca() {
       addressRegion: 'SP',
       addressCountry: 'BR',
     },
-    sameAs: [INSTAGRAM_LINK, 'https://wa.me/5516988037193'],
+    sameAs: [INSTAGRAM_LINK, `https://wa.me/${WHATSAPP_NUMBER}`],
   };
 
   const schemaPerson = {

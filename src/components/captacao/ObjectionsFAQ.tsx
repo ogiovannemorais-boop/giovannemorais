@@ -1,3 +1,4 @@
+import { WHATSAPP_LINK } from '@/data/links';
 import {
   Accordion,
   AccordionContent,
@@ -52,7 +53,7 @@ export function ObjectionsFAQ() {
               <AccordionContent className="text-[#F2F2F2]/75 text-[15px] leading-[1.7] pb-6">
                 <p className="mb-4">{item.a}</p>
                 <a
-                  href="https://api.whatsapp.com/send?phone=5516993807936&text=Olá!%20Vim%20do%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20seus%20serviços%20de%20tráfego%20pago"
+                  href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-[#04BFBF] text-sm font-semibold hover:underline"

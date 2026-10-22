@@ -68,7 +68,7 @@ export default function PrivacyPage() {
               <h2>7. Contato</h2>
               <p>
                 Para exercer seus direitos ou esclarecer dúvidas sobre esta política, 
-                entre em contato através do WhatsApp (16) 98803-7193 ou e-mail contato@giovanne.com.br.
+                entre em contato através do WhatsApp (16) 98219-3870 ou e-mail contato@giovanne.com.br.
               </p>
             </div>
           </article>
