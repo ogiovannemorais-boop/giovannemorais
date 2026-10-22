@@ -42,7 +42,7 @@ const integrations: Array<(lead: LeadRecord) => Promise<void>> = [
 
 export async function submitLead(lead: Lead) {
   const record: LeadRecord = { ...lead, ...getUtms(), page_url: window.location.href.slice(0, 1000) };
-  const { error } = await supabase.from('leads').insert(record);
+  const { error } = await supabase.from('leads').insert(record as Required<Lead> & typeof record);
   if (error) throw error;
   await Promise.allSettled(integrations.map((fn) => fn(record)));
   return record;
