@@ -17,6 +17,9 @@ export type Database = {
       leads: {
         Row: {
           cidade: string
+          clickup_error: string | null
+          clickup_status: string | null
+          clickup_task_id: string | null
           created_at: string
           desafio: string
           empresa: string
@@ -35,6 +38,9 @@ export type Database = {
         }
         Insert: {
           cidade: string
+          clickup_error?: string | null
+          clickup_status?: string | null
+          clickup_task_id?: string | null
           created_at?: string
           desafio: string
           empresa: string
@@ -53,6 +59,9 @@ export type Database = {
         }
         Update: {
           cidade?: string
+          clickup_error?: string | null
+          clickup_status?: string | null
+          clickup_task_id?: string | null
           created_at?: string
           desafio?: string
           empresa?: string

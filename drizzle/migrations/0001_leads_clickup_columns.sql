@@ -1,0 +1,2 @@
+ALTER TABLE public.leads ADD COLUMN IF NOT EXISTS clickup_status text, ADD COLUMN IF NOT EXISTS clickup_error text, ADD COLUMN IF NOT EXISTS clickup_task_id text;
+GRANT ALL ON public.leads TO service_role;
