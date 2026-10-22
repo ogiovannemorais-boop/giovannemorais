@@ -1,5 +1,6 @@
 import { assertEquals, assertThrows } from 'https://deno.land/std@0.224.0/assert/mod.ts';
 import { normalizeSubmission, submissionLabels } from './normalize.ts';
+import { invalidBodyDetails, redactReceivedBody } from './diagnostics.ts';
 
 const envelope = (fields: [string, string][]) => ({ source: 'meta', lead: {
   id: 'meta-test-123', form_id: 'form-123', campaign_name: 'TESTE', ad_name: 'Anúncio teste', adset_name: 'Conjunto teste',
@@ -41,10 +42,52 @@ Deno.test('Website submission is not normalized or changed', () => {
   const site = { nome: 'Cliente Site', whatsapp: '16982193870', empresa: 'Empresa Site' };
   assertEquals(normalizeSubmission(site), { source: 'site', record: site });
 });
-Deno.test('Meta requires a stable non-empty ID for deduplication', () => {
-  assertThrows(() => normalizeSubmission({ ...envelope([]), lead: { ...envelope([]).lead, id: '' } }));
+Deno.test('Meta accepts absent empty or null ID without rejecting the lead', () => {
+  for (const id of [undefined, '', '  ', null]) {
+    const result = normalizeSubmission({ ...envelope([]), lead: { ...envelope([]).lead, id } }).record as { meta_lead_id: null };
+    assertEquals(result.meta_lead_id, null);
+  }
 });
 Deno.test('Meta labels are distinct while site labels remain unchanged', () => {
   assertEquals(submissionLabels('meta'), { tag: 'meta-lead-ads', title: 'Novo lead do Meta', subject: 'Novo lead do Meta' });
   assertEquals(submissionLabels('site'), { tag: 'site', title: 'Novo lead no site', subject: 'Novo lead' });
+});
+
+const answers = { full_name: 'Teste Make', phone_number: '+5516982193870', 'Nome da empresa e cidade': 'Empresa - Franca', 'Faturamento': 'R$ 30 mil a R$ 100 mil', 'Investir em anúncio': 'Até R$ 1.500', 'Desafio': 'Dependo só de indicação' };
+for (const [name, field_data] of [
+  ['array values array', Object.entries(answers).map(([name, value]) => ({ name, values: [value] }))],
+  ['array values string', Object.entries(answers).map(([name, values]) => ({ name, values }))],
+  ['object values string or array', { ...answers, phone_number: [answers.phone_number] }],
+] as const) {
+  Deno.test(`Make supports ${name}`, () => {
+    assertEquals(normalizeSubmission({ ...envelope([]), lead: { ...envelope([]).lead, field_data } }),
+      normalizeSubmission(envelope(Object.entries(answers))));
+  });
+}
+for (const key of ['id', 'form_id', 'created_time', 'campaign_name', 'adset_name', 'ad_name', 'platform']) {
+  Deno.test(`Meta metadata ${key} accepts numbers empty and null`, () => {
+    for (const value of [123, '123', '', '  ', null, undefined]) {
+      const actual = normalizeSubmission({ ...envelope([]), lead: { ...envelope([]).lead, [key]: value } });
+      const expected = normalizeSubmission({ ...envelope([]), lead: { ...envelope([]).lead, [key]: value == null || String(value).trim() === '' ? null : String(value) } });
+      assertEquals(actual, expected);
+      if (key === 'id') assertEquals((actual.record as { meta_lead_id: unknown }).meta_lead_id, value === 123 || value === '123' ? '123' : null);
+    }
+  });
+}
+Deno.test('Invalid Make answers return precise field paths', () => {
+  try {
+    normalizeSubmission({ ...envelope([]), lead: { ...envelope([]).lead, field_data: [{ name: 'phone_number', values: true }] } });
+    throw new Error('Expected validation failure');
+  } catch (error) {
+    const result = invalidBodyDetails(error);
+    assertEquals(result.details.some((issue) => issue.path === 'lead.field_data.0.values'), true);
+  }
+});
+Deno.test('Malformed Meta lead is still rejected', () => {
+  assertThrows(() => normalizeSubmission({ source: 'meta', lead: null }));
+});
+Deno.test('Diagnostics mask phones in all Make representations and malformed JSON', () => {
+  const raw = { phone_number: answers.phone_number, field_data: [{ name: 'Seu telefone', values: ['16982193870'] }], unknown: 'contato +55 (16) 98219-3870', token: 'private', numeric: 5516982193870 };
+  assertEquals(redactReceivedBody(raw), { phone_number: '[oculto]', field_data: [{ name: 'Seu telefone', values: '[oculto]' }], unknown: 'contato [telefone oculto]', token: '[oculto]', numeric: '[telefone oculto]' });
+  assertEquals(redactReceivedBody('{"phone_number":"+5516982193870"'), '{"phone_number":"[telefone oculto]"');
 });

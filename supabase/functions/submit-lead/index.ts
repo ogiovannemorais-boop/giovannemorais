@@ -2,6 +2,7 @@ import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors';
 import { createClient } from 'npm:@supabase/supabase-js@2';
 import { z } from 'npm:zod@3';
 import { normalizeSubmission, submissionLabels } from './normalize.ts';
+import { invalidBodyDetails, redactReceivedBody } from './diagnostics.ts';
 
 const s = (max: number) => z.string().trim().min(1).max(max);
 const o = (max: number) => z.string().trim().max(max).nullish().transform((v) => v || null);
@@ -11,7 +12,7 @@ const Body = z.object({
   faturamento: s(60), verba: s(60), desafio: s(80),
   utm_source: o(200), utm_medium: o(200), utm_campaign: o(200), utm_content: o(200), utm_term: o(200),
   page_url: o(1000),
-  meta_lead_id: z.string().trim().min(1).max(200).optional(),
+  meta_lead_id: z.string().trim().min(1).max(200).nullish(),
 });
 
 const json = (b: unknown, status = 200) =>
@@ -21,18 +22,24 @@ Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
   if (req.method !== 'POST') return json({ error: 'method' }, 405);
 
+  const bodyText = await req.text();
   let raw: unknown;
-  try { raw = await req.json(); } catch { return json({ error: 'invalid json' }, 400); }
+  const invalid = (error: unknown, received: unknown) => {
+    const details = invalidBodyDetails(error);
+    console.log('submit-lead invalid body', JSON.stringify(redactReceivedBody(received)), details);
+    return json(details, 400);
+  };
+  try { raw = JSON.parse(bodyText); } catch (e) { return invalid(e, bodyText); }
   let submission: ReturnType<typeof normalizeSubmission>;
   try { submission = normalizeSubmission(raw); }
   catch (e) {
-    return json({ error: e instanceof z.ZodError ? e.flatten().fieldErrors : 'invalid meta lead' }, 400);
+    return invalid(e, raw);
   }
   // Website callers cannot set the external deduplication key.
   const parsed = Body.safeParse(submission.source === 'site' && typeof submission.record === 'object' && submission.record !== null
     ? { ...submission.record, meta_lead_id: undefined }
     : submission.record);
-  if (!parsed.success) return json({ error: parsed.error.flatten().fieldErrors }, 400);
+  if (!parsed.success) return invalid(parsed.error, raw);
   const lead = parsed.data;
 
   const dbUrl = Deno.env.get('SUPABASE_URL');

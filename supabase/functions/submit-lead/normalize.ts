@@ -1,19 +1,27 @@
 import { z } from 'npm:zod@3';
 
+const metadata = (max: number) => z.union([z.string(), z.number(), z.null()]).optional()
+  .transform((value) => value == null ? null : String(value).trim() || null)
+  .pipe(z.string().max(max).nullable());
+const values = z.union([z.string().max(2000), z.array(z.string().max(2000)).max(20)])
+  .transform((value) => typeof value === 'string' ? [value] : value);
+const fieldData = z.union([
+  z.array(z.object({ name: z.string().max(500), values })).max(100),
+  z.record(z.string().max(500), values).refine((fields) => Object.keys(fields).length <= 100, 'Maximum 100 fields')
+    .transform((fields) => Object.entries(fields).map(([name, values]) => ({ name, values }))),
+]);
+
 const MetaEnvelope = z.object({
   source: z.literal('meta'),
   lead: z.object({
-    id: z.string().trim().min(1).max(200),
-    created_time: z.string().max(100).nullish(),
-    form_id: z.string().max(200).nullish(),
-    campaign_name: z.string().max(200).nullish(),
-    adset_name: z.string().max(200).nullish(),
-    ad_name: z.string().max(200).nullish(),
-    platform: z.string().max(100).nullish(),
-    field_data: z.array(z.object({
-      name: z.string().max(500),
-      values: z.array(z.string().max(2000)).max(20),
-    })).max(100),
+    id: metadata(200),
+    created_time: metadata(100),
+    form_id: metadata(200),
+    campaign_name: metadata(200),
+    adset_name: metadata(200),
+    ad_name: metadata(200),
+    platform: metadata(100),
+    field_data: fieldData,
   }),
 });
 
