@@ -35,16 +35,14 @@ export function getUtms() {
 
 export type LeadRecord = Lead & ReturnType<typeof getUtms> & { page_url: string };
 
-/** Destinos extras do lead (ex.: ClickUp). Falhas aqui não bloqueiam o envio. */
-const integrations: Array<(lead: LeadRecord) => Promise<void>> = [
-  // sendToClickUp será adicionado aqui
-];
-
+/** Salva o lead e cria a tarefa no ClickUp pela função de backend. Se a função falhar, salva direto no banco. */
 export async function submitLead(lead: Lead) {
   const record: LeadRecord = { ...lead, ...getUtms(), page_url: window.location.href.slice(0, 1000) };
+  const { error: fnError } = await supabase.functions.invoke('submit-lead', { body: record });
+  if (!fnError) return record;
+  console.error('submit-lead', fnError);
   const { error } = await supabase.from('leads').insert(record as Required<Lead> & typeof record);
   if (error) throw error;
-  await Promise.allSettled(integrations.map((fn) => fn(record)));
   return record;
 }
 
