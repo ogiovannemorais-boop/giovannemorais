@@ -277,10 +277,12 @@ export default function LeadLanding({ c }: { c: LandingConfig }) {
           <div className="reveal" style={{ animationDelay: '.15s' }}>
             <div className="photo-card relative overflow-hidden" style={{ height: 520, borderRadius: 28, background: 'linear-gradient(160deg,#0B1220,#1E3A8A)', boxShadow: '0 40px 80px rgba(11,18,32,.35)' }}>
               <img src={heroPhoto} alt="Giovanne Morais" className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[95%] w-auto max-w-none object-contain" />
-              <div className="absolute left-5 right-5 bottom-5" style={{ background: 'rgba(255,255,255,.96)', borderRadius: 18, padding: '18px 20px', boxShadow: '0 12px 30px rgba(11,18,32,.25)' }}>
-                <p style={{ fontSize: 13, color: '#1D4ED8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.06em' }}>Relatório toda segunda-feira</p>
-                <p style={{ fontSize: 16, fontWeight: 600, color: '#0B1220', marginTop: 4 }}>Quanto investiu, quantos contatos chegaram e quantos viraram venda.</p>
-              </div>
+              {!c.hideHeroCard && (
+                <div className="absolute left-5 right-5 bottom-5" style={{ background: 'rgba(255,255,255,.96)', borderRadius: 18, padding: '18px 20px', boxShadow: '0 12px 30px rgba(11,18,32,.25)' }}>
+                  <p style={{ fontSize: 13, color: '#1D4ED8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.06em' }}>Relatório toda segunda-feira</p>
+                  <p style={{ fontSize: 16, fontWeight: 600, color: '#0B1220', marginTop: 4 }}>Quanto investiu, quantos contatos chegaram e quantos viraram venda.</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
