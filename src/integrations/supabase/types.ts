@@ -25,6 +25,7 @@ export type Database = {
           empresa: string
           faturamento: string
           id: string
+          meta_lead_id: string | null
           nome: string
           notify_email_error: string | null
           notify_email_status: string | null
@@ -50,6 +51,7 @@ export type Database = {
           empresa: string
           faturamento: string
           id?: string
+          meta_lead_id?: string | null
           nome: string
           notify_email_error?: string | null
           notify_email_status?: string | null
@@ -75,6 +77,7 @@ export type Database = {
           empresa?: string
           faturamento?: string
           id?: string
+          meta_lead_id?: string | null
           nome?: string
           notify_email_error?: string | null
           notify_email_status?: string | null
