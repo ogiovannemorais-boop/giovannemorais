@@ -26,6 +26,10 @@ export type Database = {
           faturamento: string
           id: string
           nome: string
+          notify_email_error: string | null
+          notify_email_status: string | null
+          notify_whatsapp_error: string | null
+          notify_whatsapp_status: string | null
           page_url: string | null
           produto: string
           utm_campaign: string | null
@@ -47,6 +51,10 @@ export type Database = {
           faturamento: string
           id?: string
           nome: string
+          notify_email_error?: string | null
+          notify_email_status?: string | null
+          notify_whatsapp_error?: string | null
+          notify_whatsapp_status?: string | null
           page_url?: string | null
           produto: string
           utm_campaign?: string | null
@@ -68,6 +76,10 @@ export type Database = {
           faturamento?: string
           id?: string
           nome?: string
+          notify_email_error?: string | null
+          notify_email_status?: string | null
+          notify_whatsapp_error?: string | null
+          notify_whatsapp_status?: string | null
           page_url?: string | null
           produto?: string
           utm_campaign?: string | null

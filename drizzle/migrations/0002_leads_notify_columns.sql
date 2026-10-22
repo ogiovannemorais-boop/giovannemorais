@@ -1,0 +1,1 @@
+ALTER TABLE public.leads ADD COLUMN IF NOT EXISTS notify_whatsapp_status text, ADD COLUMN IF NOT EXISTS notify_whatsapp_error text, ADD COLUMN IF NOT EXISTS notify_email_status text, ADD COLUMN IF NOT EXISTS notify_email_error text;
