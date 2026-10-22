@@ -1,6 +1,6 @@
 # Tasks
-- [ ] Accept all three Make field_data formats and tolerant Meta metadata.
-- [ ] Return detailed invalid-body errors with phone-safe diagnostics, run tests, deploy and verify all formats.
+- [x] Accept all three Make field_data formats and tolerant Meta metadata.
+- [x] Return detailed invalid-body errors with phone-safe diagnostics, run tests, deploy and verify all formats.
 - [x] Update every Giovanne WhatsApp contact to 5516982193870 without visual changes, and verify contact links.
 - [x] Add independent parallel CallMeBot and Resend notifications and saved statuses.
 - [x] Accept and normalize Meta Lead Ads payloads without changing site submissions.
