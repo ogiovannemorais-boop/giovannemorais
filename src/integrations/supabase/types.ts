@@ -14,7 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          cidade: string
+          created_at: string
+          desafio: string
+          empresa: string
+          faturamento: string
+          id: string
+          nome: string
+          page_url: string | null
+          produto: string
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+          verba: string
+          whatsapp: string
+        }
+        Insert: {
+          cidade: string
+          created_at?: string
+          desafio: string
+          empresa: string
+          faturamento: string
+          id?: string
+          nome: string
+          page_url?: string | null
+          produto: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+          verba: string
+          whatsapp: string
+        }
+        Update: {
+          cidade?: string
+          created_at?: string
+          desafio?: string
+          empresa?: string
+          faturamento?: string
+          id?: string
+          nome?: string
+          page_url?: string | null
+          produto?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+          verba?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
