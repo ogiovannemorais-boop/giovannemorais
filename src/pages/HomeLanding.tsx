@@ -9,6 +9,7 @@ export default function HomeLanding() {
         canonical: 'https://giovannemorais.lovable.app/',
         topbar: 'Atendo poucas empresas por vez para acompanhar cada uma de perto. Agenda de conversas estratégicas de novembro aberta.',
         header: true,
+        hideHeroCard: true,
         heroCta: 'Quero agendar minha conversa',
         heroMicro: 'Uma conversa de 30 minutos para entender seu negócio e mostrar o caminho para destravar suas vendas.',
         heroCheck2: 'Método validado, resultado medido em vendas',

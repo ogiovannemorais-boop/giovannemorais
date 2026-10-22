@@ -4,6 +4,7 @@ export interface LandingConfig {
   canonical: string;
   topbar: string;
   header?: boolean;
+  hideHeroCard?: boolean;
   heroCta: string;
   heroMicro: string;
   heroCheck2: string;
