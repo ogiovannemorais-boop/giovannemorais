@@ -17,6 +17,8 @@ import Destino from "./pages/Destino";
 import HomeV2 from "./pages/HomeV2";
 import Obrigado from "./pages/Obrigado";
 import Diagnostico from "./pages/Diagnostico";
+import HomeLanding from "./pages/HomeLanding";
+import Agendar from "./pages/Agendar";
 
 
 import Layout from "@/components/layout/Layout";
@@ -37,6 +39,7 @@ const routerBasename = (() => {
     "home",
     "obrigado",
     "diagnostico",
+    "agendar",
   ]);
 
   const firstSegment = window.location.pathname.split("/").filter(Boolean)[0] ?? "";
@@ -64,7 +67,8 @@ const App = () => (
           <Route path="/obrigado" element={<Obrigado />} />
           <Route path="/diagnostico" element={<Diagnostico />} />
           
-          <Route path="/" element={<Destino path="/" />} />
+          <Route path="/" element={<HomeLanding />} />
+          <Route path="/agendar" element={<Agendar />} />
 
 
           {/* Layout principal */}
