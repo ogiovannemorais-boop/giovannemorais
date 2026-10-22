@@ -52,3 +52,5 @@ export function buildWhatsAppUrl(lead: Pick<Lead, 'nome' | 'empresa' | 'desafio'
   const msg = `Olá, Giovanne! Sou ${lead.nome}, da ${lead.empresa}. Acabei de pedir o diagnóstico gratuito pelo site. Meu maior desafio hoje: ${lead.desafio}.`;
   return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(msg)}`;
 }
+
+export { WHATSAPP_LINK as WHATSAPP_LINK_FALLBACK } from '@/data/links';
