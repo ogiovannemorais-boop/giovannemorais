@@ -1,6 +1,7 @@
 import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors';
 import { createClient } from 'npm:@supabase/supabase-js@2';
 import { z } from 'npm:zod@3';
+import { normalizeSubmission, submissionLabels } from './normalize.ts';
 
 const s = (max: number) => z.string().trim().min(1).max(max);
 const o = (max: number) => z.string().trim().max(max).nullish().transform((v) => v || null);
@@ -10,6 +11,7 @@ const Body = z.object({
   faturamento: s(60), verba: s(60), desafio: s(80),
   utm_source: o(200), utm_medium: o(200), utm_campaign: o(200), utm_content: o(200), utm_term: o(200),
   page_url: o(1000),
+  meta_lead_id: z.string().trim().min(1).max(200).optional(),
 });
 
 const json = (b: unknown, status = 200) =>
@@ -21,13 +23,31 @@ Deno.serve(async (req) => {
 
   let raw: unknown;
   try { raw = await req.json(); } catch { return json({ error: 'invalid json' }, 400); }
-  const parsed = Body.safeParse(raw);
+  let submission: ReturnType<typeof normalizeSubmission>;
+  try { submission = normalizeSubmission(raw); }
+  catch (e) {
+    return json({ error: e instanceof z.ZodError ? e.flatten().fieldErrors : 'invalid meta lead' }, 400);
+  }
+  // Website callers cannot set the external deduplication key.
+  const parsed = Body.safeParse(submission.source === 'site' && typeof submission.record === 'object' && submission.record !== null
+    ? { ...submission.record, meta_lead_id: undefined }
+    : submission.record);
   if (!parsed.success) return json({ error: parsed.error.flatten().fieldErrors }, 400);
   const lead = parsed.data;
 
-  const db = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!);
+  const dbUrl = Deno.env.get('SUPABASE_URL');
+  const dbKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+  if (!dbUrl || !dbKey) return json({ error: 'backend configuration missing' }, 500);
+  const db = createClient(dbUrl, dbKey);
   const { data: row, error } = await db.from('leads').insert(lead).select('id, created_at').single();
+  // The unique index also protects simultaneous Make retries, not just sequential requests.
+  if (error?.code === '23505' && submission.source === 'meta' && lead.meta_lead_id) {
+    const { data: existing, error: lookupError } = await db.from('leads').select('id').eq('meta_lead_id', lead.meta_lead_id).maybeSingle();
+    if (!lookupError && existing) return json({ ok: true, duplicate: true });
+  }
   if (error) { console.error('insert', error); return json({ error: 'insert failed' }, 500); }
+  if (!row) return json({ error: 'insert failed' }, 500);
+  const labels = submissionLabels(submission.source);
 
   const digits = lead.whatsapp.replace(/\D/g, '');
   const date = new Date(row.created_at).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
@@ -51,7 +71,7 @@ Deno.serve(async (req) => {
     const r = await fetch('https://api.clickup.com/api/v2/list/901325705004/task', {
       method: 'POST',
       headers: { Authorization: token, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: `${lead.nome} · ${lead.empresa}`, status: 'leads', tags: ['site'], markdown_description: desc }),
+      body: JSON.stringify({ name: `${lead.nome} · ${lead.empresa}`, status: 'leads', tags: [labels.tag], markdown_description: desc }),
     });
     const text = await r.text();
     if (!r.ok) throw new Error(`HTTP ${r.status}: ${text.slice(0, 500)}`);
@@ -62,7 +82,7 @@ Deno.serve(async (req) => {
   }
   const taskId = update.clickup_task_id ?? null;
   const taskUrl = taskId ? `https://app.clickup.com/t/${taskId}` : null;
-  const waLead = `https://wa.me/55${digits}`;
+  const waLead = digits ? `https://wa.me/55${digits}` : '';
   const origem = lead.utm_source || lead.utm_campaign ? `${lead.utm_source ?? ''} / ${lead.utm_campaign ?? ''}` : 'direto';
   const err = (e: unknown) => String(e instanceof Error ? e.message : e).slice(0, 1000);
 
@@ -70,7 +90,7 @@ Deno.serve(async (req) => {
     const key = Deno.env.get('CALLMEBOT_API_KEY');
     if (!key) throw new Error('CALLMEBOT_API_KEY ausente');
     const text = [
-      `*Novo lead no site*`, `Nome: ${lead.nome}`, `Empresa: ${lead.empresa}`, `Cidade: ${lead.cidade}`,
+      `*${labels.title}*`, `Nome: ${lead.nome}`, `Empresa: ${lead.empresa}`, `Cidade: ${lead.cidade}`,
       `WhatsApp: ${lead.whatsapp} ${waLead}`, `Vende: ${lead.produto}`, `Faturamento: ${lead.faturamento}`,
       `Verba: ${lead.verba}`, `Desafio: ${lead.desafio}`, `Origem: ${origem}`,
       taskUrl ? `ClickUp: ${taskUrl}` : '',
@@ -81,7 +101,7 @@ Deno.serve(async (req) => {
     if (!r.ok || /error|invalid|not/i.test(body.slice(0, 300)) && !/queued|sent/i.test(body)) throw new Error(`HTTP ${r.status}: ${body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 500)}`);
   };
 
-  const esc = (v: string) => v.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  const esc = (v: string) => v.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] ?? c));
   const sendEmail = async () => {
     const key = Deno.env.get('RESEND_API_KEY');
     if (!key) throw new Error('RESEND_API_KEY ausente');
@@ -92,11 +112,11 @@ Deno.serve(async (req) => {
     ];
     const btn = (href: string, label: string, bg: string) =>
       `<a href="${esc(href)}" style="display:inline-block;padding:12px 20px;margin:4px 8px 4px 0;border-radius:8px;background:${bg};color:#fff;text-decoration:none;font-weight:600">${label}</a>`;
-    const html = `<div style="font-family:Arial,sans-serif;max-width:560px;color:#0B1220"><h2 style="margin:0 0 16px">Novo lead: ${esc(lead.nome)} · ${esc(lead.empresa)}</h2><table style="border-collapse:collapse;width:100%">${rows.map(([k, v]) => `<tr><td style="padding:6px 8px;color:#64748B;width:130px;vertical-align:top">${k}</td><td style="padding:6px 8px">${esc(v)}</td></tr>`).join('')}</table><p style="margin-top:20px">${btn(waLead, 'Chamar no WhatsApp', '#16A34A')}${taskUrl ? btn(taskUrl, 'Abrir no ClickUp', '#1D4ED8') : ''}</p></div>`;
+    const html = `<div style="font-family:Arial,sans-serif;max-width:560px;color:#0B1220"><h2 style="margin:0 0 16px">${esc(labels.subject)}: ${esc(lead.nome)} · ${esc(lead.empresa)}</h2><table style="border-collapse:collapse;width:100%">${rows.map(([k, v]) => `<tr><td style="padding:6px 8px;color:#64748B;width:130px;vertical-align:top">${k}</td><td style="padding:6px 8px">${esc(v)}</td></tr>`).join('')}</table><p style="margin-top:20px">${waLead ? btn(waLead, 'Chamar no WhatsApp', '#16A34A') : ''}${taskUrl ? btn(taskUrl, 'Abrir no ClickUp', '#1D4ED8') : ''}</p></div>`;
     const r = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from: 'Site Giovanne <onboarding@resend.dev>', to: ['ogiovannemorais@gmail.com'], subject: `Novo lead: ${lead.nome} · ${lead.empresa}`, html }),
+      body: JSON.stringify({ from: 'Site Giovanne <onboarding@resend.dev>', to: ['ogiovannemorais@gmail.com'], subject: `${labels.subject}: ${lead.nome} · ${lead.empresa}`, html }),
     });
     const body = await r.text();
     if (!r.ok) throw new Error(`HTTP ${r.status}: ${body.slice(0, 500)}`);
